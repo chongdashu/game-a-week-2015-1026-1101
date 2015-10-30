@@ -19,23 +19,33 @@ var Entity = function(state) {
 var p = Entity.prototype;
 Entity.prototype.constructor = Entity;
     
-    p.komponents = {};
+    p._components = {};
+    p.onComponentAddCallbacks = [];
+    p.onComponentRemoveCallbacks = [];
 
     p.init = function(state)
     {
         console.log("[Entity], init()");
         this.state = state;
         this.game = state.game;
-        this.komponents = {};
+        this._components = {};
+        this.onComponentAddCallbacks = [];
+        this.onComponentRemoveCallbacks = [];
     };
 
     p.add = function(component) {
-        if (typeof this.komponents == "undefined" || this.komponents === null) {
+        if (typeof this._components == "undefined" || this._components === null) {
             // initialize an empty dictionary
-            this.komponents = {};
+            this._components = {};
         }
         // add this component to the entity's map of components
-        this.komponents[component.getType()] = component;
+        this._components[component.getType()] = component;
+
+        // dispatch callbacks
+        for (var i=0; i < this.onComponentAddCallbacks; i++) {
+            this.onComponentAddCallbacks[i](this, component.getType());
+        }
+
         return this;
     };
 
@@ -50,46 +60,55 @@ Entity.prototype.constructor = Entity;
         else {
             console.warn("[Entity], remove(), unknown component or type param=%s", componentOrType);
         }
+
+        var component = null;
         
         if (type) {
-            if (type in this.komponents) {
-                var component = this.komponents[type];
-                delete this.komponents[type];
+            if (type in this._components) {
+                // get the component
+                component = this._components[type];
+
+                // remove the key entry
+                delete this._components[type];
+                
+                // dispatch callbacks
+                for (var i=0; i < this.onComponentRemoveCallbacks; i++) {
+                    this.onComponentRemoveCallbacks[i](this, component.getType());
+                }
             }
             else {
                 console.warn("[Entity], remove(), component type=%s doesn't exist in entity.", type);
             }
         }
 
+        return component;
+
     };
 
     p.get = function(componentType) {
-        return this.komponents[componentType];
+        return this._components[componentType];
     };
 
     p.getAll = function() {
         var components = [];
-        $.each(this.komponents, function(index, component) {
-            components.push(component);
-        });
+        for (var i=0; i < this._components.length; i++) {
+            components.push(this._components[i]);
+        }
 
         return component;
     };
 
     p.isComponent = function(componentType) {
-        return componentType in this.komponents && this.komponents[componentType] !== null;
+        return componentType in this._components && this._components[componentType] !== null;
     };
 
-    p.update = function() {
-
+    p.addOnComponentAddCallback = function(callback) {
+        this.onComponentAddCallbacks.push(callback);
     };
 
-    p.render = function() {
-
+    p.removeOnComponentRemoveCallback = function(callback) {
+        this.onComponentRemoveCallbacks.push(callback);
     };
-
-
-    
 
 // Link
 // ----
