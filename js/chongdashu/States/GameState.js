@@ -37,10 +37,12 @@ var p = GameState.prototype;
     };
 
     p.createPlayer = function() {
-        this.player = new chongdashu.Entity()
-            .add(new chongdashu.ArcadeSpriteComponent(this.game.add.sprite(0,0, "player"), this.game.physics.arcade))
-            .add(new chongdashu.KeyboardComponent(this.game.input.keyboard));
-        this.engine.addEntity(this.player);
+        this.engine.addEntity(
+            this.player = new chongdashu.Entity()
+                .add(new chongdashu.ArcadeSpriteComponent(this.game.add.sprite(0,0, "player"), this.game.physics.arcade))
+                .add(new chongdashu.KeyboardComponent(this.game.input.keyboard))
+                .add(new chongdashu.PlayerComponent()));
+
     };
 
     // @phaser

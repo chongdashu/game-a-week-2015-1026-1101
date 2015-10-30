@@ -33,7 +33,7 @@ var p = createjs.extend(KeyboardControlNode, chongdashu.Node);
         this.Node_init(KeyboardControlNode.TYPE, entity);
 
         // -- Add references to entity's components here.
-        p.kc = entity.get(chongdashu.KeyboardComponent.TYPE);
+        this.kc = entity.get(chongdashu.KeyboardComponent.TYPE);
     };
 
 // Link

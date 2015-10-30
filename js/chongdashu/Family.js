@@ -38,9 +38,13 @@ Family.prototype.constructor = Family;
         // is in charge of based on the node class
         console.log("nodeClass=%o", nodeClass);
         console.log("nodeClass.COMPONENT_TYPES=%o", nodeClass.COMPONENT_TYPES);
-        for (var i=0; i < nodeClass.COMPONENT_TYPES; i++) {
+        for (var i=0; i < nodeClass.COMPONENT_TYPES.length; i++) {
             console.log("Add: nodeClass.TYPE=", nodeClass.COMPONENT_TYPES[i]);
             this.components[nodeClass.COMPONENT_TYPES[i]] = true;
+        }
+
+        if (Object.keys(this.components).length === 0) {
+            console.error("Error, no components added");
         }
 
     };
@@ -51,11 +55,14 @@ Family.prototype.constructor = Family;
 
     p.addEntity = function(entity) {
         if (!(entity._name in this.entityNodeMap)) {
+
+            console.log("entity=%o", entity);
+            console.log("this.components=%o", this.components);
             
             if (!this.isEntityComponentsPresent(entity, this.components)) {
                 // if entity does not matchr required components, 
                 // do not add
-                console.error("entity %o (%s) does not have required this.components %o", entity, entity._name, this.components);
+                // console.error("entity %o (%s) does not have required this.components %o", entity, entity._name, this.components);
                 return;
             }
 

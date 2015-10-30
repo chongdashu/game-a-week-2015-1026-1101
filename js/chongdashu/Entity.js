@@ -28,14 +28,16 @@ Entity.prototype.constructor = Entity;
 
     p.init = function(name)
     {
-        console.log("[Entity], init()");
+        console.log("[Entity], init(), name=%s", name);
 
-        if (typeof name == "undefined" || name === null) {
-            this._name = name;
+        if (typeof (name) === "undefined" || name === null) {
+            this._name = "entity_" + Entity.nameCount++;
         }
         else {
-            this._name = "entity_" + nameCount++;
+            this._name = name;
         }
+
+        console.log("this._name=%s", this._name);
 
         this._components = {};
         this.onComponentAddCallbacks = [];

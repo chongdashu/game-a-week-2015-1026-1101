@@ -29,11 +29,6 @@ var p = createjs.extend(KeyboardControlSystem, chongdashu.System);
     };
 
     p.updateNode = function(node) {
-        console.log("[KeyboardControlSystem], updateNode()");
-
-        console.log("node=%o", node);
-        console.log("node.kc=%o", node.kc);
-        
         var kc = node.kc;
 
         $.each(kc.keyStates, function(key, state) {
@@ -60,8 +55,6 @@ var p = createjs.extend(KeyboardControlSystem, chongdashu.System);
     // -- 
 
     p.initKey = function(kc, keycode) {
-        console.log("kc=%o", kc);
-        console.log("kc,keyStates=%o", kc.keyStates);
         if (!(keycode in kc.keyStates)) {
             kc.keyStates[keycode] = KeyboardComponent.UP;
         }

@@ -28,7 +28,6 @@ var p = createjs.extend(PlayerControlSystem, chongdashu.KeyboardControlSystem);
     };
 
     p.updateNode = function(node) {
-        console.log("[PlayerControlSystem], updateNode()");
         var asc = node.asc;
         var kc = node.kc;
         var pc = node.pc;
@@ -36,6 +35,7 @@ var p = createjs.extend(PlayerControlSystem, chongdashu.KeyboardControlSystem);
         var sprite = asc.sprite;
         var body = asc.body;
 
+        // -- perform superclass update first
         this.KeyboardControlSystem_updateNode(node);
 
         if (this.isJustDown(kc, Phaser.Keyboard.LEFT)) {
