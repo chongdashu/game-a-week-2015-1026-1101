@@ -21,6 +21,7 @@ System.prototype.constructor = System;
     
     p.components = {};
     p.enabled = false;
+    p.priority = 0;
 
     p.init = function(state)
     {
@@ -28,6 +29,7 @@ System.prototype.constructor = System;
         this.state = state;
         this.game = state.game;
         this.components = {};
+        this.priority = 0;
         this.enabled = true;
     };
 

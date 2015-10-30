@@ -13,19 +13,30 @@ this.chongdashu = this.chongdashu||{};
  * @class Entity
  * @constructor
  **/
-var Entity = function(state) {
-    this.init(state);
+var Entity = function(name) {
+    this.init(name);
 };
 var p = Entity.prototype;
 Entity.prototype.constructor = Entity;
+
+    Entity.nameCount = 0;
     
     p._components = {};
+    p._name = null;
     p.onComponentAddCallbacks = [];
     p.onComponentRemoveCallbacks = [];
 
-    p.init = function(state)
+    p.init = function(name)
     {
         console.log("[Entity], init()");
+
+        if (typeof name == "undefined" || name === null) {
+            this._name = name;
+        }
+        else {
+            this._name = "entity_" + nameCount++;
+        }
+
         this.state = state;
         this.game = state.game;
         this._components = {};
@@ -108,6 +119,20 @@ Entity.prototype.constructor = Entity;
 
     p.removeOnComponentRemoveCallback = function(callback) {
         this.onComponentRemoveCallbacks.push(callback);
+    };
+
+    p.removeOnComponentAddCallback = function(callback) {
+        if (!(callback in this.onComponentAddCallbacks)) {
+            console.warn("Callback %s not part of entity %s callbacks", callback, this._name);
+        }
+        this.onComponentAddCallbacks.splice(this.onComponentAddCallbacks.indexOf(callback));
+    };
+
+    p.removeOnComponentRemoveCallback = function(callback) {
+        if (!(callback in this.onComponentRemoveCallbacks)) {
+            console.warn("Callback %s not part of entity %s callbacks", callback, this._name);
+        }
+        this.onComponentRemoveCallbacks.splice(this.onComponentRemoveCallbacks.indexOf(callback));
     };
 
 // Link
