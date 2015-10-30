@@ -33,7 +33,9 @@ var p = createjs.extend(PlayerControlSystem, chongdashu.System);
         var pc = node.pc;
 
         var sprite = asc.sprite;
-        sprite.x++;
+        var body = asc.body;
+
+        body.velocity.x = 10;
     };
 
 // Link

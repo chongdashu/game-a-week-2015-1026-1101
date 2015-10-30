@@ -25,6 +25,8 @@ var p = GameState.prototype;
     p.create = function() {
         this.engine = new chongdashu.Engine();
 
+        this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
         this.createSystems();
         this.createPlayer();
 

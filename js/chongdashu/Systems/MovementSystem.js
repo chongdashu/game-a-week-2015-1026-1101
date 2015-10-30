@@ -74,6 +74,8 @@ var p = createjs.extend(MovementSystem, chongdashu.System);
         }
     };
 
+
+
 // Link
 // ----
 chongdashu.MovementSystem = createjs.promote(MovementSystem, "System");

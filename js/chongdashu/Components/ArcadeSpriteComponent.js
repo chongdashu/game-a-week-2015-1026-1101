@@ -17,32 +17,26 @@ var ArcadeSpriteComponent = function(sprite, arcade) {
     // @param {Phaser.Keyboard} entity
     this.init(sprite, arcade);
 };
-var p = createjs.extend(ArcadeSpriteComponent, chongdashu.Component);
+var p = createjs.extend(ArcadeSpriteComponent, chongdashu.SpriteComponent);
     
     ArcadeSpriteComponent.TYPE = "component:ArcadeSpriteComponent";
 
-    p.sprite = null;
+    p.body = null;
+    p.arcade = null;
 
     p.init = function(sprite, arcade)
     {
-        console.log("[ArcadeSpriteComponent], init()");
+        console.log("[ArcadeSpriteComponent], init(), arcade=%o", arcade);
+        this.SpriteComponent_init(sprite);
         this.Component_init(ArcadeSpriteComponent.TYPE);
 
-        this.sprite = sprite;
         this.arcade = arcade;
-
-        this.setup();
-    };
-
-    p.setup = function() {
-
-        this.sprite.anchor.set(0.5);
         this.arcade.enable(this.sprite);
-
+        this.body = this.sprite.body;
     };
 
 // Link
 // ----
-chongdashu.ArcadeSpriteComponent = createjs.promote(ArcadeSpriteComponent, "Component");
+chongdashu.ArcadeSpriteComponent = createjs.promote(ArcadeSpriteComponent, "SpriteComponent");
 
 }());

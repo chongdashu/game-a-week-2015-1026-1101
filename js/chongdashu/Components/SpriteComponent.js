@@ -29,12 +29,8 @@ var p = createjs.extend(SpriteComponent, chongdashu.Component);
         this.Component_init(SpriteComponent.TYPE);
 
         this.sprite = sprite;
-
-        this.setup();
-    };
-
-    p.setup = function() {
         this.sprite.anchor.set(0.5);
+        
     };
 
 // Link
