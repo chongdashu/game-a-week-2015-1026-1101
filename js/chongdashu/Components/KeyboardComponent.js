@@ -35,16 +35,6 @@ var p = createjs.extend(KeyboardComponent, chongdashu.Component);
         this.Component_init(KeyboardComponent.TYPE);
         this.keyStates = {};
         this.keyboard = keyboard;
-
-        // this.initKey(Phaser.Keyboard.W);
-        // this.initKey(Phaser.Keyboard.A);
-        // this.initKey(Phaser.Keyboard.S);
-        // this.initKey(Phaser.Keyboard.D);
-        // this.initKey(Phaser.Keyboard.SPACEBAR);
-        // this.initKey(Phaser.Keyboard.Z);
-        // this.initKey(Phaser.Keyboard.X);
-        // this.initKey(Phaser.Keyboard.LEFT);
-        // this.initKey(Phaser.Keyboard.RIGHT);
     };
 
     p.initKey = function(keycode) {

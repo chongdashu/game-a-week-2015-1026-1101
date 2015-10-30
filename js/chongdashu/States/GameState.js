@@ -19,7 +19,6 @@ var p = GameState.prototype;
 
     // @phaser
     p.preload = function() {
-       
     };
 
     // @phaser
@@ -31,7 +30,7 @@ var p = GameState.prototype;
 
     p.createPlayer = function() {
         this.player = new chongdashu.Entity()
-            .add(new chongdashu.SpriteComponent(this.game.add.sprite(0,0, "player")))
+            .add(new chongdashu.ArcadeSpriteComponent(this.game.add.sprite(0,0, "player"), this.game.physics.arcade))
             .add(new chongdashu.KeyboardComponent(this.game.input.keyboard));
     };
 
