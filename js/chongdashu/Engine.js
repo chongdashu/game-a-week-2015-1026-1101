@@ -108,12 +108,15 @@ Engine.prototype.constructor = Engine;
         return this.entities;
     };
 
-    // -- NodeGroup-related
+    // -- Node-related
 
-    p.getNodeGroup = function(nodeType) {
+    /**
+     * 
+     */
+    p.getNodes = function(nodeType) {
         if (nodeType in this.families) {
             // return family associated with this node type
-            return this.families[nodeType].nodeGroup;
+            return this.families[nodeType].nodes;
         }
 
         // create new family for this node type
@@ -128,10 +131,10 @@ Engine.prototype.constructor = Engine;
         }
 
         // return node group
-        return family.nodeGroup;
+        return family.nodes;
     };
 
-    p.clearNodeGroup = function(nodeType) {
+    p.clearNodes = function(nodeType) {
         if (nodeType in this.families) {
             this.families[nodeType].clear();
         }
@@ -140,13 +143,46 @@ Engine.prototype.constructor = Engine;
     };
 
     // -- System
+    p.addSystem = function(system, priority) {
+        system.priority = priority;
+        systems.push(system);
+        system.onAddToEngine(this);
+    };
+
+    p.removeSystem = function(system) {
+        this.systems.splice(this.systems.indexOf(system),1);
+        system.onRemoveFromEngine(this);
+    };
+
+    p.getSystem = function(systemType) {
+        for (var i=0; i < this.systems.length; i++) {
+            if (this.systems[i].getType() == systemType) {
+                return this.systems[i];
+            }
+        }
+
+        return null;
+    };
+
+    p.getSystems = function() {
+        return this.systems;
+    };
 
     p.preUpdate = function() {
 
     };
 
     p.update = function()  {
+        this.isUpdating = true;
+        var i=0;
+        for (i=0; i < this.systems.length; i++) {
+            this.systems[i].update();
+        }
+        this.isUpdating = false;
 
+        for (i=0; i < this.onUpdateCompleteCallbacks.length; i++) {
+            this.onUpdateCompleteCallbacks[i](this);
+        }
     };
 
     p.postUpdate = function() {

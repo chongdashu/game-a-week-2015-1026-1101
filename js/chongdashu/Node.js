@@ -13,17 +13,26 @@ this.chongdashu = this.chongdashu||{};
  * @class Node
  * @constructor
  **/
-var Node = function() {
-    this.init();
+var Node = function(nodeType, entity) {
+    this.init(nodeType, entity);
 };
 var p = Node.prototype;
 Node.prototype.constructor = Node;
 
-    p.init = function()
+    p.entity = null;
+    p.nodeType = "";
+
+    p.init = function(nodeType, entity)
     {
         console.log("[Node], init()");
-       
+        this.nodeType = nodeType;
+        this.entity = entity;
     };
+
+    p.getType = function() {
+        return this.nodeType;
+    };
+
 // Link
 // ----
 chongdashu.Node = Node;

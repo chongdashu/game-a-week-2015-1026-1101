@@ -31,18 +31,6 @@ var p = createjs.extend(AudioComponent, chongdashu.Component);
         this.audioCache = {};
     };
 
-    p.play = function(audioName) {
-        if (!(audioName in this.audioCache)) {
-            this.audioCache[audioName] = this.entity.add.audio(audioName);
-        }
-        this.audioCache[audioName].play();
-    };
-
-    p.update = function() {
-        this.Component_update();
-    };
-    
-
 // Link
 // ----
 chongdashu.AudioComponent = createjs.promote(AudioComponent, "Component");
