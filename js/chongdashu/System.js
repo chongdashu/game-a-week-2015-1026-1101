@@ -3,13 +3,19 @@
  * Copyright (c) Chong-U Lim
  * http://github.com/chongdashu
  */
+
+ /**
+ * @module ChongdashuJS
+ */
+
 this.chongdashu = this.chongdashu||{};
 
 (function() {
     "use strict";
 
 /**
- * System
+ * System represents a System of the Entity-Component-System Design
+ * paradigm.
  * @class System
  * @constructor
  **/
@@ -19,7 +25,22 @@ var System = function(nodeType) {
 var p = System.prototype;
 System.prototype.constructor = System;
     
+    /**
+     * Indicates if the system is currently enabled or not. 
+     * If not enabled, no system or node updates will be performed.
+     * @property enabled
+     * @type boolean
+     */
     p.enabled = false;
+
+    /**
+     * The priority of the current system. This is used by the 
+     * {{#crossLink "Engine"}}{{/crossLink}} to order the sequence of systems
+     * that it processes. Lower priority numbers are executed first.
+     *
+     * @property priority
+     * @type integer
+     */
     p.priority = 0;
     p.nodes = null;
     p.nodeType = null;
