@@ -10,7 +10,8 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * ArcadeSpriteComponent
- * @class ArcadeSpriteComponent
+ * @class Game.Component.ArcadeSpriteComponent
+ * @extends Core.Component
  * @constructor
  **/
 var ArcadeSpriteComponent = function(sprite, arcade) {

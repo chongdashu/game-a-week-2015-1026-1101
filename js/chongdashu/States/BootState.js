@@ -10,7 +10,7 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * BootState
- * @class BootState
+ * @class State.BootState
  * @constructor
  **/
 var BootState = function(game) {

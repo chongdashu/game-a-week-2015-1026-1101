@@ -16,7 +16,7 @@ this.chongdashu = this.chongdashu||{};
 /**
  * System represents a System of the Entity-Component-System Design
  * paradigm.
- * @class System
+ * @class Core.System
  * @constructor
  **/
 var System = function(nodeType) {

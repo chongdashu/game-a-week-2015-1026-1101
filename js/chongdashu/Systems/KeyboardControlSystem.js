@@ -10,8 +10,9 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * KeyboardControlSystem
- * @class KeyboardControlSystem
  * @constructor
+ * @class Game.System.KeyboardControlSystem
+ * @extends Core.System
  **/
 var KeyboardControlSystem = function(state) {
     this.init(state);

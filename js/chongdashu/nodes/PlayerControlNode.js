@@ -10,7 +10,8 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * PlayerControlNode
- * @class PlayerControlNode
+ * @class Game.Node.PlayerControlNode
+ * @extends Core.Node
  * @constructor
  **/
 var PlayerControlNode = function(entity) {

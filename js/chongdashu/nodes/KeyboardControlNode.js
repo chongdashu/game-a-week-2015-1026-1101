@@ -10,7 +10,8 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * KeyboardControlNode
- * @class KeyboardControlNode
+ * @class Game.Node.KeyboardControlNode
+ * @extends Core.Node
  * @constructor
  **/
 var KeyboardControlNode = function(entity) {

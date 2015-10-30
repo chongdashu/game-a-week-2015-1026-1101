@@ -10,7 +10,8 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * EnemyControlNode
- * @class EnemyControlNode
+ * @class Game.Node.EnemyControlNode
+ * @extends Core.Node
  * @constructor
  **/
 var EnemyControlNode = function(entity) {

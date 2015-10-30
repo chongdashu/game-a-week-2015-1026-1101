@@ -10,7 +10,8 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * AudioComponent
- * @class AudioComponent
+ * @class Game.Component.AudioComponent
+ * @extends Core.Component
  * @constructor
  **/
 var AudioComponent = function() {

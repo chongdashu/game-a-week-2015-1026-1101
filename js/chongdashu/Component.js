@@ -10,8 +10,7 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * Component
- * @class Component
- * @constructor
+ * @class Core.Component
  **/
 var Component = function() {
     this.init();

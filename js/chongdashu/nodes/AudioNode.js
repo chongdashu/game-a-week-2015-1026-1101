@@ -10,7 +10,8 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * AudioNode
- * @class AudioNode
+ * @class Game.Node.AudioNode
+ * @extends Core.Node
  * @constructor
  **/
 var AudioNode = function(entity) {

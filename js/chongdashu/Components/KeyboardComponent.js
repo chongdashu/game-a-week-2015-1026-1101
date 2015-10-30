@@ -10,7 +10,8 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * KeyboardComponent
- * @class KeyboardComponent
+ * @class Game.Component.KeyboardComponent
+ * @extends Core.Component
  * @constructor
  **/
 var KeyboardComponent = function(keyboard) {

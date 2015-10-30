@@ -10,7 +10,7 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * Family
- * @class Family
+ * @class Core.Family
  * @constructor
  **/
 var Family = function(nodeClass, engine) {

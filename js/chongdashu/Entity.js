@@ -10,7 +10,7 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * Entity
- * @class Entity
+ * @class Core.Entity
  * @constructor
  **/
 var Entity = function(name) {

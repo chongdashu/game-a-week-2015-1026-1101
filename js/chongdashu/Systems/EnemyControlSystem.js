@@ -10,9 +10,10 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * EnemyControlSystem
- * @class EnemyControlSystem
  * @constructor
- * @extends chongdashu.KeyboardControlSystem
+ * @class Game.System.EnemyControlSystem
+ * @extends Core.System
+ * @extends Game.System.KeyboardControlSystem
  **/
 var EnemyControlSystem = function(state) {
     this.init(state);

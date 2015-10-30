@@ -10,7 +10,8 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * PlayerComponent
- * @class PlayerComponent
+ * @class Game.Component.PlayerComponent
+ * @extends Core.Component
  * @constructor
  **/
 var PlayerComponent = function() {

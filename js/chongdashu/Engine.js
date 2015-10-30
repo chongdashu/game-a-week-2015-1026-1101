@@ -10,7 +10,7 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * Engine
- * @class Engine
+ * @class Core.Engine
  * @constructor
  **/
 var Engine = function() {

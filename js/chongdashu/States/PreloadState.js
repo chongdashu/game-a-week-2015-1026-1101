@@ -10,7 +10,7 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * PreloadState
- * @class PreloadState
+ * @class State.PreloadState
  * @constructor
  **/
 var PreloadState = function(game) {

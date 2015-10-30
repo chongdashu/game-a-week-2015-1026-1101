@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/chongdashu/Components/AudioComponent.js</title>
+    <title>Game.System.KeyboardControlSystem</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -101,50 +101,150 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: js/chongdashu/Components/AudioComponent.js</h1>
+<h1>Game.System.KeyboardControlSystem Class</h1>
+<div class="box meta">
 
-<div class="file">
-    <pre class="code prettyprint linenums">
-/**
- * 
- * Copyright (c) Chong-U Lim
- * http://github.com/chongdashu
- */
-this.chongdashu = this.chongdashu||{};
+        <div class="extends">
+            Extends <a href="../classes/Core.System.html" class="crosslink">Core.System</a>
+        </div>
 
-(function() {
-    &quot;use strict&quot;;
+        <div class="foundat">
+            Defined in: <a href="../files/js_chongdashu_Systems_KeyboardControlSystem.js.html#l11"><code>js&#x2F;chongdashu&#x2F;Systems&#x2F;KeyboardControlSystem.js:11</code></a>
+        </div>
 
-/**
- * AudioComponent
- * @class Game.Component.AudioComponent
- * @extends Core.Component
- * @constructor
- **/
-var AudioComponent = function() {
-    // @param {Phaser.Keyboard} entity
-    this.init();
-};
-var p = createjs.extend(AudioComponent, chongdashu.Component);
-    
-    AudioComponent.TYPE = &quot;component:AudioComponent&quot;;
+            Module: <a href="../modules/ChongdashuJS.html">ChongdashuJS</a>
 
-    p.audioCache = {};
+</div>
 
-    p.init = function()
-    {
-        console.log(&quot;[AudioComponent], init()&quot;);
-        this.Component_init(AudioComponent.TYPE);
 
-        this.audioCache = {};
-    };
+<div class="box intro">
+    <p>KeyboardControlSystem</p>
 
-// Link
-// ----
-chongdashu.AudioComponent = createjs.promote(AudioComponent, &quot;Component&quot;);
+</div>
 
-}());
-    </pre>
+    <div class="constructor">
+        <h2>Constructor</h2>
+<div id="method_Game.System.KeyboardControlSystem" class="method item">
+    <h3 class="name"><code>Game.System.KeyboardControlSystem</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_chongdashu_Systems_KeyboardControlSystem.js.html#l11"><code>js&#x2F;chongdashu&#x2F;Systems&#x2F;KeyboardControlSystem.js:11</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+
+
+
+</div>
+    </div>
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties extends">
+                            <li class="index-item property inherited">
+                                <a href="#property_enabled">enabled</a>
+
+                            </li>
+                            <li class="index-item property inherited">
+                                <a href="#property_priority">priority</a>
+
+                            </li>
+                    </ul>
+                </div>
+
+
+        </div>
+
+
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+<div id="property_enabled" class="property item inherited">
+    <h3 class="name"><code>enabled</code></h3>
+    <span class="type">Boolean</span>
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/Core.System.html#property_enabled">Core.System</a>:
+        <a href="../files/js_chongdashu_System.js.html#l28"><code>js&#x2F;chongdashu&#x2F;System.js:28</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        Indicates if the system is currently enabled or not. 
+If not enabled, no system or node updates will be performed.
+    </div>
+
+
+
+</div>
+<div id="property_priority" class="property item inherited">
+    <h3 class="name"><code>priority</code></h3>
+    <span class="type">Integer</span>
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/Core.System.html#property_priority">Core.System</a>:
+        <a href="../files/js_chongdashu_System.js.html#l36"><code>js&#x2F;chongdashu&#x2F;System.js:36</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        The priority of the current system. This is used by the 
+{{#crossLink "Engine"}}{{/crossLink}} to order the sequence of systems
+that it processes. Lower priority numbers are executed first.
+    </div>
+
+
+
+</div>
+            </div>
+
+
+    </div>
 </div>
                     </div>
                 </div>

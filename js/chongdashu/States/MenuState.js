@@ -10,7 +10,7 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * MenuState
- * @class MenuState
+ * @class State.MenuState
  * @constructor
  **/
 var MenuState = function(game) {
