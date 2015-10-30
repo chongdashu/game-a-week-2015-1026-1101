@@ -146,12 +146,12 @@ Engine.prototype.constructor = Engine;
     p.addSystem = function(system, priority) {
         system.priority = priority;
         systems.push(system);
-        system.onAddToEngine(this);
+        system.onEngineAdd(this);
     };
 
     p.removeSystem = function(system) {
         this.systems.splice(this.systems.indexOf(system),1);
-        system.onRemoveFromEngine(this);
+        system.onEngineRemove(this);
     };
 
     p.getSystem = function(systemType) {
