@@ -28,15 +28,18 @@ Family.prototype.constructor = Family;
     p.init = function(nodeClass, engine)
     {
         console.log("[Family], init()");
-        nodes = [];
-        components = {};
+        this.nodes = [];
+        this.components = {};
 
         this.engine = engine;
         this.nodeClass = nodeClass;
 
         // get the list of components that this family
         // is in charge of based on the node class
+        console.log("nodeClass=%o", nodeClass);
+        console.log("nodeClass.COMPONENT_TYPES=%o", nodeClass.COMPONENT_TYPES);
         for (var i=0; i < nodeClass.COMPONENT_TYPES; i++) {
+            console.log("Add: nodeClass.TYPE=", nodeClass.COMPONENT_TYPES[i]);
             this.components[nodeClass.COMPONENT_TYPES[i]] = true;
         }
 
@@ -52,12 +55,13 @@ Family.prototype.constructor = Family;
             if (!this.isEntityComponentsPresent(entity, this.components)) {
                 // if entity does not matchr required components, 
                 // do not add
+                console.error("entity %o (%s) does not have required this.components %o", entity, entity._name, this.components);
                 return;
             }
 
             var node = new this.nodeClass(entity);
             this.entityNodeMap[entity._name] = node;
-            nodes.push(node);
+            this.nodes.push(node);
         }
     };
 

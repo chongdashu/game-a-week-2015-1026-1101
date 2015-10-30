@@ -113,14 +113,17 @@ Engine.prototype.constructor = Engine;
     /**
      * 
      */
-    p.getNodes = function(nodeType) {
+    p.getNodes = function(nodeClass) {
+        console.log("nodeClass=%o", nodeClass);
+        var nodeType = nodeClass.TYPE;
+
         if (nodeType in this.families) {
             // return family associated with this node type
             return this.families[nodeType].nodes;
         }
 
         // create new family for this node type
-        var family = new chongdashu.Family(nodeType, this);
+        var family = new chongdashu.Family(nodeClass, this);
 
         // add family to map
         this.families[nodeType] = family;
@@ -145,7 +148,8 @@ Engine.prototype.constructor = Engine;
     // -- System
     p.addSystem = function(system, priority) {
         system.priority = priority;
-        systems.push(system);
+        
+        this.systems.push(system);
         system.onEngineAdd(this);
     };
 

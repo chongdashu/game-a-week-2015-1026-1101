@@ -13,38 +13,43 @@ this.chongdashu = this.chongdashu||{};
  * @class System
  * @constructor
  **/
-var System = function(state) {
-    this.init(state);
+var System = function(nodeType) {
+    this.init(nodeType);
 };
 var p = System.prototype;
 System.prototype.constructor = System;
     
-    p.components = {};
     p.enabled = false;
     p.priority = 0;
+    p.nodes = null;
+    p.nodeType = null;
 
-    p.init = function(state)
+    p.init = function(nodeType)
     {
         console.log("[System], init()");
-        this.state = state;
-        this.game = state.game;
-        this.components = {};
         this.priority = 0;
         this.enabled = true;
+
+        this.nodeType = nodeType;
     };
 
-    p.update = function(entity) {
-
+    p.update = function() {
+        if (this.nodes) {
+            for (var i=0; i < this.nodes.length; i++) {
+                this.updateNode(this.nodes[i]);
+            }
+        }
     };
 
-    p.addComponent = function(component) {
-        this.components[component] = true;
+    p.updateNode = function(node) {
     };
 
     p.onEngineAdd = function(engine) {
+        this.nodes = engine.getNodes(this.nodeType);
     };
 
     p.onEngineRemove = function(engine) {
+        this.nodes = null;
     };
     
 

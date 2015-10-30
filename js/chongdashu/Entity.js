@@ -115,7 +115,7 @@ Entity.prototype.constructor = Entity;
         this.onComponentAddCallbacks.push(callback);
     };
 
-    p.removeOnComponentRemoveCallback = function(callback) {
+    p.addOnComponentRemoveCallback = function(callback) {
         this.onComponentRemoveCallbacks.push(callback);
     };
 

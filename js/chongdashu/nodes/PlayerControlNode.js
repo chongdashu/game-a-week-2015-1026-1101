@@ -1,0 +1,47 @@
+/**
+ * 
+ * Copyright (c) Chong-U Lim
+ * http://github.com/chongdashu
+ */
+this.chongdashu = this.chongdashu||{};
+
+(function() {
+    "use strict";
+
+/**
+ * PlayerControlNode
+ * @class PlayerControlNode
+ * @constructor
+ **/
+var PlayerControlNode = function(entity) {
+    // @param {Phaser.Keyboard} entity
+    this.init(entity);
+};
+var p = createjs.extend(PlayerControlNode, chongdashu.Node);
+    
+    PlayerControlNode.TYPE = "component:PlayerControlNode";
+
+    PlayerControlNode.COMPONENT_TYPES = [
+        chongdashu.PlayerComponent.TYPE,
+        chongdashu.ArcadeSpriteComponent.TYPE,
+        chongdashu.KeyboardComponent.TYPE
+    ];
+
+    p.kc = null;
+
+    p.init = function(entity)
+    {
+        console.log("[PlayerControlNode], init()");
+        this.Node_init(PlayerControlNode.TYPE, entity);
+
+        // -- Add references to entity's components here.
+        p.kc = entity.get(chongdashu.KeyboardComponent.TYPE);
+        p.asc = entity.get(chongdashu.ArcadeSpriteComponent.TYPE);
+        p.pc = entity.get(chongdashu.PlayerComponent.TYPE);
+    };
+
+// Link
+// ----
+chongdashu.PlayerControlNode = createjs.promote(PlayerControlNode, "Node");
+
+}());
