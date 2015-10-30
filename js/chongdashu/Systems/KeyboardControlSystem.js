@@ -25,7 +25,7 @@ var p = createjs.extend(KeyboardControlSystem, chongdashu.System);
     p.init = function(state)
     {
         console.log("[KeyboardControlSystem], init()");
-        this.System_init(chongdashu.KeyboardControlNode);
+        this.System_init(chongdashu.EnemyControlNode);
     };
 
     p.updateNode = function(node) {

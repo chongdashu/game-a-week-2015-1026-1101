@@ -29,20 +29,29 @@ var p = GameState.prototype;
 
         this.createSystems();
         this.createPlayer();
+        this.createEnemy();
 
     };
 
     p.createSystems = function() {
         this.engine.addSystem(this.playerControlSystem = new chongdashu.PlayerControlSystem(), 0);
+        this.engine.addSystem(this.enemyControlSystem = new chongdashu.EnemyControlSystem(), 0);
     };
 
     p.createPlayer = function() {
         this.engine.addEntity(
             this.player = new chongdashu.Entity()
-                .add(new chongdashu.ArcadeSpriteComponent(this.game.add.sprite(0,0, "player"), this.game.physics.arcade))
+                .add(new chongdashu.ArcadeSpriteComponent(this.game.add.sprite(+50,128, "player"), this.game.physics.arcade))
                 .add(new chongdashu.KeyboardComponent(this.game.input.keyboard))
                 .add(new chongdashu.PlayerComponent()));
+    };
 
+    p.createEnemy = function() {
+        this.engine.addEntity(
+            this.player = new chongdashu.Entity()
+                .add(new chongdashu.ArcadeSpriteComponent(this.game.add.sprite(-50,-128, "player"), this.game.physics.arcade))
+                .add(new chongdashu.KeyboardComponent(this.game.input.keyboard))
+                .add(new chongdashu.EnemyComponent()));
     };
 
     // @phaser
