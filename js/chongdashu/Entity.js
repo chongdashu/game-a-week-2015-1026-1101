@@ -37,8 +37,6 @@ Entity.prototype.constructor = Entity;
             this._name = "entity_" + nameCount++;
         }
 
-        this.state = state;
-        this.game = state.game;
         this._components = {};
         this.onComponentAddCallbacks = [];
         this.onComponentRemoveCallbacks = [];

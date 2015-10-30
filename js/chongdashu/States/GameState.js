@@ -24,11 +24,20 @@ var p = GameState.prototype;
 
     // @phaser
     p.create = function() {
+        this.engine = new chongdashu.Engine();
+
+        this.createPlayer();
+    };
+
+    p.createPlayer = function() {
+        this.player = new chongdashu.Entity()
+            .add(new chongdashu.SpriteComponent(this.game.add.sprite(0,0, "player")))
+            .add(new chongdashu.KeyboardComponent(this.game.input.keyboard));
     };
 
     // @phaser
     p.update = function() {
-       
+       this.engine.update();
     };
 
     

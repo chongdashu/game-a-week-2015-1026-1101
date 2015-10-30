@@ -13,7 +13,7 @@ this.chongdashu = this.chongdashu||{};
  * @class KeyboardComponent
  * @constructor
  **/
-var KeyboardComponent = function() {
+var KeyboardComponent = function(keyboard) {
     // @param {Phaser.Keyboard} keyboard
     this.init(keyboard);
 };
