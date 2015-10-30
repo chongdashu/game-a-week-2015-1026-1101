@@ -12,11 +12,12 @@ this.chongdashu = this.chongdashu||{};
  * PlayerControlSystem
  * @class PlayerControlSystem
  * @constructor
+ * @extends chongdashu.KeyboardControlSystem
  **/
 var PlayerControlSystem = function(state) {
     this.init(state);
 };
-var p = createjs.extend(PlayerControlSystem, chongdashu.System);
+var p = createjs.extend(PlayerControlSystem, chongdashu.KeyboardControlSystem);
 
     p.keyStates = {};
 
@@ -35,12 +36,24 @@ var p = createjs.extend(PlayerControlSystem, chongdashu.System);
         var sprite = asc.sprite;
         var body = asc.body;
 
-        body.velocity.x = 10;
+        this.KeyboardControlSystem_updateNode(node);
+
+        if (this.isJustDown(kc, Phaser.Keyboard.LEFT)) {
+            body.velocity.x = -10;
+        }
+        if (this.isJustDown(kc, Phaser.Keyboard.RIGHT)) {
+            body.velocity.x = +10;
+        }
+        if (this.isUp(kc, Phaser.Keyboard.RIGHT)  && this.isUp(kc, Phaser.Keyboard.LEFT)) {
+            body.velocity.x = 0;
+            body.velocity.y = 0;
+        }
+
     };
 
 // Link
 // ----
-chongdashu.PlayerControlSystem = createjs.promote(PlayerControlSystem, "System");
+chongdashu.PlayerControlSystem = createjs.promote(PlayerControlSystem, "KeyboardControlSystem");
 
 }());
 
