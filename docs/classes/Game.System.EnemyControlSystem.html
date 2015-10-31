@@ -66,8 +66,11 @@
                 
                 
                             <ul id="api-modules" class="apis modules">
-                                <li><a href="../modules/ChongdashuJS.html">ChongdashuJS</a></li>
+                                <li><a href="../modules/Core.html">Core</a></li>
                                 <li><a href="../modules/CreateJS.html">CreateJS</a></li>
+                                <li><a href="../modules/Game.html">Game</a></li>
+                                <li><a href="../modules/Game.Component.html">Game.Component</a></li>
+                                <li><a href="../modules/Game.Node.html">Game.Node</a></li>
                             </ul>
                         </div>
                     </div>
@@ -112,7 +115,7 @@
             Defined in: <a href="../files/js_chongdashu_Systems_EnemyControlSystem.js.html#l11"><code>js&#x2F;chongdashu&#x2F;Systems&#x2F;EnemyControlSystem.js:11</code></a>
         </div>
 
-            Module: <a href="../modules/ChongdashuJS.html">ChongdashuJS</a>
+            Module: <a href="../modules/Game.html">Game</a>
 
 </div>
 
@@ -160,6 +163,7 @@
     <ul class="api-class-tabs">
         <li class="api-class-tab index"><a href="#index">Index</a></li>
 
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
             <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
     </ul>
 
@@ -167,6 +171,32 @@
         <div id="index" class="api-class-tabpanel index">
             <h2 class="off-left">Item Index</h2>
 
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods extends">
+                            <li class="index-item method inherited">
+                                <a href="#method_init">init</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_onEngineAdd">onEngineAdd</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_onEngineRemove">onEngineRemove</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_update">update</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_updateNode">updateNode</a>
+
+                            </li>
+                    </ul>
+                </div>
 
                 <div class="index-section properties">
                     <h3>Properties</h3>
@@ -177,7 +207,15 @@
 
                             </li>
                             <li class="index-item property inherited">
+                                <a href="#property_nodes">nodes</a>
+
+                            </li>
+                            <li class="index-item property inherited">
                                 <a href="#property_priority">priority</a>
+
+                            </li>
+                            <li class="index-item property inherited">
+                                <a href="#property_String">String</a>
 
                             </li>
                     </ul>
@@ -186,6 +224,260 @@
 
         </div>
 
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method_init" class="method item inherited">
+    <h3 class="name"><code>init</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>nodeType</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/Core.System.html#method_init">Core.System</a>:
+        <a href="../files/js_chongdashu_Core_System.js.html#l63"><code>js&#x2F;chongdashu&#x2F;Core&#x2F;System.js:63</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>The initialization method is called when the object is constructor.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">nodeType</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>The type of the node. See <a href="../classes/Core.Node.html#property_Core.Node.TYPE" class="crosslink">Core.Node.TYPE</a>.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onEngineAdd" class="method item inherited">
+    <h3 class="name"><code>onEngineAdd</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>engine</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/Core.System.html#method_onEngineAdd">Core.System</a>:
+        <a href="../files/js_chongdashu_Core_System.js.html#l103"><code>js&#x2F;chongdashu&#x2F;Core&#x2F;System.js:103</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Callback method when this system is added to the engine.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">engine</code>
+                        <span class="type"><a href="../classes/Core.Engine.html" class="crosslink">Core.Engine</a></span>
+
+
+                    <div class="param-description">
+                        <p>reference to the <a href="../classes/Core.Engine.html" class="crosslink">Core.Engine</a> object.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_onEngineRemove" class="method item inherited">
+    <h3 class="name"><code>onEngineRemove</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>engine</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/Core.System.html#method_onEngineRemove">Core.System</a>:
+        <a href="../files/js_chongdashu_Core_System.js.html#l113"><code>js&#x2F;chongdashu&#x2F;Core&#x2F;System.js:113</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Callback method when this system is removed from the engine.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">engine</code>
+                        <span class="type"><a href="../classes/Core.Engine.html" class="crosslink">Core.Engine</a></span>
+
+
+                    <div class="param-description">
+                        <p>reference to the <a href="../classes/Core.Engine.html" class="crosslink">Core.Engine</a> object.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_update" class="method item inherited">
+    <h3 class="name"><code>update</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/Core.System.html#method_update">Core.System</a>:
+        <a href="../files/js_chongdashu_Core_System.js.html#l78"><code>js&#x2F;chongdashu&#x2F;Core&#x2F;System.js:78</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>The update loop of this system, as called by a given
+<a href="../classes/Core.Engine.html" class="crosslink">Core.Engine</a>'s update loop.
+All related <a href="../classes/Core.Node.html" class="crosslink">Core.Node</a> objects are
+updated. Handling of each node individually can be performed
+by overriding the <a href="../classes/Core.System.html#method_updateNode" class="crosslink">updateNode</a> method.</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_updateNode" class="method item inherited">
+    <h3 class="name"><code>updateNode</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>node</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/Core.System.html#method_updateNode">Core.System</a>:
+        <a href="../files/js_chongdashu_Core_System.js.html#l96"><code>js&#x2F;chongdashu&#x2F;Core&#x2F;System.js:96</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">node</code>
+                        <span class="type"><a href="../classes/Core.Node.html" class="crosslink">Core.Node</a></span>
+
+
+                    <div class="param-description">
+                        <p>The node to be updated</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+            </div>
 
             <div id="properties" class="api-class-tabpanel">
                 <h2 class="off-left">Properties</h2>
@@ -201,15 +493,43 @@
     <div class="meta">
                 <p>Inherited from
                 <a href="../classes/Core.System.html#property_enabled">Core.System</a>:
-        <a href="../files/js_chongdashu_System.js.html#l28"><code>js&#x2F;chongdashu&#x2F;System.js:28</code></a>
+        <a href="../files/js_chongdashu_Core_System.js.html#l25"><code>js&#x2F;chongdashu&#x2F;Core&#x2F;System.js:25</code></a>
         </p>
 
 
     </div>
 
     <div class="description">
-        Indicates if the system is currently enabled or not. 
-If not enabled, no system or node updates will be performed.
+        <p>Indicates if the system is currently enabled or not.
+If not enabled, no system or node updates will be performed.</p>
+
+    </div>
+
+        <p><strong>Default:</strong> true</p>
+
+
+</div>
+<div id="property_nodes" class="property item inherited">
+    <h3 class="name"><code>nodes</code></h3>
+    <span class="type">Array</span>
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/Core.System.html#property_nodes">Core.System</a>:
+        <a href="../files/js_chongdashu_Core_System.js.html#l46"><code>js&#x2F;chongdashu&#x2F;Core&#x2F;System.js:46</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        <p>An array of <a href="../classes/Core.Node.html" class="crosslink">Core.Node</a> objects that
+this system manages based on the <a href="../classes/Core.Node.html#property_Core.Node.TYPE" class="crosslink">Core.Node.TYPE</a></p>
+
     </div>
 
 
@@ -226,16 +546,44 @@ If not enabled, no system or node updates will be performed.
     <div class="meta">
                 <p>Inherited from
                 <a href="../classes/Core.System.html#property_priority">Core.System</a>:
-        <a href="../files/js_chongdashu_System.js.html#l36"><code>js&#x2F;chongdashu&#x2F;System.js:36</code></a>
+        <a href="../files/js_chongdashu_Core_System.js.html#l35"><code>js&#x2F;chongdashu&#x2F;Core&#x2F;System.js:35</code></a>
         </p>
 
 
     </div>
 
     <div class="description">
-        The priority of the current system. This is used by the 
-{{#crossLink "Engine"}}{{/crossLink}} to order the sequence of systems
-that it processes. Lower priority numbers are executed first.
+        <p>The priority of the current system. This is used by the
+<a href="../classes/Core.Engine.html" class="crosslink">Core.Engine</a> to order the sequence of systems
+that it processes. Lower priority numbers are executed first.</p>
+
+    </div>
+
+        <p><strong>Default:</strong> 0</p>
+
+
+</div>
+<div id="property_String" class="property item inherited">
+    <h3 class="name"><code>String</code></h3>
+    <span class="type">Core.Node.TYPE</span>
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/Core.System.html#property_String">Core.System</a>:
+        <a href="../files/js_chongdashu_Core_System.js.html#l54"><code>js&#x2F;chongdashu&#x2F;Core&#x2F;System.js:54</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        <p>The <a href="../classes/Core.Node.html#property_Core.Node.TYPE" class="crosslink">Core.Node.TYPE</a> that this system
+will be responsible for.</p>
+
     </div>
 
 

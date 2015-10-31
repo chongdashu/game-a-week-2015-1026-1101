@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/chongdashu/System.js</title>
+    <title>js/chongdashu/Core/Entity.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -66,8 +66,11 @@
                 
                 
                             <ul id="api-modules" class="apis modules">
-                                <li><a href="../modules/ChongdashuJS.html">ChongdashuJS</a></li>
+                                <li><a href="../modules/Core.html">Core</a></li>
                                 <li><a href="../modules/CreateJS.html">CreateJS</a></li>
+                                <li><a href="../modules/Game.html">Game</a></li>
+                                <li><a href="../modules/Game.Component.html">Game.Component</a></li>
+                                <li><a href="../modules/Game.Node.html">Game.Node</a></li>
                             </ul>
                         </div>
                     </div>
@@ -101,89 +104,150 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: js/chongdashu/System.js</h1>
+<h1 class="file-heading">File: js/chongdashu/Core/Entity.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
- * 
- * Copyright (c) Chong-U Lim
- * http://github.com/chongdashu
- */
-
- /**
- * @module ChongdashuJS
- */
-
+* @author       Chong-U Lim &lt;me@chongdashu.com&gt;
+* @copyright    2015 Chong-U Lim
+* @module       Core
+*/
 this.chongdashu = this.chongdashu||{};
 
 (function() {
     &quot;use strict&quot;;
 
 /**
- * System represents a System of the Entity-Component-System Design
- * paradigm.
- * @class Core.System
+ * Entity
+ * @class Core.Entity
  * @constructor
  **/
-var System = function(nodeType) {
-    this.init(nodeType);
+var Entity = function(name) {
+    this.init(name);
 };
-var p = System.prototype;
-System.prototype.constructor = System;
+var p = Entity.prototype;
+Entity.prototype.constructor = Entity;
+
+    Entity.nameCount = 0;
     
-    /**
-     * Indicates if the system is currently enabled or not. 
-     * If not enabled, no system or node updates will be performed.
-     * @property enabled
-     * @type boolean
-     */
-    p.enabled = false;
+    p._components = {};
+    p._name = null;
+    p.onComponentAddCallbacks = [];
+    p.onComponentRemoveCallbacks = [];
 
-    /**
-     * The priority of the current system. This is used by the 
-     * {{#crossLink &quot;Engine&quot;}}{{/crossLink}} to order the sequence of systems
-     * that it processes. Lower priority numbers are executed first.
-     *
-     * @property priority
-     * @type integer
-     */
-    p.priority = 0;
-    p.nodes = null;
-    p.nodeType = null;
-
-    p.init = function(nodeType)
+    p.init = function(name)
     {
-        console.log(&quot;[System], init()&quot;);
-        this.priority = 0;
-        this.enabled = true;
+        console.log(&quot;[Entity], init(), name=%s&quot;, name);
 
-        this.nodeType = nodeType;
+        if (typeof (name) === &quot;undefined&quot; || name === null) {
+            this._name = &quot;entity_&quot; + Entity.nameCount++;
+        }
+        else {
+            this._name = name;
+        }
+
+        console.log(&quot;this._name=%s&quot;, this._name);
+
+        this._components = {};
+        this.onComponentAddCallbacks = [];
+        this.onComponentRemoveCallbacks = [];
     };
 
-    p.update = function() {
-        if (this.nodes) {
-            for (var i=0; i &lt; this.nodes.length; i++) {
-                this.updateNode(this.nodes[i]);
+    p.add = function(component) {
+        if (typeof this._components == &quot;undefined&quot; || this._components === null) {
+            // initialize an empty dictionary
+            this._components = {};
+        }
+        // add this component to the entity&#x27;s map of components
+        this._components[component.getType()] = component;
+
+        // dispatch callbacks
+        for (var i=0; i &lt; this.onComponentAddCallbacks; i++) {
+            this.onComponentAddCallbacks[i](this, component.getType());
+        }
+
+        return this;
+    };
+
+    p.remove = function(componentOrType) {
+        var type = &quot;&quot;;
+        if (typeof componentOrType == &quot;string&quot;) {
+            type = componentOrType;
+        }
+        else if (typeof componentOrType == &quot;object&quot;) {
+            type = componentOrType.getType();
+        }
+        else {
+            console.warn(&quot;[Entity], remove(), unknown component or type param=%s&quot;, componentOrType);
+        }
+
+        var component = null;
+        
+        if (type) {
+            if (type in this._components) {
+                // get the component
+                component = this._components[type];
+
+                // remove the key entry
+                delete this._components[type];
+                
+                // dispatch callbacks
+                for (var i=0; i &lt; this.onComponentRemoveCallbacks; i++) {
+                    this.onComponentRemoveCallbacks[i](this, component.getType());
+                }
+            }
+            else {
+                console.warn(&quot;[Entity], remove(), component type=%s doesn&#x27;t exist in entity.&quot;, type);
             }
         }
+
+        return component;
+
     };
 
-    p.updateNode = function(node) {
+    p.get = function(componentType) {
+        return this._components[componentType];
     };
 
-    p.onEngineAdd = function(engine) {
-        this.nodes = engine.getNodes(this.nodeType);
+    p.getAll = function() {
+        var components = [];
+        for (var i=0; i &lt; this._components.length; i++) {
+            components.push(this._components[i]);
+        }
+
+        return component;
     };
 
-    p.onEngineRemove = function(engine) {
-        this.nodes = null;
+    p.isComponent = function(componentType) {
+        return componentType in this._components &amp;&amp; this._components[componentType] !== null;
     };
-    
+
+    p.addOnComponentAddCallback = function(callback) {
+        this.onComponentAddCallbacks.push(callback);
+    };
+
+    p.addOnComponentRemoveCallback = function(callback) {
+        this.onComponentRemoveCallbacks.push(callback);
+    };
+
+    p.removeOnComponentAddCallback = function(callback) {
+        if (!(callback in this.onComponentAddCallbacks)) {
+            console.warn(&quot;Callback %s not part of entity %s callbacks&quot;, callback, this._name);
+        }
+        this.onComponentAddCallbacks.splice(this.onComponentAddCallbacks.indexOf(callback));
+    };
+
+    p.removeOnComponentRemoveCallback = function(callback) {
+        if (!(callback in this.onComponentRemoveCallbacks)) {
+            console.warn(&quot;Callback %s not part of entity %s callbacks&quot;, callback, this._name);
+        }
+        this.onComponentRemoveCallbacks.splice(this.onComponentRemoveCallbacks.indexOf(callback));
+    };
 
 // Link
 // ----
-chongdashu.System = System;
+chongdashu.Entity = Entity;
 
 }());
 

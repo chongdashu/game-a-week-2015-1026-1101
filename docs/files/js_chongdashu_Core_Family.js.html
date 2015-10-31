@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>State.PreloadState</title>
+    <title>js/chongdashu/Core/Family.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -104,77 +104,122 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1>State.PreloadState Class</h1>
-<div class="box meta">
+<h1 class="file-heading">File: js/chongdashu/Core/Family.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+* @author       Chong-U Lim &lt;me@chongdashu.com&gt;
+* @copyright    2015 Chong-U Lim
+* @module       Core
+*/
+this.chongdashu = this.chongdashu||{};
+
+(function() {
+    &quot;use strict&quot;;
+
+/**
+ * Family
+ * @class Core.Family
+ * @constructor
+ **/
+var Family = function(nodeClass, engine) {
+    this.init(nodeClass, engine);
+};
+var p = Family.prototype;
+Family.prototype.constructor = Family;
+
+    p.nodes = [];
+    p.entityNodeMap = {};
+    p.components = {}; // [Component.Type, Bool]
+    p.nodeClass = null;
+    p.engine = null;
+
+    p.init = function(nodeClass, engine)
+    {
+        console.log(&quot;[Family], init()&quot;);
+        this.nodes = [];
+        this.components = {};
+
+        this.engine = engine;
+        this.nodeClass = nodeClass;
+
+        // get the list of components that this family
+        // is in charge of based on the node class
+        console.log(&quot;nodeClass=%o&quot;, nodeClass);
+        console.log(&quot;nodeClass.COMPONENT_TYPES=%o&quot;, nodeClass.COMPONENT_TYPES);
+        for (var i=0; i &lt; nodeClass.COMPONENT_TYPES.length; i++) {
+            console.log(&quot;Add: nodeClass.TYPE=&quot;, nodeClass.COMPONENT_TYPES[i]);
+            this.components[nodeClass.COMPONENT_TYPES[i]] = true;
+        }
+
+        if (Object.keys(this.components).length === 0) {
+            console.error(&quot;Error, no components added&quot;);
+        }
+
+    };
+
+    p.getNodes = function() {
+        return this.nodes;
+    };
+
+    p.addEntity = function(entity) {
+        if (!(entity._name in this.entityNodeMap)) {
+
+            console.log(&quot;entity=%o&quot;, entity);
+            console.log(&quot;this.components=%o&quot;, this.components);
+            
+            if (!this.isEntityComponentsPresent(entity, this.components)) {
+                // if entity does not matchr required components, 
+                // do not add
+                // console.error(&quot;entity %o (%s) does not have required this.components %o&quot;, entity, entity._name, this.components);
+                return;
+            }
+
+            var node = new this.nodeClass(entity);
+            this.entityNodeMap[entity._name] = node;
+            this.nodes.push(node);
+        }
+    };
+
+    p.removeEntity = function(entity) {
+        if (entity._name in this.entityNodeMap) {
+            var node = this.entityNodeMap[entity._name];
+            delete this.entityNodeMap[entity._name];
+            this.nodes.splice(this.nodes.indexOf(node), 1);
+        }
+    };
+
+    p.clearEntities = function() {
+        for (var i=0; i &lt; this.nodes.length; i++) {
+            delete this.entityNodeMap[this.nodes[i].entity._name];
+        }
+        this.nodes.splice(0, this.nodes.length);
+    };
+
+    p.isEntityComponentsPresent = function(entity, components) {
+
+        var containsKeys = true;
+
+        $.each(components, function(key, value) {
+            // Go through the list of components that
+            // this node&#x27;s family is associated with
+            if (!(key in entity._components)) {
+                containsKeys = false;
+                return false;
+            }
+        });
+        return containsKeys;
+    };
+// Link
+// ----
+chongdashu.Family = Family;
+
+}());
 
 
-        <div class="foundat">
-            Defined in: <a href="../files/js_chongdashu_States_PreloadState.js.html#l12"><code>js&#x2F;chongdashu&#x2F;States&#x2F;PreloadState.js:12</code></a>
-        </div>
 
-            Module: <a href="../modules/Game.html">Game</a>
-
-</div>
-
-
-<div class="box intro">
-    <p>PreloadState</p>
-
-</div>
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-<div id="method_State.PreloadState" class="method item">
-    <h3 class="name"><code>State.PreloadState</code></h3>
-
-        <span class="paren">()</span>
-
-
-
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/js_chongdashu_States_PreloadState.js.html#l12"><code>js&#x2F;chongdashu&#x2F;States&#x2F;PreloadState.js:12</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-
-
-
-</div>
-    </div>
-
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
-
-    </ul>
-
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-
-
-
-        </div>
-
-
-
-
-    </div>
+    </pre>
 </div>
                     </div>
                 </div>

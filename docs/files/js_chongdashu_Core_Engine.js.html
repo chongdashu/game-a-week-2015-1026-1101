@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/chongdashu/Family.js</title>
+    <title>js/chongdashu/Core/Engine.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -66,8 +66,11 @@
                 
                 
                             <ul id="api-modules" class="apis modules">
-                                <li><a href="../modules/ChongdashuJS.html">ChongdashuJS</a></li>
+                                <li><a href="../modules/Core.html">Core</a></li>
                                 <li><a href="../modules/CreateJS.html">CreateJS</a></li>
+                                <li><a href="../modules/Game.html">Game</a></li>
+                                <li><a href="../modules/Game.Component.html">Game.Component</a></li>
+                                <li><a href="../modules/Game.Node.html">Game.Node</a></li>
                             </ul>
                         </div>
                     </div>
@@ -101,121 +104,210 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: js/chongdashu/Family.js</h1>
+<h1 class="file-heading">File: js/chongdashu/Core/Engine.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
- * 
- * Copyright (c) Chong-U Lim
- * http://github.com/chongdashu
- */
+* @author       Chong-U Lim &lt;me@chongdashu.com&gt;
+* @copyright    2015 Chong-U Lim
+* @module       Core
+*/
 this.chongdashu = this.chongdashu||{};
 
 (function() {
     &quot;use strict&quot;;
 
 /**
- * Family
- * @class Core.Family
+ * Engine
+ * @class Core.Engine
  * @constructor
  **/
-var Family = function(nodeClass, engine) {
-    this.init(nodeClass, engine);
+var Engine = function() {
+    this.init();
 };
-var p = Family.prototype;
-Family.prototype.constructor = Family;
+var p = Engine.prototype;
+Engine.prototype.constructor = Engine;
 
-    p.nodes = [];
-    p.entityNodeMap = {};
-    p.components = {}; // [Component.Type, Bool]
-    p.nodeClass = null;
-    p.engine = null;
+    p.entities = [];
+    p.entityMap = {};
+    p.systems = [];
+    p.families = {};
+    p.isUpdating = false;
 
-    p.init = function(nodeClass, engine)
+    p.onUpdateCompleteCallbacks = [];
+
+    p.init = function()
     {
-        console.log(&quot;[Family], init()&quot;);
-        this.nodes = [];
-        this.components = {};
-
-        this.engine = engine;
-        this.nodeClass = nodeClass;
-
-        // get the list of components that this family
-        // is in charge of based on the node class
-        console.log(&quot;nodeClass=%o&quot;, nodeClass);
-        console.log(&quot;nodeClass.COMPONENT_TYPES=%o&quot;, nodeClass.COMPONENT_TYPES);
-        for (var i=0; i &lt; nodeClass.COMPONENT_TYPES.length; i++) {
-            console.log(&quot;Add: nodeClass.TYPE=&quot;, nodeClass.COMPONENT_TYPES[i]);
-            this.components[nodeClass.COMPONENT_TYPES[i]] = true;
-        }
-
-        if (Object.keys(this.components).length === 0) {
-            console.error(&quot;Error, no components added&quot;);
-        }
-
+        console.log(&quot;[Engine], init()&quot;);
+        this.entities = [];
+        this.entityMap = {};
+        this.systems = [];
+        this.families = {};
+        this.onUpdateCompleteCallbacks = [];
+        this.isUpdating = false;
+       
     };
 
-    p.getNodes = function() {
-        return this.nodes;
-    };
+    // -- Entity-related
 
     p.addEntity = function(entity) {
-        if (!(entity._name in this.entityNodeMap)) {
-
-            console.log(&quot;entity=%o&quot;, entity);
-            console.log(&quot;this.components=%o&quot;, this.components);
-            
-            if (!this.isEntityComponentsPresent(entity, this.components)) {
-                // if entity does not matchr required components, 
-                // do not add
-                // console.error(&quot;entity %o (%s) does not have required this.components %o&quot;, entity, entity._name, this.components);
-                return;
-            }
-
-            var node = new this.nodeClass(entity);
-            this.entityNodeMap[entity._name] = node;
-            this.nodes.push(node);
+        if (entity._name in this.entityMap) {
+            console.error(&quot;Entity with name=%s already exists.&quot;, entity._name);
         }
+
+        // add entity to list 
+        this.entities.push(entity);
+
+        // add entity to map
+        this.entityMap[entity._name] = entity;
+
+        // link callbacks
+        entity.addOnComponentAddCallback(this.onComponentAddCallback);
+        entity.addOnComponentRemoveCallback(this.onComponentRemoveCallback);
+
+        var keys = Object.keys(this.families);
+        for (var i=0; i &lt; keys.length; i++) {
+            // Add entity to families
+            this.families[keys[i]].addEntity(entity);
+        }
+
     };
 
     p.removeEntity = function(entity) {
-        if (entity._name in this.entityNodeMap) {
-            var node = this.entityNodeMap[entity._name];
-            delete this.entityNodeMap[entity._name];
-            this.nodes.splice(this.nodes.indexOf(node), 1);
+        if (!(entity._name in this.entityMap)) {
+            console.error(&quot;Entity with name=%s doesn&#x27;t exists&quot;, entity._name);
         }
+        
+        // remove entity from list
+        this.entities.splice(this.entities.indexOf(entity), 1);
+        
+        // remove entity from map
+        delete this.entityMap[entity._name];
+
+        // unlink callbacks
+        entity.removeOnComponentAddCallback(this.onComponentAddCallback);
+        entity.removeOnComponentRemoveCallback(this.onComponentRemoveCallback);
+
+        var keys = Object.keys(this.families);
+        for (var i=0; i &lt; keys.length; i++) {
+            // Remove entity from families
+            this.families[keys[i]].removeEntity(entity);
+        }
+
     };
 
-    p.clearEntities = function() {
-        for (var i=0; i &lt; this.nodes.length; i++) {
-            delete this.entityNodeMap[this.nodes[i].entity._name];
-        }
-        this.nodes.splice(0, this.nodes.length);
+    // -- Callbacks
+
+    p.onComponentAddCallback = function(entity, componentType) {
+
     };
 
-    p.isEntityComponentsPresent = function(entity, components) {
+    p.onComponentRemoveCallback = function(entity, componentType) {
 
-        var containsKeys = true;
+    };
 
-        $.each(components, function(key, value) {
-            // Go through the list of components that
-            // this node&#x27;s family is associated with
-            if (!(key in entity._components)) {
-                containsKeys = false;
-                return false;
+    p.getEntity = function(name) {
+        if (name in this.entityMap) {
+            return this.entityMap[name];
+        }
+        return null;
+    };
+
+    p.getEntities = function() {
+        return this.entities;
+    };
+
+    // -- Node-related
+
+    /**
+     * 
+     */
+    p.getNodes = function(nodeClass) {
+        console.log(&quot;nodeClass=%o&quot;, nodeClass);
+        var nodeType = nodeClass.TYPE;
+
+        if (nodeType in this.families) {
+            // return family associated with this node type
+            return this.families[nodeType].nodes;
+        }
+
+        // create new family for this node type
+        var family = new chongdashu.Family(nodeClass, this);
+
+        // add family to map
+        this.families[nodeType] = family;
+
+        // add existing entities to family
+        for (var i=0; i &lt; this.entities.length; i++) {
+            family.addEntity(entities[i]);
+        }
+
+        // return node group
+        return family.nodes;
+    };
+
+    p.clearNodes = function(nodeType) {
+        if (nodeType in this.families) {
+            this.families[nodeType].clear();
+        }
+
+        delete this.families[nodeType];
+    };
+
+    // -- System
+    p.addSystem = function(system, priority) {
+        system.priority = priority;
+        
+        this.systems.push(system);
+        system.onEngineAdd(this);
+    };
+
+    p.removeSystem = function(system) {
+        this.systems.splice(this.systems.indexOf(system),1);
+        system.onEngineRemove(this);
+    };
+
+    p.getSystem = function(systemType) {
+        for (var i=0; i &lt; this.systems.length; i++) {
+            if (this.systems[i].getType() == systemType) {
+                return this.systems[i];
             }
-        });
-        return containsKeys;
+        }
+
+        return null;
     };
+
+    p.getSystems = function() {
+        return this.systems;
+    };
+
+    p.preUpdate = function() {
+
+    };
+
+    p.update = function()  {
+        this.isUpdating = true;
+        var i=0;
+        for (i=0; i &lt; this.systems.length; i++) {
+            this.systems[i].update();
+        }
+        this.isUpdating = false;
+
+        for (i=0; i &lt; this.onUpdateCompleteCallbacks.length; i++) {
+            this.onUpdateCompleteCallbacks[i](this);
+        }
+    };
+
+    p.postUpdate = function() {
+
+    };
+
 // Link
 // ----
-chongdashu.Family = Family;
+chongdashu.Engine = Engine;
 
 }());
-
-
-
     </pre>
 </div>
                     </div>

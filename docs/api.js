@@ -27,17 +27,32 @@ YUI.add("yuidoc-meta", function(Y) {
         "Utility Methods"
     ],
     "modules": [
-        "ChongdashuJS",
-        "CreateJS"
+        "Core",
+        "CreateJS",
+        "Game",
+        "Game.Component",
+        "Game.Node"
     ],
     "allModules": [
         {
-            "displayName": "ChongdashuJS",
-            "name": "ChongdashuJS"
+            "displayName": "Core",
+            "name": "Core"
         },
         {
             "displayName": "CreateJS",
             "name": "CreateJS"
+        },
+        {
+            "displayName": "Game",
+            "name": "Game"
+        },
+        {
+            "displayName": "Game.Component",
+            "name": "Game.Component"
+        },
+        {
+            "displayName": "Game.Node",
+            "name": "Game.Node"
         }
     ],
     "elements": []

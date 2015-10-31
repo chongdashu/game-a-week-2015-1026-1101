@@ -66,8 +66,11 @@
                 
                 
                             <ul id="api-modules" class="apis modules">
-                                <li><a href="../modules/ChongdashuJS.html">ChongdashuJS</a></li>
+                                <li><a href="../modules/Core.html">Core</a></li>
                                 <li><a href="../modules/CreateJS.html">CreateJS</a></li>
+                                <li><a href="../modules/Game.html">Game</a></li>
+                                <li><a href="../modules/Game.Component.html">Game.Component</a></li>
+                                <li><a href="../modules/Game.Node.html">Game.Node</a></li>
                             </ul>
                         </div>
                     </div>
@@ -106,10 +109,11 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
- * 
- * Copyright (c) Chong-U Lim
- * http://github.com/chongdashu
- */
+* @author       Chong-U Lim &lt;me@chongdashu.com&gt;
+* @copyright    2015 Chong-U Lim
+* @module       Game
+* @msubmodule   State
+*/
 this.chongdashu = this.chongdashu||{};
 
 (function() {
@@ -117,6 +121,7 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * PreloadState
+ *
  * @class State.PreloadState
  * @constructor
  **/
@@ -135,8 +140,6 @@ var p = PreloadState.prototype;
 
         // Preloader specific stuff.
         // -------------------------
-        
-
         this.loadingFrame = this.game.add.sprite(0,0, &quot;preloader-frame&quot;);
         this.loadingBar = this.game.add.sprite(0,0, &quot;preloader-bar&quot;);
         this.loadingText = this.game.add.text(0,0, &quot;Loading: 0%&quot;, { font: &quot;16pt Garamond&quot;, align: &quot;center&quot;, fill : &quot;#FFFFFF&quot;, stroke : &quot;black&quot;, strokeThickness: 1});

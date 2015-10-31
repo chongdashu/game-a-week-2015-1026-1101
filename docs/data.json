@@ -3,7 +3,9 @@
     "files": {
         "js/chongdashu/Components/ArcadeSpriteComponent.js": {
             "name": "js/chongdashu/Components/ArcadeSpriteComponent.js",
-            "modules": {},
+            "modules": {
+                "Game.Component": 1
+            },
             "classes": {
                 "Game.Component.ArcadeSpriteComponent": 1
             },
@@ -55,9 +57,105 @@
             "fors": {},
             "namespaces": {}
         },
+        "js/chongdashu/Core/Component.js": {
+            "name": "js/chongdashu/Core/Component.js",
+            "modules": {
+                "Core": 1
+            },
+            "classes": {
+                "Core.Component": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/chongdashu/Core/Engine.js": {
+            "name": "js/chongdashu/Core/Engine.js",
+            "modules": {},
+            "classes": {
+                "Core.Engine": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/chongdashu/Core/Entity.js": {
+            "name": "js/chongdashu/Core/Entity.js",
+            "modules": {},
+            "classes": {
+                "Core.Entity": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/chongdashu/Core/Family.js": {
+            "name": "js/chongdashu/Core/Family.js",
+            "modules": {},
+            "classes": {
+                "Core.Family": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/chongdashu/Core/Node.js": {
+            "name": "js/chongdashu/Core/Node.js",
+            "modules": {},
+            "classes": {
+                "Core.Node": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/chongdashu/Core/System.js": {
+            "name": "js/chongdashu/Core/System.js",
+            "modules": {},
+            "classes": {
+                "Core.System": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/chongdashu/Nodes/AudioNode.js": {
+            "name": "js/chongdashu/Nodes/AudioNode.js",
+            "modules": {
+                "Game.Node": 1
+            },
+            "classes": {
+                "Game.Node.AudioNode": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/chongdashu/Nodes/EnemyControlNode.js": {
+            "name": "js/chongdashu/Nodes/EnemyControlNode.js",
+            "modules": {},
+            "classes": {
+                "Game.Node.EnemyControlNode": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/chongdashu/Nodes/KeyboardControlNode.js": {
+            "name": "js/chongdashu/Nodes/KeyboardControlNode.js",
+            "modules": {},
+            "classes": {
+                "Game.Node.KeyboardControlNode": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/chongdashu/Nodes/PlayerControlNode.js": {
+            "name": "js/chongdashu/Nodes/PlayerControlNode.js",
+            "modules": {},
+            "classes": {
+                "Game.Node.PlayerControlNode": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "js/chongdashu/States/BootState.js": {
             "name": "js/chongdashu/States/BootState.js",
-            "modules": {},
+            "modules": {
+                "Game": 1
+            },
             "classes": {
                 "State.BootState": 1
             },
@@ -118,95 +216,10 @@
             "fors": {},
             "namespaces": {}
         },
-        "js/chongdashu/nodes/AudioNode.js": {
-            "name": "js/chongdashu/nodes/AudioNode.js",
+        "js/Main.js": {
+            "name": "js/Main.js",
             "modules": {},
-            "classes": {
-                "Game.Node.AudioNode": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "js/chongdashu/nodes/EnemyControlNode.js": {
-            "name": "js/chongdashu/nodes/EnemyControlNode.js",
-            "modules": {},
-            "classes": {
-                "Game.Node.EnemyControlNode": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "js/chongdashu/nodes/KeyboardControlNode.js": {
-            "name": "js/chongdashu/nodes/KeyboardControlNode.js",
-            "modules": {},
-            "classes": {
-                "Game.Node.KeyboardControlNode": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "js/chongdashu/nodes/PlayerControlNode.js": {
-            "name": "js/chongdashu/nodes/PlayerControlNode.js",
-            "modules": {},
-            "classes": {
-                "Game.Node.PlayerControlNode": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "js/chongdashu/Component.js": {
-            "name": "js/chongdashu/Component.js",
-            "modules": {},
-            "classes": {
-                "Core.Component": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "js/chongdashu/Engine.js": {
-            "name": "js/chongdashu/Engine.js",
-            "modules": {},
-            "classes": {
-                "Core.Engine": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "js/chongdashu/Entity.js": {
-            "name": "js/chongdashu/Entity.js",
-            "modules": {},
-            "classes": {
-                "Core.Entity": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "js/chongdashu/Family.js": {
-            "name": "js/chongdashu/Family.js",
-            "modules": {},
-            "classes": {
-                "Core.Family": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "js/chongdashu/Node.js": {
-            "name": "js/chongdashu/Node.js",
-            "modules": {},
-            "classes": {
-                "Core.Node": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "js/chongdashu/System.js": {
-            "name": "js/chongdashu/System.js",
-            "modules": {
-                "ChongdashuJS": 1
-            },
-            "classes": {
-                "Core.System": 1
-            },
+            "classes": {},
             "fors": {},
             "namespaces": {}
         },
@@ -237,8 +250,8 @@
         }
     },
     "modules": {
-        "ChongdashuJS": {
-            "name": "ChongdashuJS",
+        "Game.Component": {
+            "name": "Game.Component",
             "submodules": {},
             "elements": {},
             "classes": {
@@ -247,18 +260,21 @@
                 "Game.Component.EnemyComponent": 1,
                 "Game.Component.KeyboardComponent": 1,
                 "Game.Component.PlayerComponent": 1,
-                "Game.Component.SpriteComponent": 1,
-                "State.BootState": 1,
-                "State.GameState": 1,
-                "State.MenuState": 1,
-                "State.PreloadState": 1,
-                "Game.System.EnemyControlSystem": 1,
-                "Game.System.KeyboardControlSystem": 1,
-                "Game.System.PlayerControlSystem": 1,
-                "Game.Node.AudioNode": 1,
-                "Game.Node.EnemyControlNode": 1,
-                "Game.Node.KeyboardControlNode": 1,
-                "Game.Node.PlayerControlNode": 1,
+                "Game.Component.SpriteComponent": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "js/chongdashu/Components/SpriteComponent.js",
+            "line": 11,
+            "author": "Chong-U Lim <me@chongdashu.com>",
+            "copyright": "2015 Chong-U Lim"
+        },
+        "Core": {
+            "name": "Core",
+            "submodules": {},
+            "elements": {},
+            "classes": {
                 "Core.Component": 1,
                 "Core.Engine": 1,
                 "Core.Entity": 1,
@@ -269,8 +285,50 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "js/chongdashu/System.js",
-            "line": 16
+            "file": "js/chongdashu/Core/System.js",
+            "line": 12,
+            "author": "Chong-U Lim <me@chongdashu.com>",
+            "copyright": "2015 Chong-U Lim"
+        },
+        "Game.Node": {
+            "name": "Game.Node",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "Game.Node.AudioNode": 1,
+                "Game.Node.EnemyControlNode": 1,
+                "Game.Node.KeyboardControlNode": 1,
+                "Game.Node.PlayerControlNode": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "js/chongdashu/Nodes/PlayerControlNode.js",
+            "line": 11,
+            "author": "Chong-U Lim <me@chongdashu.com>",
+            "copyright": "2015 Chong-U Lim"
+        },
+        "Game": {
+            "name": "Game",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "State.BootState": 1,
+                "State.GameState": 1,
+                "State.MenuState": 1,
+                "State.PreloadState": 1,
+                "Game.System.EnemyControlSystem": 1,
+                "Game.System.KeyboardControlSystem": 1,
+                "Game.System.PlayerControlSystem": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "js/chongdashu/Systems/PlayerControlSystem.js",
+            "line": 11,
+            "author": "Chong-U Lim <me@chongdashu.com>",
+            "copyright": "2015 Chong-U Lim",
+            "msubmodule": "State"
         },
         "CreateJS": {
             "name": "CreateJS",
@@ -295,11 +353,12 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ChongdashuJS",
+            "module": "Game.Component",
+            "namespace": "",
             "file": "js/chongdashu/Components/ArcadeSpriteComponent.js",
             "line": 11,
             "description": "ArcadeSpriteComponent",
-            "extends": "Core.Component",
+            "extends": "Game.Component.SpriteComponent",
             "is_constructor": 1
         },
         "Game.Component.AudioComponent": {
@@ -310,7 +369,8 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ChongdashuJS",
+            "module": "Game.Component",
+            "namespace": "",
             "file": "js/chongdashu/Components/AudioComponent.js",
             "line": 11,
             "description": "AudioComponent",
@@ -325,7 +385,8 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ChongdashuJS",
+            "module": "Game.Component",
+            "namespace": "",
             "file": "js/chongdashu/Components/EnemyComponent.js",
             "line": 11,
             "description": "EnemyComponent",
@@ -340,10 +401,11 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ChongdashuJS",
+            "module": "Game.Component",
+            "namespace": "",
             "file": "js/chongdashu/Components/KeyboardComponent.js",
             "line": 11,
-            "description": "KeyboardComponent",
+            "description": "KeyboardComponent is a wrapper for a game's\nkeyboard key states.",
             "extends": "Core.Component",
             "is_constructor": 1
         },
@@ -355,7 +417,8 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ChongdashuJS",
+            "module": "Game.Component",
+            "namespace": "",
             "file": "js/chongdashu/Components/PlayerComponent.js",
             "line": 11,
             "description": "PlayerComponent",
@@ -370,11 +433,165 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ChongdashuJS",
+            "module": "Game.Component",
+            "namespace": "",
             "file": "js/chongdashu/Components/SpriteComponent.js",
             "line": 11,
             "description": "SpriteComponent",
             "extends": "Core.Component",
+            "is_constructor": 1
+        },
+        "Core.Component": {
+            "name": "Core.Component",
+            "shortname": "Core.Component",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Core",
+            "namespace": "",
+            "file": "js/chongdashu/Core/Component.js",
+            "line": 11,
+            "description": "Component"
+        },
+        "Core.Engine": {
+            "name": "Core.Engine",
+            "shortname": "Core.Engine",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Core",
+            "namespace": "",
+            "file": "js/chongdashu/Core/Engine.js",
+            "line": 11,
+            "description": "Engine",
+            "is_constructor": 1
+        },
+        "Core.Entity": {
+            "name": "Core.Entity",
+            "shortname": "Core.Entity",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Core",
+            "namespace": "",
+            "file": "js/chongdashu/Core/Entity.js",
+            "line": 11,
+            "description": "Entity",
+            "is_constructor": 1
+        },
+        "Core.Family": {
+            "name": "Core.Family",
+            "shortname": "Core.Family",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Core",
+            "namespace": "",
+            "file": "js/chongdashu/Core/Family.js",
+            "line": 11,
+            "description": "Family",
+            "is_constructor": 1
+        },
+        "Core.Node": {
+            "name": "Core.Node",
+            "shortname": "Core.Node",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Core",
+            "namespace": "",
+            "file": "js/chongdashu/Core/Node.js",
+            "line": 11,
+            "description": "Node",
+            "is_constructor": 1
+        },
+        "Core.System": {
+            "name": "Core.System",
+            "shortname": "Core.System",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Core",
+            "namespace": "",
+            "file": "js/chongdashu/Core/System.js",
+            "line": 12,
+            "description": "System represents a System of the Entity-Component-System Design\nparadigm.",
+            "is_constructor": 1
+        },
+        "Game.Node.AudioNode": {
+            "name": "Game.Node.AudioNode",
+            "shortname": "Game.Node.AudioNode",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Game.Node",
+            "namespace": "",
+            "file": "js/chongdashu/Nodes/AudioNode.js",
+            "line": 11,
+            "description": "AudioNode",
+            "extends": "Core.Node",
+            "is_constructor": 1
+        },
+        "Game.Node.EnemyControlNode": {
+            "name": "Game.Node.EnemyControlNode",
+            "shortname": "Game.Node.EnemyControlNode",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Game.Node",
+            "namespace": "",
+            "file": "js/chongdashu/Nodes/EnemyControlNode.js",
+            "line": 11,
+            "description": "EnemyControlNode",
+            "extends": "Core.Node",
+            "is_constructor": 1
+        },
+        "Game.Node.KeyboardControlNode": {
+            "name": "Game.Node.KeyboardControlNode",
+            "shortname": "Game.Node.KeyboardControlNode",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Game.Node",
+            "namespace": "",
+            "file": "js/chongdashu/Nodes/KeyboardControlNode.js",
+            "line": 11,
+            "description": "KeyboardControlNode",
+            "extends": "Core.Node",
+            "is_constructor": 1
+        },
+        "Game.Node.PlayerControlNode": {
+            "name": "Game.Node.PlayerControlNode",
+            "shortname": "Game.Node.PlayerControlNode",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Game.Node",
+            "namespace": "",
+            "file": "js/chongdashu/Nodes/PlayerControlNode.js",
+            "line": 11,
+            "description": "PlayerControlNode",
+            "extends": "Core.Node",
             "is_constructor": 1
         },
         "State.BootState": {
@@ -385,9 +602,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ChongdashuJS",
+            "module": "Game",
+            "namespace": "",
             "file": "js/chongdashu/States/BootState.js",
-            "line": 11,
+            "line": 12,
             "description": "BootState",
             "is_constructor": 1
         },
@@ -399,7 +617,8 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ChongdashuJS",
+            "module": "Game",
+            "namespace": "",
             "file": "js/chongdashu/States/GameState.js",
             "line": 11,
             "description": "GameState",
@@ -413,7 +632,8 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ChongdashuJS",
+            "module": "Game",
+            "namespace": "",
             "file": "js/chongdashu/States/MenuState.js",
             "line": 11,
             "description": "MenuState",
@@ -427,9 +647,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ChongdashuJS",
+            "module": "Game",
+            "namespace": "",
             "file": "js/chongdashu/States/PreloadState.js",
-            "line": 11,
+            "line": 12,
             "description": "PreloadState",
             "is_constructor": 1
         },
@@ -441,7 +662,8 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ChongdashuJS",
+            "module": "Game",
+            "namespace": "",
             "file": "js/chongdashu/Systems/EnemyControlSystem.js",
             "line": 11,
             "description": "EnemyControlSystem",
@@ -456,7 +678,8 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ChongdashuJS",
+            "module": "Game",
+            "namespace": "",
             "file": "js/chongdashu/Systems/KeyboardControlSystem.js",
             "line": 11,
             "description": "KeyboardControlSystem",
@@ -471,156 +694,13 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ChongdashuJS",
+            "module": "Game",
+            "namespace": "",
             "file": "js/chongdashu/Systems/PlayerControlSystem.js",
             "line": 11,
             "description": "PlayerControlSystem",
             "is_constructor": 1,
             "extends": "Game.System.KeyboardControlSystem"
-        },
-        "Game.Node.AudioNode": {
-            "name": "Game.Node.AudioNode",
-            "shortname": "Game.Node.AudioNode",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ChongdashuJS",
-            "file": "js/chongdashu/nodes/AudioNode.js",
-            "line": 11,
-            "description": "AudioNode",
-            "extends": "Core.Node",
-            "is_constructor": 1
-        },
-        "Game.Node.EnemyControlNode": {
-            "name": "Game.Node.EnemyControlNode",
-            "shortname": "Game.Node.EnemyControlNode",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ChongdashuJS",
-            "file": "js/chongdashu/nodes/EnemyControlNode.js",
-            "line": 11,
-            "description": "EnemyControlNode",
-            "extends": "Core.Node",
-            "is_constructor": 1
-        },
-        "Game.Node.KeyboardControlNode": {
-            "name": "Game.Node.KeyboardControlNode",
-            "shortname": "Game.Node.KeyboardControlNode",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ChongdashuJS",
-            "file": "js/chongdashu/nodes/KeyboardControlNode.js",
-            "line": 11,
-            "description": "KeyboardControlNode",
-            "extends": "Core.Node",
-            "is_constructor": 1
-        },
-        "Game.Node.PlayerControlNode": {
-            "name": "Game.Node.PlayerControlNode",
-            "shortname": "Game.Node.PlayerControlNode",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ChongdashuJS",
-            "file": "js/chongdashu/nodes/PlayerControlNode.js",
-            "line": 11,
-            "description": "PlayerControlNode",
-            "extends": "Core.Node",
-            "is_constructor": 1
-        },
-        "Core.Component": {
-            "name": "Core.Component",
-            "shortname": "Core.Component",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ChongdashuJS",
-            "file": "js/chongdashu/Component.js",
-            "line": 11,
-            "description": "Component"
-        },
-        "Core.Engine": {
-            "name": "Core.Engine",
-            "shortname": "Core.Engine",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ChongdashuJS",
-            "file": "js/chongdashu/Engine.js",
-            "line": 11,
-            "description": "Engine",
-            "is_constructor": 1
-        },
-        "Core.Entity": {
-            "name": "Core.Entity",
-            "shortname": "Core.Entity",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ChongdashuJS",
-            "file": "js/chongdashu/Entity.js",
-            "line": 11,
-            "description": "Entity",
-            "is_constructor": 1
-        },
-        "Core.Family": {
-            "name": "Core.Family",
-            "shortname": "Core.Family",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ChongdashuJS",
-            "file": "js/chongdashu/Family.js",
-            "line": 11,
-            "description": "Family",
-            "is_constructor": 1
-        },
-        "Core.Node": {
-            "name": "Core.Node",
-            "shortname": "Core.Node",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ChongdashuJS",
-            "file": "js/chongdashu/Node.js",
-            "line": 11,
-            "description": "Node",
-            "is_constructor": 1
-        },
-        "Core.System": {
-            "name": "Core.System",
-            "shortname": "Core.System",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ChongdashuJS",
-            "namespace": "",
-            "file": "js/chongdashu/System.js",
-            "line": 16,
-            "description": "System represents a System of the Entity-Component-System Design\nparadigm.",
-            "is_constructor": 1
         },
         "Utility Methods": {
             "name": "Utility Methods",
@@ -639,167 +719,239 @@
     "elements": {},
     "classitems": [
         {
-            "file": "js/chongdashu/Components/ArcadeSpriteComponent.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Game.Component.ArcadeSpriteComponent"
-        },
-        {
             "file": "js/chongdashu/Components/AudioComponent.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Game.Component.AudioComponent"
+            "line": 23,
+            "description": "The type identifier of this component.",
+            "itemtype": "property",
+            "name": "Game.AudioComponent.TYPE",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "Game.Component.AudioComponent",
+            "module": "Game.Component"
         },
         {
             "file": "js/chongdashu/Components/EnemyComponent.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Game.Component.EnemyComponent"
+            "line": 23,
+            "description": "The type identifier of this component.",
+            "itemtype": "property",
+            "name": "Game.EnemyComponent.TYPE",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "Game.Component.EnemyComponent",
+            "module": "Game.Component"
         },
         {
             "file": "js/chongdashu/Components/KeyboardComponent.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Game.Component.KeyboardComponent"
+            "line": 26,
+            "description": "The type identifier of this component.",
+            "itemtype": "property",
+            "name": "Game.KeyboardComponent.TYPE",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "Game.Component.KeyboardComponent",
+            "module": "Game.Component"
         },
         {
             "file": "js/chongdashu/Components/PlayerComponent.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Game.Component.PlayerComponent"
+            "line": 23,
+            "description": "The type identifier of this component.",
+            "itemtype": "property",
+            "name": "Game.PlayerComponent.TYPE",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "Game.Component.PlayerComponent",
+            "module": "Game.Component"
         },
         {
             "file": "js/chongdashu/Components/SpriteComponent.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Game.Component.SpriteComponent"
+            "line": 23,
+            "description": "The type identifier of this component.",
+            "itemtype": "property",
+            "name": "Game.SpriteComponent.TYPE",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "Game.Component.SpriteComponent",
+            "module": "Game.Component"
         },
         {
-            "file": "js/chongdashu/States/BootState.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "State.BootState"
-        },
-        {
-            "file": "js/chongdashu/States/GameState.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "State.GameState"
-        },
-        {
-            "file": "js/chongdashu/States/MenuState.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "State.MenuState"
-        },
-        {
-            "file": "js/chongdashu/States/PreloadState.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "State.PreloadState"
-        },
-        {
-            "file": "js/chongdashu/Systems/EnemyControlSystem.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Game.System.EnemyControlSystem"
-        },
-        {
-            "file": "js/chongdashu/Systems/KeyboardControlSystem.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Game.System.KeyboardControlSystem"
-        },
-        {
-            "file": "js/chongdashu/Systems/PlayerControlSystem.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Game.System.PlayerControlSystem"
-        },
-        {
-            "file": "js/chongdashu/nodes/AudioNode.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Game.Node.AudioNode"
-        },
-        {
-            "file": "js/chongdashu/nodes/EnemyControlNode.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Game.Node.EnemyControlNode"
-        },
-        {
-            "file": "js/chongdashu/nodes/KeyboardControlNode.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Game.Node.KeyboardControlNode"
-        },
-        {
-            "file": "js/chongdashu/nodes/PlayerControlNode.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Game.Node.PlayerControlNode"
-        },
-        {
-            "file": "js/chongdashu/Component.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Core.Component"
-        },
-        {
-            "file": "js/chongdashu/Engine.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Core.Engine"
-        },
-        {
-            "file": "js/chongdashu/Engine.js",
+            "file": "js/chongdashu/Core/Engine.js",
             "line": 113,
-            "class": "Core.Engine"
+            "class": "Core.Engine",
+            "module": "Core"
         },
         {
-            "file": "js/chongdashu/Entity.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Core.Entity"
+            "file": "js/chongdashu/Core/Node.js",
+            "line": 25,
+            "itemtype": "property",
+            "name": "Core.Node.TYPE",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "Core.Node",
+            "module": "Core"
         },
         {
-            "file": "js/chongdashu/Family.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Core.Family"
-        },
-        {
-            "file": "js/chongdashu/Node.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Core.Node"
-        },
-        {
-            "file": "js/chongdashu/System.js",
-            "line": 1,
-            "description": "Copyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "class": "Core.System"
-        },
-        {
-            "file": "js/chongdashu/System.js",
-            "line": 28,
+            "file": "js/chongdashu/Core/System.js",
+            "line": 25,
             "description": "Indicates if the system is currently enabled or not. \nIf not enabled, no system or node updates will be performed.",
             "itemtype": "property",
             "name": "enabled",
             "type": "boolean",
+            "default": "true",
             "class": "Core.System",
-            "module": "ChongdashuJS"
+            "module": "Core"
         },
         {
-            "file": "js/chongdashu/System.js",
-            "line": 36,
-            "description": "The priority of the current system. This is used by the \n{{#crossLink \"Engine\"}}{{/crossLink}} to order the sequence of systems\nthat it processes. Lower priority numbers are executed first.",
+            "file": "js/chongdashu/Core/System.js",
+            "line": 35,
+            "description": "The priority of the current system. This is used by the \n{{#crossLink \"Core.Engine\"}}{{/crossLink}} to order the sequence of systems\nthat it processes. Lower priority numbers are executed first.",
             "itemtype": "property",
             "name": "priority",
-            "type": "integer",
+            "type": "{integer}",
+            "default": "0",
             "class": "Core.System",
-            "module": "ChongdashuJS"
+            "module": "Core"
+        },
+        {
+            "file": "js/chongdashu/Core/System.js",
+            "line": 46,
+            "description": "An array of {{#crossLink \"Core.Node\"}}{{/crossLink}} objects that \nthis system manages based on the {{#crossLink \"Core.Node/Core.Node.TYPE:property\"}}{{/crossLink}}",
+            "itemtype": "property",
+            "name": "nodes",
+            "type": "{Array}",
+            "class": "Core.System",
+            "module": "Core"
+        },
+        {
+            "file": "js/chongdashu/Core/System.js",
+            "line": 54,
+            "description": "The {{#crossLink \"Core.Node/Core.Node.TYPE:property\"}}{{/crossLink}} that this system\nwill be responsible for.",
+            "itemtype": "property",
+            "name": "String",
+            "type": "Core.Node.TYPE",
+            "class": "Core.System",
+            "module": "Core"
+        },
+        {
+            "file": "js/chongdashu/Core/System.js",
+            "line": 63,
+            "description": "The initialization method is called when the object is constructor.",
+            "itemtype": "method",
+            "name": "init",
+            "params": [
+                {
+                    "name": "nodeType",
+                    "description": "The type of the node. See {{#crossLink \"Core.Node/Core.Node.TYPE:property\"}}{{/crossLink}}.",
+                    "type": "String"
+                }
+            ],
+            "class": "Core.System",
+            "module": "Core"
+        },
+        {
+            "file": "js/chongdashu/Core/System.js",
+            "line": 78,
+            "description": "The update loop of this system, as called by a given\n{{#crossLink \"Core.Engine\"}}{{/crossLink}}'s update loop.\nAll related {{#crossLink \"Core.Node\"}}{{/crossLink}} objects are\nupdated. Handling of each node individually can be performed\nby overriding the {{#crossLink \"Core.System/updateNode:method\"}}{{/crossLink}} method.",
+            "itemtype": "method",
+            "name": "update",
+            "class": "Core.System",
+            "module": "Core"
+        },
+        {
+            "file": "js/chongdashu/Core/System.js",
+            "line": 96,
+            "itemtype": "method",
+            "name": "updateNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "The node to be updated",
+                    "type": "Core.Node"
+                }
+            ],
+            "class": "Core.System",
+            "module": "Core"
+        },
+        {
+            "file": "js/chongdashu/Core/System.js",
+            "line": 103,
+            "description": "Callback method when this system is added to the engine.",
+            "itemtype": "method",
+            "name": "onEngineAdd",
+            "params": [
+                {
+                    "name": "engine",
+                    "description": "reference to the {{#crossLink \"Core.Engine\"}}{{/crossLink}} object.",
+                    "type": "Core.Engine"
+                }
+            ],
+            "class": "Core.System",
+            "module": "Core"
+        },
+        {
+            "file": "js/chongdashu/Core/System.js",
+            "line": 113,
+            "description": "Callback method when this system is removed from the engine.",
+            "itemtype": "method",
+            "name": "onEngineRemove",
+            "params": [
+                {
+                    "name": "engine",
+                    "description": "reference to the {{#crossLink \"Core.Engine\"}}{{/crossLink}} object.",
+                    "type": "Core.Engine"
+                }
+            ],
+            "class": "Core.System",
+            "module": "Core"
+        },
+        {
+            "file": "js/chongdashu/States/GameState.js",
+            "line": 1,
+            "author": "Chong-U Lim\n http://github.com/chongdashu",
+            "class": "State.GameState",
+            "module": "Game"
+        },
+        {
+            "file": "js/chongdashu/States/MenuState.js",
+            "line": 1,
+            "author": "Chong-U Lim\n http://github.com/chongdashu",
+            "class": "State.MenuState",
+            "module": "Game"
+        },
+        {
+            "file": "js/chongdashu/Systems/EnemyControlSystem.js",
+            "line": 1,
+            "author": "Chong-U Lim\n http://github.com/chongdashu",
+            "class": "Game.System.EnemyControlSystem",
+            "module": "Game"
+        },
+        {
+            "file": "js/chongdashu/Systems/KeyboardControlSystem.js",
+            "line": 1,
+            "author": "Chong-U Lim\n http://github.com/chongdashu",
+            "class": "Game.System.KeyboardControlSystem",
+            "module": "Game"
+        },
+        {
+            "file": "js/chongdashu/Systems/PlayerControlSystem.js",
+            "line": 1,
+            "author": "Chong-U Lim\n http://github.com/chongdashu",
+            "class": "Game.System.PlayerControlSystem",
+            "module": "Game"
+        },
+        {
+            "file": "js/Main.js",
+            "line": 2,
+            "author": "Chong-U Lim <me@chongdashu.com>",
+            "copyright": "2015 Chong-U Lim",
+            "license": "{@link https://github.com/chongdashu/game-a-week-2015-1026-1101/blob/master/LICENSE|MIT License}",
+            "class": "Utility Methods",
+            "module": "Game"
         },
         {
             "file": "lib/createjs/utils/extend.js",
@@ -908,100 +1060,120 @@
     ],
     "warnings": [
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
+            "message": "unknown tag: copyright",
             "line": " js/chongdashu/Components/ArcadeSpriteComponent.js:1"
         },
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
+            "message": "unknown tag: copyright",
             "line": " js/chongdashu/Components/AudioComponent.js:1"
         },
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
+            "message": "unknown tag: copyright",
             "line": " js/chongdashu/Components/EnemyComponent.js:1"
         },
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
+            "message": "unknown tag: copyright",
             "line": " js/chongdashu/Components/KeyboardComponent.js:1"
         },
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
+            "message": "unknown tag: copyright",
             "line": " js/chongdashu/Components/PlayerComponent.js:1"
         },
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
+            "message": "unknown tag: copyright",
             "line": " js/chongdashu/Components/SpriteComponent.js:1"
         },
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
+            "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Core/Component.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Core/Engine.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Core/Entity.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Core/Family.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Core/Node.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Core/System.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Nodes/AudioNode.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Nodes/EnemyControlNode.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Nodes/KeyboardControlNode.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Nodes/PlayerControlNode.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
             "line": " js/chongdashu/States/BootState.js:1"
         },
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "line": " js/chongdashu/States/GameState.js:1"
+            "message": "unknown tag: msubmodule",
+            "line": " js/chongdashu/States/BootState.js:1"
         },
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "line": " js/chongdashu/States/MenuState.js:1"
-        },
-        {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
+            "message": "unknown tag: copyright",
             "line": " js/chongdashu/States/PreloadState.js:1"
         },
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "line": " js/chongdashu/Systems/EnemyControlSystem.js:1"
+            "message": "unknown tag: msubmodule",
+            "line": " js/chongdashu/States/PreloadState.js:1"
         },
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "line": " js/chongdashu/Systems/KeyboardControlSystem.js:1"
+            "message": "unknown tag: copyright",
+            "line": " js/Main.js:2"
         },
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "line": " js/chongdashu/Systems/PlayerControlSystem.js:1"
-        },
-        {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "line": " js/chongdashu/nodes/AudioNode.js:1"
-        },
-        {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "line": " js/chongdashu/nodes/EnemyControlNode.js:1"
-        },
-        {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "line": " js/chongdashu/nodes/KeyboardControlNode.js:1"
-        },
-        {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "line": " js/chongdashu/nodes/PlayerControlNode.js:1"
-        },
-        {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "line": " js/chongdashu/Component.js:1"
-        },
-        {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "line": " js/chongdashu/Engine.js:1"
+            "message": "unknown tag: license",
+            "line": " js/Main.js:2"
         },
         {
             "message": "Missing item type",
-            "line": " js/chongdashu/Engine.js:113"
+            "line": " js/chongdashu/Core/Engine.js:113"
         },
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "line": " js/chongdashu/Entity.js:1"
+            "message": "Missing item type",
+            "line": " js/chongdashu/States/GameState.js:1"
         },
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "line": " js/chongdashu/Family.js:1"
+            "message": "Missing item type",
+            "line": " js/chongdashu/States/MenuState.js:1"
         },
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "line": " js/chongdashu/Node.js:1"
+            "message": "Missing item type",
+            "line": " js/chongdashu/Systems/EnemyControlSystem.js:1"
         },
         {
-            "message": "Missing item type\nCopyright (c) Chong-U Lim\n http://github.com/chongdashu",
-            "line": " js/chongdashu/System.js:1"
+            "message": "Missing item type",
+            "line": " js/chongdashu/Systems/KeyboardControlSystem.js:1"
+        },
+        {
+            "message": "Missing item type",
+            "line": " js/chongdashu/Systems/PlayerControlSystem.js:1"
+        },
+        {
+            "message": "Missing item type",
+            "line": " js/Main.js:2"
         },
         {
             "message": "Missing item type",

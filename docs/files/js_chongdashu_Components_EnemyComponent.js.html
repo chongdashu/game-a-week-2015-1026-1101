@@ -66,8 +66,11 @@
                 
                 
                             <ul id="api-modules" class="apis modules">
-                                <li><a href="../modules/ChongdashuJS.html">ChongdashuJS</a></li>
+                                <li><a href="../modules/Core.html">Core</a></li>
                                 <li><a href="../modules/CreateJS.html">CreateJS</a></li>
+                                <li><a href="../modules/Game.html">Game</a></li>
+                                <li><a href="../modules/Game.Component.html">Game.Component</a></li>
+                                <li><a href="../modules/Game.Node.html">Game.Node</a></li>
                             </ul>
                         </div>
                     </div>
@@ -106,10 +109,10 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
- * 
- * Copyright (c) Chong-U Lim
- * http://github.com/chongdashu
- */
+* @author       Chong-U Lim &lt;me@chongdashu.com&gt;
+* @copyright    2015 Chong-U Lim
+* @module       Game.Component
+*/
 this.chongdashu = this.chongdashu||{};
 
 (function() {
@@ -127,6 +130,14 @@ var EnemyComponent = function() {
 };
 var p = createjs.extend(EnemyComponent, chongdashu.Component);
     
+    /**
+    * The type identifier of this component.
+    *
+    * @property Game.EnemyComponent.TYPE
+    * @type String
+    * @static
+    * @final
+    */
     EnemyComponent.TYPE = &quot;component:EnemyComponent&quot;;
 
     p.audioCache = {};

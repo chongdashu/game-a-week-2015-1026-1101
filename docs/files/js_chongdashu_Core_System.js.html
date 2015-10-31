@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/chongdashu/Engine.js</title>
+    <title>js/chongdashu/Core/System.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -66,8 +66,11 @@
                 
                 
                             <ul id="api-modules" class="apis modules">
-                                <li><a href="../modules/ChongdashuJS.html">ChongdashuJS</a></li>
+                                <li><a href="../modules/Core.html">Core</a></li>
                                 <li><a href="../modules/CreateJS.html">CreateJS</a></li>
+                                <li><a href="../modules/Game.html">Game</a></li>
+                                <li><a href="../modules/Game.Component.html">Game.Component</a></li>
+                                <li><a href="../modules/Game.Node.html">Game.Node</a></li>
                             </ul>
                         </div>
                     </div>
@@ -101,210 +104,141 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: js/chongdashu/Engine.js</h1>
+<h1 class="file-heading">File: js/chongdashu/Core/System.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
- * 
- * Copyright (c) Chong-U Lim
- * http://github.com/chongdashu
- */
+* @author       Chong-U Lim &lt;me@chongdashu.com&gt;
+* @copyright    2015 Chong-U Lim
+* @module       Core
+*/
+
 this.chongdashu = this.chongdashu||{};
 
 (function() {
     &quot;use strict&quot;;
 
 /**
- * Engine
- * @class Core.Engine
+ * System represents a System of the Entity-Component-System Design
+ * paradigm.
+ *
+ * @class Core.System
  * @constructor
  **/
-var Engine = function() {
-    this.init();
+var System = function(nodeType) {
+    this.init(nodeType);
 };
-var p = Engine.prototype;
-Engine.prototype.constructor = Engine;
-
-    p.entities = [];
-    p.entityMap = {};
-    p.systems = [];
-    p.families = {};
-    p.isUpdating = false;
-
-    p.onUpdateCompleteCallbacks = [];
-
-    p.init = function()
-    {
-        console.log(&quot;[Engine], init()&quot;);
-        this.entities = [];
-        this.entityMap = {};
-        this.systems = [];
-        this.families = {};
-        this.onUpdateCompleteCallbacks = [];
-        this.isUpdating = false;
-       
-    };
-
-    // -- Entity-related
-
-    p.addEntity = function(entity) {
-        if (entity._name in this.entityMap) {
-            console.error(&quot;Entity with name=%s already exists.&quot;, entity._name);
-        }
-
-        // add entity to list 
-        this.entities.push(entity);
-
-        // add entity to map
-        this.entityMap[entity._name] = entity;
-
-        // link callbacks
-        entity.addOnComponentAddCallback(this.onComponentAddCallback);
-        entity.addOnComponentRemoveCallback(this.onComponentRemoveCallback);
-
-        var keys = Object.keys(this.families);
-        for (var i=0; i &lt; keys.length; i++) {
-            // Add entity to families
-            this.families[keys[i]].addEntity(entity);
-        }
-
-    };
-
-    p.removeEntity = function(entity) {
-        if (!(entity._name in this.entityMap)) {
-            console.error(&quot;Entity with name=%s doesn&#x27;t exists&quot;, entity._name);
-        }
-        
-        // remove entity from list
-        this.entities.splice(this.entities.indexOf(entity), 1);
-        
-        // remove entity from map
-        delete this.entityMap[entity._name];
-
-        // unlink callbacks
-        entity.removeOnComponentAddCallback(this.onComponentAddCallback);
-        entity.removeOnComponentRemoveCallback(this.onComponentRemoveCallback);
-
-        var keys = Object.keys(this.families);
-        for (var i=0; i &lt; keys.length; i++) {
-            // Remove entity from families
-            this.families[keys[i]].removeEntity(entity);
-        }
-
-    };
-
-    // -- Callbacks
-
-    p.onComponentAddCallback = function(entity, componentType) {
-
-    };
-
-    p.onComponentRemoveCallback = function(entity, componentType) {
-
-    };
-
-    p.getEntity = function(name) {
-        if (name in this.entityMap) {
-            return this.entityMap[name];
-        }
-        return null;
-    };
-
-    p.getEntities = function() {
-        return this.entities;
-    };
-
-    // -- Node-related
+var p = System.prototype;
+System.prototype.constructor = System;
+    
+    /**
+    * Indicates if the system is currently enabled or not. 
+    * If not enabled, no system or node updates will be performed.
+    * @property enabled
+    *
+    * @type boolean
+    * @default true
+    */
+    p.enabled = false;
 
     /**
-     * 
-     */
-    p.getNodes = function(nodeClass) {
-        console.log(&quot;nodeClass=%o&quot;, nodeClass);
-        var nodeType = nodeClass.TYPE;
+    * The priority of the current system. This is used by the 
+    * {{#crossLink &quot;Core.Engine&quot;}}{{/crossLink}} to order the sequence of systems
+    * that it processes. Lower priority numbers are executed first.
+    *
+    * @property priority
+    * @type {integer}
+    * @default 0
+    */
+    p.priority = 0;
 
-        if (nodeType in this.families) {
-            // return family associated with this node type
-            return this.families[nodeType].nodes;
-        }
+    /**
+    * An array of {{#crossLink &quot;Core.Node&quot;}}{{/crossLink}} objects that 
+    * this system manages based on the {{#crossLink &quot;Core.Node/Core.Node.TYPE:property&quot;}}{{/crossLink}}
+    * @property nodes
+    * @type {Array}
+    */
+    p.nodes = null;
 
-        // create new family for this node type
-        var family = new chongdashu.Family(nodeClass, this);
+    /**
+    * The {{#crossLink &quot;Core.Node/Core.Node.TYPE:property&quot;}}{{/crossLink}} that this system
+    * will be responsible for.
+    * @property String
+    * @type Core.Node.TYPE
+    */
+    p.nodeType = null;
 
-        // add family to map
-        this.families[nodeType] = family;
 
-        // add existing entities to family
-        for (var i=0; i &lt; this.entities.length; i++) {
-            family.addEntity(entities[i]);
-        }
+    /**
+    * The initialization method is called when the object is constructor.
+    *
+    * @method init
+    * @param {string} nodeType The type of the node. See {{#crossLink &quot;Core.Node/Core.Node.TYPE:property&quot;}}{{/crossLink}}.
+    */
+    p.init = function(nodeType)
+    {
+        console.log(&quot;[System], init()&quot;);
+        this.priority = 0;
+        this.enabled = true;
 
-        // return node group
-        return family.nodes;
+        this.nodeType = nodeType;
     };
 
-    p.clearNodes = function(nodeType) {
-        if (nodeType in this.families) {
-            this.families[nodeType].clear();
-        }
-
-        delete this.families[nodeType];
-    };
-
-    // -- System
-    p.addSystem = function(system, priority) {
-        system.priority = priority;
-        
-        this.systems.push(system);
-        system.onEngineAdd(this);
-    };
-
-    p.removeSystem = function(system) {
-        this.systems.splice(this.systems.indexOf(system),1);
-        system.onEngineRemove(this);
-    };
-
-    p.getSystem = function(systemType) {
-        for (var i=0; i &lt; this.systems.length; i++) {
-            if (this.systems[i].getType() == systemType) {
-                return this.systems[i];
+    /**
+    * The update loop of this system, as called by a given
+    * {{#crossLink &quot;Core.Engine&quot;}}{{/crossLink}}&#x27;s update loop.
+    * All related {{#crossLink &quot;Core.Node&quot;}}{{/crossLink}} objects are
+    * updated. Handling of each node individually can be performed
+    * by overriding the {{#crossLink &quot;Core.System/updateNode:method&quot;}}{{/crossLink}} method.
+    * 
+    *
+    * @method update
+    */
+    p.update = function() {
+        if (this.nodes) {
+            for (var i=0; i &lt; this.nodes.length; i++) {
+                this.updateNode(this.nodes[i]);
             }
         }
-
-        return null;
     };
 
-    p.getSystems = function() {
-        return this.systems;
+    /**
+    * @method updateNode
+    * @param {Core.Node} node The node to be updated
+    */
+    p.updateNode = function(node) {
     };
 
-    p.preUpdate = function() {
-
+    /**
+    * Callback method when this system is added to the engine.
+    *
+    * @method onEngineAdd
+    * @param {Core.Engine} engine reference to the {{#crossLink &quot;Core.Engine&quot;}}{{/crossLink}} object.
+    */
+    p.onEngineAdd = function(engine) {
+        this.nodes = engine.getNodes(this.nodeType);
     };
 
-    p.update = function()  {
-        this.isUpdating = true;
-        var i=0;
-        for (i=0; i &lt; this.systems.length; i++) {
-            this.systems[i].update();
-        }
-        this.isUpdating = false;
-
-        for (i=0; i &lt; this.onUpdateCompleteCallbacks.length; i++) {
-            this.onUpdateCompleteCallbacks[i](this);
-        }
+    /**
+    * Callback method when this system is removed from the engine.
+    *
+    * @method onEngineRemove
+    * @param {Core.Engine} engine reference to the {{#crossLink &quot;Core.Engine&quot;}}{{/crossLink}} object.
+    */
+    p.onEngineRemove = function(engine) {
+        this.nodes = null;
     };
-
-    p.postUpdate = function() {
-
-    };
+    
 
 // Link
 // ----
-chongdashu.Engine = Engine;
+chongdashu.System = System;
 
 }());
+
+
+
     </pre>
 </div>
                     </div>
