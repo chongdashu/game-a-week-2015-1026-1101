@@ -12,6 +12,7 @@ this.chongdashu = this.chongdashu||{};
  * ArcadeSpriteComponent
  * @class Game.Component.ArcadeSpriteComponent
  * @extends Core.Component
+ * @extends Game.Component.SpriteComponent
  * @constructor
  **/
 var ArcadeSpriteComponent = function(sprite, arcade) {
@@ -20,6 +21,14 @@ var ArcadeSpriteComponent = function(sprite, arcade) {
 };
 var p = createjs.extend(ArcadeSpriteComponent, chongdashu.SpriteComponent);
     
+    /**
+    * The type identifier of this component.
+    *
+    * @property Game.ArcadeSpriteComponent.TYPE
+    * @type String
+    * @static
+    * @final
+    */
     ArcadeSpriteComponent.TYPE = "component:ArcadeSpriteComponent";
 
     p.body = null;

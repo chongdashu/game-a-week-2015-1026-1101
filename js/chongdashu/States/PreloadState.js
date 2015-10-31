@@ -10,6 +10,7 @@ this.chongdashu = this.chongdashu||{};
 
 /**
  * PreloadState
+ *
  * @class State.PreloadState
  * @constructor
  **/
@@ -28,8 +29,6 @@ var p = PreloadState.prototype;
 
         // Preloader specific stuff.
         // -------------------------
-        
-
         this.loadingFrame = this.game.add.sprite(0,0, "preloader-frame");
         this.loadingBar = this.game.add.sprite(0,0, "preloader-bar");
         this.loadingText = this.game.add.text(0,0, "Loading: 0%", { font: "16pt Garamond", align: "center", fill : "#FFFFFF", stroke : "black", strokeThickness: 1});

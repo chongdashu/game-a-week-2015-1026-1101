@@ -20,6 +20,14 @@ var EnemyComponent = function() {
 };
 var p = createjs.extend(EnemyComponent, chongdashu.Component);
     
+    /**
+    * The type identifier of this component.
+    *
+    * @property Game.EnemyComponent.TYPE
+    * @type String
+    * @static
+    * @final
+    */
     EnemyComponent.TYPE = "component:EnemyComponent";
 
     p.audioCache = {};

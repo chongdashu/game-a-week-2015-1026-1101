@@ -20,6 +20,14 @@ var AudioComponent = function() {
 };
 var p = createjs.extend(AudioComponent, chongdashu.Component);
     
+    /**
+    * The type identifier of this component.
+    *
+    * @property Game.AudioComponent.TYPE
+    * @type String
+    * @static
+    * @final
+    */
     AudioComponent.TYPE = "component:AudioComponent";
 
     p.audioCache = {};

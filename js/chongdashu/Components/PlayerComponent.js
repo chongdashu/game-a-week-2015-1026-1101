@@ -20,6 +20,14 @@ var PlayerComponent = function() {
 };
 var p = createjs.extend(PlayerComponent, chongdashu.Component);
     
+    /**
+    * The type identifier of this component.
+    *
+    * @property Game.PlayerComponent.TYPE
+    * @type String
+    * @static
+    * @final
+    */
     PlayerComponent.TYPE = "component:PlayerComponent";
 
     p.audioCache = {};

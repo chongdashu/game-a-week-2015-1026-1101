@@ -1,10 +1,16 @@
+/* global Chongashu:true */
+/**
+* @author       Chong-U Lim <me@chongdashu.com>
+* @copyright    2015 Chong-U Lim
+* @license      {@link https://github.com/chongdashu/game-a-week-2015-1026-1101/blob/master/LICENSE|MIT License}
+*/
+
 var game = null;
 
 var GLOBAL_GAME_WIDTH = 640;
 var GLOBAL_GAME_HEIGHT = 480;
 
 var data = {};
-
 
 $(document).ready(function() {
     

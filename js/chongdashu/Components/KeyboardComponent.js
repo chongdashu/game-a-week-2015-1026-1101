@@ -9,7 +9,9 @@ this.chongdashu = this.chongdashu||{};
     "use strict";
 
 /**
- * KeyboardComponent
+ * KeyboardComponent is a wrapper for a game's
+ * keyboard key states.
+ *
  * @class Game.Component.KeyboardComponent
  * @extends Core.Component
  * @constructor
@@ -21,7 +23,14 @@ var KeyboardComponent = function(keyboard) {
 var p = createjs.extend(KeyboardComponent, chongdashu.Component);
     
     // --
-    
+    /**
+    * The type identifier of this component.
+    *
+    * @property Game.KeyboardComponent.TYPE
+    * @type String
+    * @static
+    * @final
+    */
     KeyboardComponent.TYPE = "component:KeyboardComponent";
 
     // --

@@ -20,6 +20,14 @@ var SpriteComponent = function(sprite) {
 };
 var p = createjs.extend(SpriteComponent, chongdashu.Component);
     
+    /**
+    * The type identifier of this component.
+    *
+    * @property Game.SpriteComponent.TYPE
+    * @type String
+    * @static
+    * @final
+    */
     SpriteComponent.TYPE = "component:SpriteComponent";
 
     p.sprite = null;
