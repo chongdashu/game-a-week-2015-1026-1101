@@ -35,15 +35,17 @@ System.prototype.constructor = System;
 
     /**
     * The priority of the current system. This is used by the 
-    * {{#crossLink "Engine"}}{{/crossLink}} to order the sequence of systems
+    * {{#crossLink "Core.Engine"}}{{/crossLink}} to order the sequence of systems
     * that it processes. Lower priority numbers are executed first.
     *
     * @property priority
-    * @type integer
+    * @type {integer}
     */
     p.priority = 0;
 
     /**
+    * An array of {{#crossLink "Core.Node"}}{{/crossLink}} objects that 
+    * this system manages based on the {{#crossLink "Core.Node/Core.Node.TYPE:property"}}{{/crossLink}}
     * @property nodes
     * @type {Array}
     */

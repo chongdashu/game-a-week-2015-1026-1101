@@ -22,6 +22,14 @@ Node.prototype.constructor = Node;
     p.entity = null;
     p.nodeType = "";
 
+    /**
+    * @property Core.Node.TYPE
+    * @type String
+    * @static
+    * @final
+    */
+    Node.TYPE = "type";
+
     p.init = function(nodeType, entity)
     {
         console.log("[Node], init()");
