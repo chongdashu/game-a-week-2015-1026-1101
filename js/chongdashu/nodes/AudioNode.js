@@ -20,7 +20,7 @@ var AudioNode = function(entity) {
 };
 var p = createjs.extend(AudioNode, chongdashu.Node);
     
-    AudioNode.TYPE = "component:AudioNode";
+    AudioNode.TYPE = "node:AudioNode";
 
     AudioNode.COMPONENT_TYPES = [
         chongdashu.AudioComponent.TYPE

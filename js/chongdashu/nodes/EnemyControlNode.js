@@ -20,7 +20,7 @@ var EnemyControlNode = function(entity) {
 };
 var p = createjs.extend(EnemyControlNode, chongdashu.Node);
     
-    EnemyControlNode.TYPE = "component:EnemyControlNode";
+    EnemyControlNode.TYPE = "node:EnemyControlNode";
 
     EnemyControlNode.COMPONENT_TYPES = [
         chongdashu.EnemyComponent.TYPE,

@@ -20,7 +20,7 @@ var PlayerControlNode = function(entity) {
 };
 var p = createjs.extend(PlayerControlNode, chongdashu.Node);
     
-    PlayerControlNode.TYPE = "component:PlayerControlNode";
+    PlayerControlNode.TYPE = "node:PlayerControlNode";
 
     PlayerControlNode.COMPONENT_TYPES = [
         chongdashu.PlayerComponent.TYPE,

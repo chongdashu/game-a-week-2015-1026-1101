@@ -20,7 +20,7 @@ var KeyboardControlNode = function(entity) {
 };
 var p = createjs.extend(KeyboardControlNode, chongdashu.Node);
     
-    KeyboardControlNode.TYPE = "component:KeyboardControlNode";
+    KeyboardControlNode.TYPE = "node:KeyboardControlNode";
 
     KeyboardControlNode.COMPONENT_TYPES = [
         chongdashu.KeyboardComponent.TYPE
