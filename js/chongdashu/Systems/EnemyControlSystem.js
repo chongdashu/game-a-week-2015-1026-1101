@@ -1,6 +1,6 @@
 /**
  * 
- * Copyright (c) Chong-U Lim
+ * @author Chong-U Lim
  * http://github.com/chongdashu
  */
 this.chongdashu = this.chongdashu||{};

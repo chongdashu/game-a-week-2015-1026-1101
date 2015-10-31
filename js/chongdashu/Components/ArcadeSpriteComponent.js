@@ -1,8 +1,8 @@
 /**
- * 
- * Copyright (c) Chong-U Lim
- * http://github.com/chongdashu
- */
+* @author       Chong-U Lim <me@chongdashu.com>
+* @copyright    2015 Chong-U Lim
+* @module       Game.Component
+*/
 this.chongdashu = this.chongdashu||{};
 
 (function() {
@@ -21,14 +21,6 @@ var ArcadeSpriteComponent = function(sprite, arcade) {
 };
 var p = createjs.extend(ArcadeSpriteComponent, chongdashu.SpriteComponent);
     
-    /**
-    * The type identifier of this component.
-    *
-    * @property Game.ArcadeSpriteComponent.TYPE
-    * @type String
-    * @static
-    * @final
-    */
     ArcadeSpriteComponent.TYPE = "component:ArcadeSpriteComponent";
 
     p.body = null;

@@ -1,11 +1,8 @@
 /**
 * @author       Chong-U Lim <me@chongdashu.com>
 * @copyright    2015 Chong-U Lim
+* @module       Core
 */
-
- /**
- * @module ChongdashuJS
- */
 
 this.chongdashu = this.chongdashu||{};
 
@@ -15,6 +12,7 @@ this.chongdashu = this.chongdashu||{};
 /**
  * System represents a System of the Entity-Component-System Design
  * paradigm.
+ *
  * @class Core.System
  * @constructor
  **/
