@@ -30,6 +30,7 @@ System.prototype.constructor = System;
     * If not enabled, no system or node updates will be performed.
     * @property enabled
     * @type boolean
+    * @default true
     */
     p.enabled = false;
 
@@ -40,6 +41,7 @@ System.prototype.constructor = System;
     *
     * @property priority
     * @type {integer}
+    * @default 0
     */
     p.priority = 0;
 
@@ -50,6 +52,13 @@ System.prototype.constructor = System;
     * @type {Array}
     */
     p.nodes = null;
+
+    /**
+    * The {{#crossLink "Core.Node/Core.Node.TYPE:property"}}{{/crossLink}} that this system
+    * will be responsible for.
+    * @property String
+    * @type Core.Node.TYPE
+    */
     p.nodeType = null;
 
     p.init = function(nodeType)
