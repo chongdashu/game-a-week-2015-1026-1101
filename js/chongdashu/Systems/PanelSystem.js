@@ -50,39 +50,77 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
         var sc = node.sc; // SpriteComponent
         var ic = node.ic; // InputComponent
 
-        if (ic.input.pointerDown()) {
-            console.log(node.entity._name);
+        if (ic.input.pointerOver()) {
+            sc.sprite.scale.set(1.1);
         }
+        else {
+            sc.sprite.scale.set(1.0);
+        }
+
+        if (!this.isInPosition(pc, sc)) {
+            this.moveToPosition(pc, sc, true);
+        }
+        else {
+            this.moveToPosition(pc, sc);
+        }
+
+    };
+
+    p.getPanelPosition = function(row, col) {
+        var xPosition = 0;
+        var yPosition = 0;
+
+        xPosition = -game.world.width/2 + 128/2 + 8;
+        yPosition = -game.world.height/2 + 256/2 + 16;
+
+        xPosition += col*((32) + (128) + (4));
+        yPosition += row*((32) + (128) + (8));
+
+        return new Phaser.Point(xPosition, yPosition);
+    };
+
+    p.moveToPosition = function(pc, sc, lerp) {
+
+        if (typeof lerp == "undefined" || lerp === null || !lerp) {
+            lerp = false;
+        }
+
+        var row = pc.row;
+        var column = pc.col;
+
+        var position = this.getPanelPosition(row, column);
+
+        var xPosition = position.x;
+        var yPosition = position.y;
+
+        if (lerp) {
+            sc.sprite.x += (xPosition - sc.sprite.x)/10;
+            sc.sprite.y += (yPosition - sc.sprite.y)/10;
+        }
+        else {
+            sc.sprite.x = xPosition;
+            sc.sprite.y = yPosition;
+        }
+
+    };
+
+    p.isInPosition = function(pc, sc) {
+
+        var row = pc.row;
+        var column = pc.col;
+
+        var position = this.getPanelPosition(row, column);
+
+        var xPosition = position.x;
+        var yPosition = position.y;
+
+        return Phaser.Math.fuzzyEqual(xPosition, sc.sprite.x, 1) &&
+                Phaser.Math.fuzzyEqual(yPosition, sc.sprite.y, 1);
+        
     };
 
     p.onEngineAdd = function(engine) {
         this.System_onEngineAdd(engine);
-
-        for (var i=0; i < this.nodes.length; i++) {
-
-            var node = this.nodes[i];
-            var pc = node.pc; // PanelComponent
-            var sc = node.sc; // SpriteComponent
-            var ic = node.ic; // InputComponent
-
-            var row = pc.row;
-            var column = pc.col;
-
-            var xPosition = 0;
-            var yPosition = 0;
-
-            xPosition = -game.world.width/2 + 128/2 + 8;
-            yPosition = -game.world.height/2 + 256/2 + 16;
-
-            xPosition += column*((32) + (128) + (4));
-            yPosition += row*((32) + (128) + (8));
-
-            sc.sprite.x = xPosition;
-            sc.sprite.y = yPosition;
-
-            // console.log("%o %s (%s, %s) (%s,%s)", node, node.entity._name, pc.row, pc.col, xPosition, yPosition);
-        }
-       
     };
 
 // Link

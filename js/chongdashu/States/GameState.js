@@ -28,10 +28,11 @@ var p = GameState.prototype;
 
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        this.createPanels();
-        this.createPlayer();
-        this.createEnemy();
         this.createSystems();
+        this.createPanels();
+        // this.createPlayer();
+        // this.createEnemy();
+        
        
     };
 
