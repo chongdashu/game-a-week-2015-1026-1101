@@ -63,13 +63,29 @@ var p = GameState.prototype;
     };
 
     p.createPlaySequence = function(sequence) {
-        this.engine.addEntity(new chongdashu.Entity()
+        if (this.sequencePlayEntity) {
+            this.engine.removeEntity(this.sequencePlayEntity);
+            this.sequencePlayEntity = null;
+        }
+
+        this.engine.addEntity(this.sequencePlayEntity = new chongdashu.Entity("PlaySequence")
             .add(new chongdashu.SequenceComponent(sequence))
             .add(new chongdashu.SequencePlayComponent(sequence)));
     };
 
+    p.removePlaySequence = function() {
+        if (this.sequencePlayEntity) {
+            this.engine.removeEntity(this.sequencePlayEntity);
+        }
+    };
+
     p.createSequenceChecker = function(sequence) {
-        this.engine.addEntity(new chongdashu.Entity()
+        if (this.sequenceCheckEntity) {
+            this.engine.removeEntity(this.sequenceCheckEntity);
+            this.sequenceCheckEntity = null;
+        }
+
+        this.engine.addEntity(this.sequenceCheckEntity = new chongdashu.Entity("SequenceChecker")
             .add(new chongdashu.SequenceComponent(sequence))
             .add(new chongdashu.SequenceCheckComponent(sequence)));
     };

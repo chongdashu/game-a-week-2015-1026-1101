@@ -31,7 +31,7 @@ var p = createjs.extend(SequenceCheckComponent, chongdashu.Component);
     SequenceCheckComponent.TYPE = "component:SequenceCheckComponent";
 
     p.sequence = null;
-    p.sequencePointer = -1;
+    p.sequencePointer = 0;
 
     p.init = function(sequence)
     {
@@ -39,7 +39,7 @@ var p = createjs.extend(SequenceCheckComponent, chongdashu.Component);
         this.Component_init(SequenceCheckComponent.TYPE);
 
         this.sequence = sequence;
-        this.sequencePointer = -1;
+        this.sequencePointer = 0;
         
     };
 

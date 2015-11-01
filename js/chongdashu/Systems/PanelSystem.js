@@ -27,6 +27,9 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
     p.onCompleteCallback = null;
     p.callbackContext = null;
 
+    p.onPanelPressCallbacks = [];
+    p.onPanelPressCallbackContexts = [];
+
     p.init = function(numberOfRows, panelsPerRow, tweens)
     {
         console.log("[PanelSystem], init()");
@@ -46,6 +49,7 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
         this.panelsPerRow = panelsPerRow;
         this.panelToPlay = -1;
         this.tweens = tweens;
+        this.onPanelPressCallbacks = [];
     };
 
     p.updateNode = function(node) {
@@ -87,11 +91,16 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
 
         // --
 
-        if (ic.input.pointerDown(game.input.activePointer.id)) {
+        if (ic.input.pointerDown(game.input.activePointer.id, 20)) {
            this.scaleTo(sc, 0.8, true);
+           
         }
         else {
             sc.sprite.scale.set(1.0);
+        }
+
+        if (ic.input.justReleased(game.input.activePointer.id, 20)) {
+            this.onPanelPress(pc);
         }
 
         if (!this.isInPosition(pc, sc)) {
@@ -101,6 +110,23 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
             this.moveToPosition(pc, sc);
         }
 
+    };
+
+    p.addOnPanelPressCallback = function(callback, context) {
+        this.onPanelPressCallbacks.push(callback);
+        this.onPanelPressCallbackContexts.push(context);
+    };
+
+    p.removeOnPanelPressCallback = function(callback, context) {
+        this.onPanelPressCallbacks.splice(this.onPanelPressCallbacks.indexOf(callback), 1);
+        this.onPanelPressCallbackContexts.splice(this.onPanelPressCallbackContexts.indexOf(context), 1);
+    };
+
+    p.onPanelPress = function(pc) {
+        for (var i=0; i < this.onPanelPressCallbacks.length; i++) {
+            var context = this.onPanelPressCallbackContexts[i];
+            this.onPanelPressCallbacks[i].call(context, this.getPanelIndex(pc));
+        }
     };
 
     p.onTweenComplete = function(def, sc) {

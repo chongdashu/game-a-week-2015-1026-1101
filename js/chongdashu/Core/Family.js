@@ -34,6 +34,10 @@ Family.prototype.constructor = Family;
         this.engine = engine;
         this.nodeClass = nodeClass;
 
+        // BUG:
+        // If this line is not present, things just fall apart. FIND OUT WHY.
+        this.entityNodeMap = {};
+
         // get the list of components that this family
         // is in charge of based on the node class
         // console.log("nodeClass=%o", nodeClass);
@@ -62,7 +66,7 @@ Family.prototype.constructor = Family;
             if (!this.isEntityComponentsPresent(entity, this.components)) {
                 // if entity does not matchr required components, 
                 // do not add
-                // console.error("entity %o (%s) does not have required this.components %o", entity, entity._name, this.components);
+                // console.error("entity %o (%s) does not have required this.components %o for nodeType", entity, entity._name, this.components, this.nodeClass.TYPE);
                 return;
             }
 
@@ -73,7 +77,11 @@ Family.prototype.constructor = Family;
     };
 
     p.removeEntity = function(entity) {
-        if (entity._name in this.entityNodeMap) {
+
+
+        var inside = (entity._name) in this.entityNodeMap;
+        if ( (entity._name) in this.entityNodeMap) {
+            console.warn("[Family], nodeType=%s, removeEntity(%s), this=%o", this.nodeClass.TYPE, entity._name, this);
             var node = this.entityNodeMap[entity._name];
             delete this.entityNodeMap[entity._name];
             this.nodes.splice(this.nodes.indexOf(node), 1);

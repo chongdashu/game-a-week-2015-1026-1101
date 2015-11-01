@@ -38,13 +38,11 @@ var p = createjs.extend(TurnTakingSystem, chongdashu.System);
     p.createNextTurn = function() {
         if (this.isPlayerTurn) {
             // prepare an entity to check player
+            this.state.removePlaySequence();
             this.state.createSequenceChecker(this.currentSequence);
         }
         else {
             // prepare next sequence
-            this.currentSequence.push(Math.floor(this.numberOfPanels * Math.random()));
-            this.currentSequence.push(Math.floor(this.numberOfPanels * Math.random()));
-            this.currentSequence.push(Math.floor(this.numberOfPanels * Math.random()));
             this.currentSequence.push(Math.floor(this.numberOfPanels * Math.random()));
             this.state.createPlaySequence(this.currentSequence);
         }
@@ -85,9 +83,8 @@ var p = createjs.extend(TurnTakingSystem, chongdashu.System);
             if (this.sequencePlayingSystem.isCompleted) {
 
                 // sequence has finished playing
-
                 this.isPlayerTurn = true;
-                this.sequenceCheckingSystem.isCompleted = false;
+                this.sequencePlayingSystem.isCompleted = false;
 
                 this.createNextTurn();
             }
@@ -95,12 +92,22 @@ var p = createjs.extend(TurnTakingSystem, chongdashu.System);
 
         else {
 
-            if (this.sequenceCheckingSystem.isCompleted) {
+            if (this.sequenceCheckingSystem.isCompleted || this.sequenceCheckingSystem.isFailed) {
 
-                this.isPlayerTurn = false;
+                if (this.sequenceCheckingSystem.isCompleted) {
+                    // Got correct
+                    this.isPlayerTurn = false;
+                    this.createNextTurn();
+                }
+
+                else {
+                    // Got it wrong
+                    this.state.game.state.start("MenuState");
+
+                }
+
                 this.sequenceCheckingSystem.isCompleted = false;
-
-                this.createNextTurn();
+                this.sequenceCheckingSystem.isFailed = false;
 
             }
 

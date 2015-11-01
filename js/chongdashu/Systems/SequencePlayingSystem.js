@@ -28,10 +28,16 @@ var p = createjs.extend(SequencePlayingSystem, chongdashu.System);
         this.System_init(chongdashu.SequencePlayingNode);
     };
 
+    p.update = function() {
+        this.System_update();
+    };
+
     p.updateNode = function(node) {
 
         // -- perform superclass update first
         this.System_updateNode(node);
+
+        console.warn("[SequencePlayingSystem], updateNode, node.entity=%s", node.entity._name);
         
         var sc = node.sc;
         var spc = node.spc;
@@ -55,6 +61,10 @@ var p = createjs.extend(SequencePlayingSystem, chongdashu.System);
 
     p.onPlayPanelComplete = function(spc) {
         this.isPlaying = false;
+
+        if (!this.panelSystem) {
+            this.panelSystem = this.engine.getSystem(chongdashu.PanelSystem);
+        }
 
         spc.sequencePointer++;
         

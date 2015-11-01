@@ -15,7 +15,7 @@ this.chongdashu = this.chongdashu||{};
  * @constructor
  **/
 var SequencePlayingNode = function(entity) {
-    // @param {Phaser.Keyboard} entity
+    // SequencePlayingNode
     this.init(entity);
 };
 var p = createjs.extend(SequencePlayingNode, chongdashu.Node);

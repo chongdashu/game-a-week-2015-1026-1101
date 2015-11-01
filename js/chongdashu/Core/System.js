@@ -89,9 +89,10 @@ System.prototype.constructor = System;
     * @method update
     */
     p.update = function() {
-        if (this.nodes) {
-            for (var i=0; i < this.nodes.length; i++) {
-                this.updateNode(this.nodes[i]);
+        var nodes = this.engine.getNodes(this.nodeType);
+        if (nodes) {
+            for (var i=0; i < nodes.length; i++) {
+                this.updateNode(nodes[i]);
             }
         }
     };
@@ -111,7 +112,6 @@ System.prototype.constructor = System;
     */
     p.onEngineAdd = function(engine) {
         this.engine = engine;
-        this.nodes = engine.getNodes(this.nodeType);
     };
 
     /**
@@ -122,7 +122,6 @@ System.prototype.constructor = System;
     */
     p.onEngineRemove = function(engine) {
         this.engine = null;
-        this.nodes = null;
     };
 
     p.getType = function() {

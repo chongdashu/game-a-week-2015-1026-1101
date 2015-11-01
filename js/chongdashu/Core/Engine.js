@@ -69,9 +69,6 @@ Engine.prototype.constructor = Engine;
             console.error("Entity with name=%s doesn't exists", entity._name);
         }
         
-        // remove entity from list
-        this.entities.splice(this.entities.indexOf(entity), 1);
-        
         // remove entity from map
         delete this.entityMap[entity._name];
 
@@ -85,6 +82,8 @@ Engine.prototype.constructor = Engine;
             this.families[keys[i]].removeEntity(entity);
         }
 
+        // remove entity from list
+        this.entities.splice(this.entities.indexOf(entity), 1);
     };
 
     // -- Callbacks
