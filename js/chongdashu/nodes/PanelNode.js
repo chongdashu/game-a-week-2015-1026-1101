@@ -24,7 +24,7 @@ var p = createjs.extend(PanelNode, chongdashu.Node);
 
     PanelNode.COMPONENT_TYPES = [
         chongdashu.PanelComponent.TYPE,
-        chongdashu.MouseComponent.TYPE,
+        chongdashu.InputComponent.TYPE,
         chongdashu.SpriteComponent.TYPE
     ];
 
@@ -38,7 +38,7 @@ var p = createjs.extend(PanelNode, chongdashu.Node);
         this.Node_init(PanelNode.TYPE, entity);
 
         // -- Add references to entity's components here.
-        this.mc = entity.get(chongdashu.MouseComponent.TYPE);
+        this.ic = entity.get(chongdashu.InputComponent.TYPE);
         this.sc = entity.get(chongdashu.SpriteComponent.TYPE);
         this.pc = entity.get(chongdashu.PanelComponent.TYPE);
     };

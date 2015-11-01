@@ -48,8 +48,11 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
 
         var pc = node.pc; // PanelComponent
         var sc = node.sc; // SpriteComponent
-        var mc = node.mc; // MouseComponent
+        var ic = node.ic; // InputComponent
 
+        if (ic.input.pointerDown()) {
+            console.log(node.entity._name);
+        }
     };
 
     p.onEngineAdd = function(engine) {
@@ -60,7 +63,7 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
             var node = this.nodes[i];
             var pc = node.pc; // PanelComponent
             var sc = node.sc; // SpriteComponent
-            var mc = node.mc; // MouseComponent
+            var ic = node.ic; // InputComponent
 
             var row = pc.row;
             var column = pc.col;

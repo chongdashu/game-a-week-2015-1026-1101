@@ -48,9 +48,10 @@ var p = GameState.prototype;
 
         for (var i=0; i < numberOfRows; i++) {
             for (var j=0; j < panelsPerRow; j++) {
+                var sprite = this.game.add.sprite(0, 0, "panel");
                 this.engine.addEntity(new chongdashu.Entity()
-                    .add(new chongdashu.SpriteComponent(this.game.add.sprite(0, 0, "panel")))
-                    .add(new chongdashu.MouseComponent(this.game.input.mouse))
+                    .add(new chongdashu.SpriteComponent(sprite))
+                    .add(new chongdashu.InputComponent(sprite))
                     .add(new chongdashu.PanelComponent(i, j)));
             }
         }
