@@ -51,7 +51,7 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
         var ic = node.ic; // InputComponent
 
 
-        if (ic.input.pointerDown(game.input.activePointer)) {
+        if (ic.input.pointerDown(game.input.activePointer.id)) {
            this.scaleTo(sc, 0.8, true);
         }
         else {
