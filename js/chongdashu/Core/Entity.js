@@ -37,8 +37,6 @@ Entity.prototype.constructor = Entity;
             this._name = name;
         }
 
-        console.log("this._name=%s", this._name);
-
         this._components = {};
         this.onComponentAddCallbacks = [];
         this.onComponentRemoveCallbacks = [];

@@ -31,7 +31,36 @@ var p = GameState.prototype;
         this.createSystems();
         this.createPlayer();
         this.createEnemy();
+        this.createPanels();
+    };
 
+    p.createPanels = function(numberOfRows, panelsPerRow) {
+        if (typeof numberOfRows == "undefined" || numberOfRows === null) {
+            numberOfRows = 2;
+        }
+
+        if (typeof panelsPerRow == "undefined" || panelsPerRow === null) {
+            panelsPerRow = 4;
+        }
+
+        this.panels = [];
+
+        for (var i=0; i < numberOfRows; i++) {
+            for (var j=0; j < panelsPerRow; j++) {
+
+                var xPosition = 0;
+                var yPosition = 0;
+
+                xPosition = -this.world.width/2 + 128/2 + 8;
+                yPosition = -this.world.height/2 + 256/2 + 16;
+
+                xPosition += j*((32) + (128) + (4));
+                yPosition += i*((32) + (128) + (8));
+
+                this.panels.push(new chongdashu.Entity()
+                    .add(new chongdashu.SpriteComponent(this.game.add.sprite(xPosition, yPosition, "panel"))));
+            }
+        }
     };
 
     p.createSystems = function() {

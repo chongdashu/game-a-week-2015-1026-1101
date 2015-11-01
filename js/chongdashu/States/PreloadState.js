@@ -43,6 +43,7 @@ var p = PreloadState.prototype;
         // Loading begins here.
         // --------------------
         this.load.image("player", "res/player.png");
+        this.load.image("panel", "res/panel.png");
        
     };
 
