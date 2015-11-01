@@ -70,15 +70,11 @@ var p = createjs.extend(SequenceCheckingSystem, chongdashu.System);
 
                 if (this.panelIndex >= 0) {
 
-                    console.error("pointer=" + scc.sequencePointer);
-
                     var expectedPanelIndex = scc.sequence[scc.sequencePointer];
                     if (this.panelIndex == expectedPanelIndex) {
                         scc.sequencePointer++;
-                        console.error("RIGHT: expected=%s, actual=%s", expectedPanelIndex, this.panelIndex);
                     }
                     else {
-                        console.error("WRONG: expected=%s, actual=%s", expectedPanelIndex, this.panelIndex);
                         this.isFailed = true;
                     }
 

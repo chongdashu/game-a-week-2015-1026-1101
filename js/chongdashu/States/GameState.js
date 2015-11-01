@@ -32,6 +32,9 @@ var p = GameState.prototype;
         this.createPanels();
         // this.createPlayer();
         // this.createEnemy();
+        // 
+        this.sequencePlayEntity = null;
+        this.sequenceCheckEntity = null;
         
        
     };
@@ -76,6 +79,7 @@ var p = GameState.prototype;
     p.removePlaySequence = function() {
         if (this.sequencePlayEntity) {
             this.engine.removeEntity(this.sequencePlayEntity);
+            this.sequencePlayEntity = null;
         }
     };
 
