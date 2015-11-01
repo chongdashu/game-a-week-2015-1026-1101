@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/chongdashu/Components/AudioComponent.js</title>
+    <title>Game.System.PanelSystem</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -111,58 +111,80 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: js/chongdashu/Components/AudioComponent.js</h1>
+<h1>Game.System.PanelSystem Class</h1>
+<div class="box meta">
 
-<div class="file">
-    <pre class="code prettyprint linenums">
-/**
-* @author       Chong-U Lim &lt;me@chongdashu.com&gt;
-* @copyright    2015 Chong-U Lim
-* @module       Game.Component
-*/
-this.chongdashu = this.chongdashu||{};
+        <div class="extends">
+            Extends Game.System.System
+        </div>
 
-(function() {
-    &quot;use strict&quot;;
+        <div class="foundat">
+            Defined in: <a href="../files/js_chongdashu_Systems_PanelSystem.js.html#l11"><code>js&#x2F;chongdashu&#x2F;Systems&#x2F;PanelSystem.js:11</code></a>
+        </div>
 
-/**
- * AudioComponent
- * @class Game.Component.AudioComponent
- * @extends Core.Component
- * @constructor
- **/
-var AudioComponent = function() {
-    // @param {Phaser.Keyboard} entity
-    this.init();
-};
-var p = createjs.extend(AudioComponent, chongdashu.Component);
-    
-    /**
-    * The type identifier of this component.
-    *
-    * @property Game.AudioComponent.TYPE
-    * @type String
-    * @static
-    * @final
-    */
-    AudioComponent.TYPE = &quot;component:AudioComponent&quot;;
+            Module: <a href="../modules/Game.html">Game</a>
 
-    p.audioCache = {};
+</div>
 
-    p.init = function()
-    {
-        console.log(&quot;[AudioComponent], init()&quot;);
-        this.Component_init(AudioComponent.TYPE);
 
-        this.audioCache = {};
-    };
+<div class="box intro">
+    <p>PanelSystem</p>
 
-// Link
-// ----
-chongdashu.AudioComponent = createjs.promote(AudioComponent, &quot;Component&quot;);
+</div>
 
-}());
-    </pre>
+    <div class="constructor">
+        <h2>Constructor</h2>
+<div id="method_Game.System.PanelSystem" class="method item">
+    <h3 class="name"><code>Game.System.PanelSystem</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_chongdashu_Systems_PanelSystem.js.html#l11"><code>js&#x2F;chongdashu&#x2F;Systems&#x2F;PanelSystem.js:11</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+
+
+
+</div>
+    </div>
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+
+
+
+        </div>
+
+
+
+
+    </div>
 </div>
                     </div>
                 </div>

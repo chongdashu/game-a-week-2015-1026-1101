@@ -47,15 +47,22 @@
                                 <li><a href="../classes/Game.Component.ArcadeSpriteComponent.html">Game.Component.ArcadeSpriteComponent</a></li>
                                 <li><a href="../classes/Game.Component.AudioComponent.html">Game.Component.AudioComponent</a></li>
                                 <li><a href="../classes/Game.Component.EnemyComponent.html">Game.Component.EnemyComponent</a></li>
+                                <li><a href="../classes/Game.Component.InputComponent.html">Game.Component.InputComponent</a></li>
                                 <li><a href="../classes/Game.Component.KeyboardComponent.html">Game.Component.KeyboardComponent</a></li>
+                                <li><a href="../classes/Game.Component.MouseComponent.html">Game.Component.MouseComponent</a></li>
+                                <li><a href="../classes/Game.Component.PanelComponent.html">Game.Component.PanelComponent</a></li>
                                 <li><a href="../classes/Game.Component.PlayerComponent.html">Game.Component.PlayerComponent</a></li>
+                                <li><a href="../classes/Game.Component.PointerComponent.html">Game.Component.PointerComponent</a></li>
                                 <li><a href="../classes/Game.Component.SpriteComponent.html">Game.Component.SpriteComponent</a></li>
+                                <li><a href="../classes/Game.Component.TextComponent.html">Game.Component.TextComponent</a></li>
                                 <li><a href="../classes/Game.Node.AudioNode.html">Game.Node.AudioNode</a></li>
                                 <li><a href="../classes/Game.Node.EnemyControlNode.html">Game.Node.EnemyControlNode</a></li>
                                 <li><a href="../classes/Game.Node.KeyboardControlNode.html">Game.Node.KeyboardControlNode</a></li>
+                                <li><a href="../classes/Game.Node.PanelNode.html">Game.Node.PanelNode</a></li>
                                 <li><a href="../classes/Game.Node.PlayerControlNode.html">Game.Node.PlayerControlNode</a></li>
                                 <li><a href="../classes/Game.System.EnemyControlSystem.html">Game.System.EnemyControlSystem</a></li>
                                 <li><a href="../classes/Game.System.KeyboardControlSystem.html">Game.System.KeyboardControlSystem</a></li>
+                                <li><a href="../classes/Game.System.PanelSystem.html">Game.System.PanelSystem</a></li>
                                 <li><a href="../classes/Game.System.PlayerControlSystem.html">Game.System.PlayerControlSystem</a></li>
                                 <li><a href="../classes/State.BootState.html">State.BootState</a></li>
                                 <li><a href="../classes/State.GameState.html">State.GameState</a></li>
@@ -146,10 +153,10 @@ Family.prototype.constructor = Family;
 
         // get the list of components that this family
         // is in charge of based on the node class
-        console.log(&quot;nodeClass=%o&quot;, nodeClass);
-        console.log(&quot;nodeClass.COMPONENT_TYPES=%o&quot;, nodeClass.COMPONENT_TYPES);
+        // console.log(&quot;nodeClass=%o&quot;, nodeClass);
+        // console.log(&quot;nodeClass.COMPONENT_TYPES=%o&quot;, nodeClass.COMPONENT_TYPES);
         for (var i=0; i &lt; nodeClass.COMPONENT_TYPES.length; i++) {
-            console.log(&quot;Add: nodeClass.TYPE=&quot;, nodeClass.COMPONENT_TYPES[i]);
+            // console.log(&quot;Add: nodeClass.TYPE=&quot;, nodeClass.COMPONENT_TYPES[i]);
             this.components[nodeClass.COMPONENT_TYPES[i]] = true;
         }
 
@@ -166,8 +173,8 @@ Family.prototype.constructor = Family;
     p.addEntity = function(entity) {
         if (!(entity._name in this.entityNodeMap)) {
 
-            console.log(&quot;entity=%o&quot;, entity);
-            console.log(&quot;this.components=%o&quot;, this.components);
+            // console.log(&quot;entity=%o&quot;, entity);
+            // console.log(&quot;this.components=%o&quot;, this.components);
             
             if (!this.isEntityComponentsPresent(entity, this.components)) {
                 // if entity does not matchr required components, 

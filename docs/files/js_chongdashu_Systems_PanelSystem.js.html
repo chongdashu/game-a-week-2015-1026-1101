@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/chongdashu/Components/AudioComponent.js</title>
+    <title>js/chongdashu/Systems/PanelSystem.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -111,57 +111,168 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: js/chongdashu/Components/AudioComponent.js</h1>
+<h1 class="file-heading">File: js/chongdashu/Systems/PanelSystem.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
-* @author       Chong-U Lim &lt;me@chongdashu.com&gt;
-* @copyright    2015 Chong-U Lim
-* @module       Game.Component
-*/
+ * 
+ * @author Chong-U Lim
+ * http://github.com/chongdashu
+ */
 this.chongdashu = this.chongdashu||{};
 
 (function() {
     &quot;use strict&quot;;
 
 /**
- * AudioComponent
- * @class Game.Component.AudioComponent
- * @extends Core.Component
+ * PanelSystem
  * @constructor
+ * @class Game.System.PanelSystem
+ * @extends Game.System.System
  **/
-var AudioComponent = function() {
-    // @param {Phaser.Keyboard} entity
-    this.init();
+var PanelSystem = function(numberOfRows, panelsPerRow) {
+    this.init(numberOfRows, panelsPerRow);
 };
-var p = createjs.extend(AudioComponent, chongdashu.Component);
-    
-    /**
-    * The type identifier of this component.
-    *
-    * @property Game.AudioComponent.TYPE
-    * @type String
-    * @static
-    * @final
-    */
-    AudioComponent.TYPE = &quot;component:AudioComponent&quot;;
+var p = createjs.extend(PanelSystem, chongdashu.System);
 
-    p.audioCache = {};
+    p.numberOfRows = null;
+    p.panelsPerRow = null;
 
-    p.init = function()
+    p.init = function(numberOfRows, panelsPerRow)
     {
-        console.log(&quot;[AudioComponent], init()&quot;);
-        this.Component_init(AudioComponent.TYPE);
+        console.log(&quot;[PanelSystem], init()&quot;);
+        this.System_init(chongdashu.PanelNode);
 
-        this.audioCache = {};
+        // --
+        
+        if (typeof numberOfRows == &quot;undefined&quot; || numberOfRows === null || numberOfRows &lt;= 0) {
+            numberOfRows = 2;
+        }
+
+        if (typeof panelsPerRow == &quot;undefined&quot; || panelsPerRow === null || panelsPerRow &lt;= 0) {
+            panelsPerRow = 4;
+        }
+
+        this.numberOfRows = numberOfRows;
+        this.panelsPerRow = panelsPerRow;
+    };
+
+    p.updateNode = function(node) {
+
+        // -- perform superclass update first
+        this.System_updateNode(node);
+
+        var pc = node.pc; // PanelComponent
+        var sc = node.sc; // SpriteComponent
+        var ic = node.ic; // InputComponent
+
+
+        if (ic.input.pointerDown()) {
+            this.scaleDown(sc, 0.9, true);
+        }
+        else {
+            sc.sprite.scale.set(1.0);
+        }
+
+        if (ic.input.pointerOver()) {
+            if (!ic.input.pointerDown()) {
+                sc.sprite.scale.set(1.1);
+            }
+        }
+        else {
+            sc.sprite.scale.set(1.0);
+        }
+
+        if (!this.isInPosition(pc, sc)) {
+            this.moveToPosition(pc, sc, true);
+        }
+        else {
+            this.moveToPosition(pc, sc);
+        }
+
+    };
+
+    p.getPanelPosition = function(row, col) {
+        var xPosition = 0;
+        var yPosition = 0;
+
+        xPosition = -game.world.width/2 + 128/2 + 8;
+        yPosition = -game.world.height/2 + 256/2 + 16;
+
+        xPosition += col*((32) + (128) + (4));
+        yPosition += row*((32) + (128) + (8));
+
+        return new Phaser.Point(xPosition, yPosition);
+    };
+
+    p.scaleDown = function (sc, scale, lerp)  {
+         if (typeof lerp == &quot;undefined&quot; || lerp === null || !lerp) {
+            lerp = false;
+        }
+
+        if (lerp) {
+            sc.sprite.scale.x += (scale - sc.sprite.scale.x) / 4;
+            sc.sprite.scale.y += (scale - sc.sprite.scale.y) / 4;
+        }
+        else {
+            sc.sprite.scale.x = scale;
+            sc.sprite.scale.y = scale;
+        }
+    };
+
+    p.moveToPosition = function(pc, sc, lerp) {
+
+        if (typeof lerp == &quot;undefined&quot; || lerp === null || !lerp) {
+            lerp = false;
+        }
+
+        var row = pc.row;
+        var column = pc.col;
+
+        var position = this.getPanelPosition(row, column);
+
+        var xPosition = position.x;
+        var yPosition = position.y;
+
+        if (lerp) {
+            sc.sprite.x += (xPosition - sc.sprite.x)/10;
+            sc.sprite.y += (yPosition - sc.sprite.y)/10;
+        }
+        else {
+            sc.sprite.x = xPosition;
+            sc.sprite.y = yPosition;
+        }
+
+    };
+
+    p.isInPosition = function(pc, sc) {
+
+        var row = pc.row;
+        var column = pc.col;
+
+        var position = this.getPanelPosition(row, column);
+
+        var xPosition = position.x;
+        var yPosition = position.y;
+
+        return Phaser.Math.fuzzyEqual(xPosition, sc.sprite.x, 1) &amp;&amp;
+                Phaser.Math.fuzzyEqual(yPosition, sc.sprite.y, 1);
+        
+    };
+
+    p.onEngineAdd = function(engine) {
+        this.System_onEngineAdd(engine);
     };
 
 // Link
 // ----
-chongdashu.AudioComponent = createjs.promote(AudioComponent, &quot;Component&quot;);
+chongdashu.PanelSystem = createjs.promote(PanelSystem, &quot;System&quot;);
 
 }());
+
+
+
     </pre>
 </div>
                     </div>

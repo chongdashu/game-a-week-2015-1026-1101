@@ -51,17 +51,8 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
         var ic = node.ic; // InputComponent
 
 
-        if (ic.input.pointerDown()) {
-            this.scaleDown(sc, 0.9, true);
-        }
-        else {
-            sc.sprite.scale.set(1.0);
-        }
-
-        if (ic.input.pointerOver()) {
-            if (!ic.input.pointerDown()) {
-                sc.sprite.scale.set(1.1);
-            }
+        if (ic.input.pointerDown(game.input.activePointer)) {
+           this.scaleTo(sc, 0.8, true);
         }
         else {
             sc.sprite.scale.set(1.0);
@@ -89,7 +80,7 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
         return new Phaser.Point(xPosition, yPosition);
     };
 
-    p.scaleDown = function (sc, scale, lerp)  {
+    p.scaleTo= function (sc, scale, lerp)  {
          if (typeof lerp == "undefined" || lerp === null || !lerp) {
             lerp = false;
         }

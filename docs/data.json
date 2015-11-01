@@ -30,11 +30,38 @@
             "fors": {},
             "namespaces": {}
         },
+        "js/chongdashu/Components/InputComponent.js": {
+            "name": "js/chongdashu/Components/InputComponent.js",
+            "modules": {},
+            "classes": {
+                "Game.Component.InputComponent": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "js/chongdashu/Components/KeyboardComponent.js": {
             "name": "js/chongdashu/Components/KeyboardComponent.js",
             "modules": {},
             "classes": {
                 "Game.Component.KeyboardComponent": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/chongdashu/Components/MouseComponent.js": {
+            "name": "js/chongdashu/Components/MouseComponent.js",
+            "modules": {},
+            "classes": {
+                "Game.Component.MouseComponent": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/chongdashu/Components/PanelComponent.js": {
+            "name": "js/chongdashu/Components/PanelComponent.js",
+            "modules": {},
+            "classes": {
+                "Game.Component.PanelComponent": 1
             },
             "fors": {},
             "namespaces": {}
@@ -48,11 +75,29 @@
             "fors": {},
             "namespaces": {}
         },
+        "js/chongdashu/Components/PointerComponent.js": {
+            "name": "js/chongdashu/Components/PointerComponent.js",
+            "modules": {},
+            "classes": {
+                "Game.Component.PointerComponent": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "js/chongdashu/Components/SpriteComponent.js": {
             "name": "js/chongdashu/Components/SpriteComponent.js",
             "modules": {},
             "classes": {
                 "Game.Component.SpriteComponent": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/chongdashu/Components/TextComponent.js": {
+            "name": "js/chongdashu/Components/TextComponent.js",
+            "modules": {},
+            "classes": {
+                "Game.Component.TextComponent": 1
             },
             "fors": {},
             "namespaces": {}
@@ -142,6 +187,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "js/chongdashu/Nodes/PanelNode.js": {
+            "name": "js/chongdashu/Nodes/PanelNode.js",
+            "modules": {},
+            "classes": {
+                "Game.Node.PanelNode": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "js/chongdashu/Nodes/PlayerControlNode.js": {
             "name": "js/chongdashu/Nodes/PlayerControlNode.js",
             "modules": {},
@@ -207,6 +261,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "js/chongdashu/Systems/PanelSystem.js": {
+            "name": "js/chongdashu/Systems/PanelSystem.js",
+            "modules": {},
+            "classes": {
+                "Game.System.PanelSystem": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "js/chongdashu/Systems/PlayerControlSystem.js": {
             "name": "js/chongdashu/Systems/PlayerControlSystem.js",
             "modules": {},
@@ -258,14 +321,19 @@
                 "Game.Component.ArcadeSpriteComponent": 1,
                 "Game.Component.AudioComponent": 1,
                 "Game.Component.EnemyComponent": 1,
+                "Game.Component.InputComponent": 1,
                 "Game.Component.KeyboardComponent": 1,
+                "Game.Component.MouseComponent": 1,
+                "Game.Component.PanelComponent": 1,
                 "Game.Component.PlayerComponent": 1,
-                "Game.Component.SpriteComponent": 1
+                "Game.Component.PointerComponent": 1,
+                "Game.Component.SpriteComponent": 1,
+                "Game.Component.TextComponent": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "js/chongdashu/Components/SpriteComponent.js",
+            "file": "js/chongdashu/Components/TextComponent.js",
             "line": 11,
             "author": "Chong-U Lim <me@chongdashu.com>",
             "copyright": "2015 Chong-U Lim"
@@ -298,6 +366,7 @@
                 "Game.Node.AudioNode": 1,
                 "Game.Node.EnemyControlNode": 1,
                 "Game.Node.KeyboardControlNode": 1,
+                "Game.Node.PanelNode": 1,
                 "Game.Node.PlayerControlNode": 1
             },
             "fors": {},
@@ -319,6 +388,7 @@
                 "State.PreloadState": 1,
                 "Game.System.EnemyControlSystem": 1,
                 "Game.System.KeyboardControlSystem": 1,
+                "Game.System.PanelSystem": 1,
                 "Game.System.PlayerControlSystem": 1
             },
             "fors": {},
@@ -393,6 +463,22 @@
             "extends": "Core.Component",
             "is_constructor": 1
         },
+        "Game.Component.InputComponent": {
+            "name": "Game.Component.InputComponent",
+            "shortname": "Game.Component.InputComponent",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Game.Component",
+            "namespace": "",
+            "file": "js/chongdashu/Components/InputComponent.js",
+            "line": 11,
+            "description": "InputComponent",
+            "extends": "Core.Component",
+            "is_constructor": 1
+        },
         "Game.Component.KeyboardComponent": {
             "name": "Game.Component.KeyboardComponent",
             "shortname": "Game.Component.KeyboardComponent",
@@ -406,6 +492,38 @@
             "file": "js/chongdashu/Components/KeyboardComponent.js",
             "line": 11,
             "description": "KeyboardComponent is a wrapper for a game's\nkeyboard key states.",
+            "extends": "Core.Component",
+            "is_constructor": 1
+        },
+        "Game.Component.MouseComponent": {
+            "name": "Game.Component.MouseComponent",
+            "shortname": "Game.Component.MouseComponent",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Game.Component",
+            "namespace": "",
+            "file": "js/chongdashu/Components/MouseComponent.js",
+            "line": 11,
+            "description": "MouseComponent",
+            "extends": "Core.Component",
+            "is_constructor": 1
+        },
+        "Game.Component.PanelComponent": {
+            "name": "Game.Component.PanelComponent",
+            "shortname": "Game.Component.PanelComponent",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Game.Component",
+            "namespace": "",
+            "file": "js/chongdashu/Components/PanelComponent.js",
+            "line": 11,
+            "description": "PanelComponent",
             "extends": "Core.Component",
             "is_constructor": 1
         },
@@ -425,6 +543,22 @@
             "extends": "Core.Component",
             "is_constructor": 1
         },
+        "Game.Component.PointerComponent": {
+            "name": "Game.Component.PointerComponent",
+            "shortname": "Game.Component.PointerComponent",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Game.Component",
+            "namespace": "",
+            "file": "js/chongdashu/Components/PointerComponent.js",
+            "line": 11,
+            "description": "PointerComponent",
+            "extends": "Core.Component",
+            "is_constructor": 1
+        },
         "Game.Component.SpriteComponent": {
             "name": "Game.Component.SpriteComponent",
             "shortname": "Game.Component.SpriteComponent",
@@ -438,6 +572,22 @@
             "file": "js/chongdashu/Components/SpriteComponent.js",
             "line": 11,
             "description": "SpriteComponent",
+            "extends": "Core.Component",
+            "is_constructor": 1
+        },
+        "Game.Component.TextComponent": {
+            "name": "Game.Component.TextComponent",
+            "shortname": "Game.Component.TextComponent",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Game.Component",
+            "namespace": "",
+            "file": "js/chongdashu/Components/TextComponent.js",
+            "line": 11,
+            "description": "TextComponent",
             "extends": "Core.Component",
             "is_constructor": 1
         },
@@ -578,6 +728,22 @@
             "extends": "Core.Node",
             "is_constructor": 1
         },
+        "Game.Node.PanelNode": {
+            "name": "Game.Node.PanelNode",
+            "shortname": "Game.Node.PanelNode",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Game.Node",
+            "namespace": "",
+            "file": "js/chongdashu/Nodes/PanelNode.js",
+            "line": 11,
+            "description": "PanelNode",
+            "extends": "Core.Node",
+            "is_constructor": 1
+        },
         "Game.Node.PlayerControlNode": {
             "name": "Game.Node.PlayerControlNode",
             "shortname": "Game.Node.PlayerControlNode",
@@ -620,7 +786,7 @@
             "module": "Game",
             "namespace": "",
             "file": "js/chongdashu/States/GameState.js",
-            "line": 11,
+            "line": 12,
             "description": "GameState",
             "is_constructor": 1
         },
@@ -635,7 +801,7 @@
             "module": "Game",
             "namespace": "",
             "file": "js/chongdashu/States/MenuState.js",
-            "line": 11,
+            "line": 12,
             "description": "MenuState",
             "is_constructor": 1
         },
@@ -685,6 +851,22 @@
             "description": "KeyboardControlSystem",
             "is_constructor": 1,
             "extends": "Core.System"
+        },
+        "Game.System.PanelSystem": {
+            "name": "Game.System.PanelSystem",
+            "shortname": "Game.System.PanelSystem",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Game",
+            "namespace": "",
+            "file": "js/chongdashu/Systems/PanelSystem.js",
+            "line": 11,
+            "description": "PanelSystem",
+            "is_constructor": 1,
+            "extends": "Game.System.System"
         },
         "Game.System.PlayerControlSystem": {
             "name": "Game.System.PlayerControlSystem",
@@ -743,6 +925,18 @@
             "module": "Game.Component"
         },
         {
+            "file": "js/chongdashu/Components/InputComponent.js",
+            "line": 23,
+            "description": "The type identifier of this component.",
+            "itemtype": "property",
+            "name": "Game.InputComponent.TYPE",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "Game.Component.InputComponent",
+            "module": "Game.Component"
+        },
+        {
             "file": "js/chongdashu/Components/KeyboardComponent.js",
             "line": 26,
             "description": "The type identifier of this component.",
@@ -752,6 +946,30 @@
             "static": 1,
             "final": 1,
             "class": "Game.Component.KeyboardComponent",
+            "module": "Game.Component"
+        },
+        {
+            "file": "js/chongdashu/Components/MouseComponent.js",
+            "line": 23,
+            "description": "The type identifier of this component.",
+            "itemtype": "property",
+            "name": "Game.MouseComponent.TYPE",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "Game.Component.MouseComponent",
+            "module": "Game.Component"
+        },
+        {
+            "file": "js/chongdashu/Components/PanelComponent.js",
+            "line": 23,
+            "description": "The type identifier of this component.",
+            "itemtype": "property",
+            "name": "Game.PanelComponent.TYPE",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "Game.Component.PanelComponent",
             "module": "Game.Component"
         },
         {
@@ -767,6 +985,18 @@
             "module": "Game.Component"
         },
         {
+            "file": "js/chongdashu/Components/PointerComponent.js",
+            "line": 23,
+            "description": "The type identifier of this component.",
+            "itemtype": "property",
+            "name": "Game.PointerComponent.TYPE",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "Game.Component.PointerComponent",
+            "module": "Game.Component"
+        },
+        {
             "file": "js/chongdashu/Components/SpriteComponent.js",
             "line": 23,
             "description": "The type identifier of this component.",
@@ -776,6 +1006,18 @@
             "static": 1,
             "final": 1,
             "class": "Game.Component.SpriteComponent",
+            "module": "Game.Component"
+        },
+        {
+            "file": "js/chongdashu/Components/TextComponent.js",
+            "line": 23,
+            "description": "The type identifier of this component.",
+            "itemtype": "property",
+            "name": "Game.TextComponent.TYPE",
+            "type": "String",
+            "static": 1,
+            "final": 1,
+            "class": "Game.Component.TextComponent",
             "module": "Game.Component"
         },
         {
@@ -855,7 +1097,7 @@
         },
         {
             "file": "js/chongdashu/Core/System.js",
-            "line": 78,
+            "line": 79,
             "description": "The update loop of this system, as called by a given\n{{#crossLink \"Core.Engine\"}}{{/crossLink}}'s update loop.\nAll related {{#crossLink \"Core.Node\"}}{{/crossLink}} objects are\nupdated. Handling of each node individually can be performed\nby overriding the {{#crossLink \"Core.System/updateNode:method\"}}{{/crossLink}} method.",
             "itemtype": "method",
             "name": "update",
@@ -864,7 +1106,7 @@
         },
         {
             "file": "js/chongdashu/Core/System.js",
-            "line": 96,
+            "line": 97,
             "itemtype": "method",
             "name": "updateNode",
             "params": [
@@ -879,7 +1121,7 @@
         },
         {
             "file": "js/chongdashu/Core/System.js",
-            "line": 103,
+            "line": 104,
             "description": "Callback method when this system is added to the engine.",
             "itemtype": "method",
             "name": "onEngineAdd",
@@ -895,7 +1137,7 @@
         },
         {
             "file": "js/chongdashu/Core/System.js",
-            "line": 113,
+            "line": 114,
             "description": "Callback method when this system is removed from the engine.",
             "itemtype": "method",
             "name": "onEngineRemove",
@@ -910,20 +1152,6 @@
             "module": "Core"
         },
         {
-            "file": "js/chongdashu/States/GameState.js",
-            "line": 1,
-            "author": "Chong-U Lim\n http://github.com/chongdashu",
-            "class": "State.GameState",
-            "module": "Game"
-        },
-        {
-            "file": "js/chongdashu/States/MenuState.js",
-            "line": 1,
-            "author": "Chong-U Lim\n http://github.com/chongdashu",
-            "class": "State.MenuState",
-            "module": "Game"
-        },
-        {
             "file": "js/chongdashu/Systems/EnemyControlSystem.js",
             "line": 1,
             "author": "Chong-U Lim\n http://github.com/chongdashu",
@@ -935,6 +1163,13 @@
             "line": 1,
             "author": "Chong-U Lim\n http://github.com/chongdashu",
             "class": "Game.System.KeyboardControlSystem",
+            "module": "Game"
+        },
+        {
+            "file": "js/chongdashu/Systems/PanelSystem.js",
+            "line": 1,
+            "author": "Chong-U Lim\n http://github.com/chongdashu",
+            "class": "Game.System.PanelSystem",
             "module": "Game"
         },
         {
@@ -1073,7 +1308,19 @@
         },
         {
             "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Components/InputComponent.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
             "line": " js/chongdashu/Components/KeyboardComponent.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Components/MouseComponent.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Components/PanelComponent.js:1"
         },
         {
             "message": "unknown tag: copyright",
@@ -1081,7 +1328,15 @@
         },
         {
             "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Components/PointerComponent.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
             "line": " js/chongdashu/Components/SpriteComponent.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Components/TextComponent.js:1"
         },
         {
             "message": "unknown tag: copyright",
@@ -1121,6 +1376,10 @@
         },
         {
             "message": "unknown tag: copyright",
+            "line": " js/chongdashu/Nodes/PanelNode.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
             "line": " js/chongdashu/Nodes/PlayerControlNode.js:1"
         },
         {
@@ -1130,6 +1389,22 @@
         {
             "message": "unknown tag: msubmodule",
             "line": " js/chongdashu/States/BootState.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " js/chongdashu/States/GameState.js:1"
+        },
+        {
+            "message": "unknown tag: msubmodule",
+            "line": " js/chongdashu/States/GameState.js:1"
+        },
+        {
+            "message": "unknown tag: copyright",
+            "line": " js/chongdashu/States/MenuState.js:1"
+        },
+        {
+            "message": "unknown tag: msubmodule",
+            "line": " js/chongdashu/States/MenuState.js:1"
         },
         {
             "message": "unknown tag: copyright",
@@ -1153,19 +1428,15 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/chongdashu/States/GameState.js:1"
-        },
-        {
-            "message": "Missing item type",
-            "line": " js/chongdashu/States/MenuState.js:1"
-        },
-        {
-            "message": "Missing item type",
             "line": " js/chongdashu/Systems/EnemyControlSystem.js:1"
         },
         {
             "message": "Missing item type",
             "line": " js/chongdashu/Systems/KeyboardControlSystem.js:1"
+        },
+        {
+            "message": "Missing item type",
+            "line": " js/chongdashu/Systems/PanelSystem.js:1"
         },
         {
             "message": "Missing item type",

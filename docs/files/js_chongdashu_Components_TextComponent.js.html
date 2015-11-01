@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/chongdashu/Components/AudioComponent.js</title>
+    <title>js/chongdashu/Components/TextComponent.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -111,7 +111,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: js/chongdashu/Components/AudioComponent.js</h1>
+<h1 class="file-heading">File: js/chongdashu/Components/TextComponent.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -126,40 +126,42 @@ this.chongdashu = this.chongdashu||{};
     &quot;use strict&quot;;
 
 /**
- * AudioComponent
- * @class Game.Component.AudioComponent
+ * TextComponent
+ * @class Game.Component.TextComponent
  * @extends Core.Component
  * @constructor
  **/
-var AudioComponent = function() {
+var TextComponent = function(sprite) {
     // @param {Phaser.Keyboard} entity
-    this.init();
+    this.init(sprite);
 };
-var p = createjs.extend(AudioComponent, chongdashu.Component);
+var p = createjs.extend(TextComponent, chongdashu.Component);
     
     /**
     * The type identifier of this component.
     *
-    * @property Game.AudioComponent.TYPE
+    * @property Game.TextComponent.TYPE
     * @type String
     * @static
     * @final
     */
-    AudioComponent.TYPE = &quot;component:AudioComponent&quot;;
+    TextComponent.TYPE = &quot;component:TextComponent&quot;;
 
-    p.audioCache = {};
+    p.sprite = null;
 
-    p.init = function()
+    p.init = function(sprite)
     {
-        console.log(&quot;[AudioComponent], init()&quot;);
-        this.Component_init(AudioComponent.TYPE);
+        console.log(&quot;[TextComponent], init()&quot;);
+        this.Component_init(TextComponent.TYPE);
 
-        this.audioCache = {};
+        this.sprite = sprite;
+        this.sprite.anchor.set(0.5);
+        
     };
 
 // Link
 // ----
-chongdashu.AudioComponent = createjs.promote(AudioComponent, &quot;Component&quot;);
+chongdashu.TextComponent = createjs.promote(TextComponent, &quot;Component&quot;);
 
 }());
     </pre>

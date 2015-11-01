@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/chongdashu/Components/AudioComponent.js</title>
+    <title>js/chongdashu/Components/PanelComponent.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -111,7 +111,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: js/chongdashu/Components/AudioComponent.js</h1>
+<h1 class="file-heading">File: js/chongdashu/Components/PanelComponent.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -126,40 +126,42 @@ this.chongdashu = this.chongdashu||{};
     &quot;use strict&quot;;
 
 /**
- * AudioComponent
- * @class Game.Component.AudioComponent
+ * PanelComponent
+ * @class Game.Component.PanelComponent
  * @extends Core.Component
  * @constructor
  **/
-var AudioComponent = function() {
+var PanelComponent = function(row, col) {
     // @param {Phaser.Keyboard} entity
-    this.init();
+    this.init(row, col);
 };
-var p = createjs.extend(AudioComponent, chongdashu.Component);
+var p = createjs.extend(PanelComponent, chongdashu.Component);
     
     /**
     * The type identifier of this component.
     *
-    * @property Game.AudioComponent.TYPE
+    * @property Game.PanelComponent.TYPE
     * @type String
     * @static
     * @final
     */
-    AudioComponent.TYPE = &quot;component:AudioComponent&quot;;
+    PanelComponent.TYPE = &quot;component:PanelComponent&quot;;
 
-    p.audioCache = {};
+    p.row = -1;
+    p.col = -1;
 
-    p.init = function()
+    p.init = function(row, col)
     {
-        console.log(&quot;[AudioComponent], init()&quot;);
-        this.Component_init(AudioComponent.TYPE);
+        console.log(&quot;[PanelComponent], init(), row=%s, col=%s&quot;, row, col);
+        this.Component_init(PanelComponent.TYPE);
 
-        this.audioCache = {};
+        this.row = row;
+        this.col = col;
     };
 
 // Link
 // ----
-chongdashu.AudioComponent = createjs.promote(AudioComponent, &quot;Component&quot;);
+chongdashu.PanelComponent = createjs.promote(PanelComponent, &quot;Component&quot;);
 
 }());
     </pre>

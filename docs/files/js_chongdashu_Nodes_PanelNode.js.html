@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/chongdashu/Components/AudioComponent.js</title>
+    <title>js/chongdashu/Nodes/PanelNode.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -111,14 +111,14 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: js/chongdashu/Components/AudioComponent.js</h1>
+<h1 class="file-heading">File: js/chongdashu/Nodes/PanelNode.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 /**
 * @author       Chong-U Lim &lt;me@chongdashu.com&gt;
 * @copyright    2015 Chong-U Lim
-* @module       Game.Component
+* @module       Game.Node
 */
 this.chongdashu = this.chongdashu||{};
 
@@ -126,40 +126,43 @@ this.chongdashu = this.chongdashu||{};
     &quot;use strict&quot;;
 
 /**
- * AudioComponent
- * @class Game.Component.AudioComponent
- * @extends Core.Component
+ * PanelNode
+ * @class Game.Node.PanelNode
+ * @extends Core.Node
  * @constructor
  **/
-var AudioComponent = function() {
+var PanelNode = function(entity) {
     // @param {Phaser.Keyboard} entity
-    this.init();
+    this.init(entity);
 };
-var p = createjs.extend(AudioComponent, chongdashu.Component);
+var p = createjs.extend(PanelNode, chongdashu.Node);
     
-    /**
-    * The type identifier of this component.
-    *
-    * @property Game.AudioComponent.TYPE
-    * @type String
-    * @static
-    * @final
-    */
-    AudioComponent.TYPE = &quot;component:AudioComponent&quot;;
+    PanelNode.TYPE = &quot;node:PanelNode&quot;;
 
-    p.audioCache = {};
+    PanelNode.COMPONENT_TYPES = [
+        chongdashu.PanelComponent.TYPE,
+        chongdashu.InputComponent.TYPE,
+        chongdashu.SpriteComponent.TYPE
+    ];
 
-    p.init = function()
+    p.kc = null;
+    p.sc = null;
+    p.pc = null;
+
+    p.init = function(entity)
     {
-        console.log(&quot;[AudioComponent], init()&quot;);
-        this.Component_init(AudioComponent.TYPE);
+        console.log(&quot;[PanelNode], init()&quot;);
+        this.Node_init(PanelNode.TYPE, entity);
 
-        this.audioCache = {};
+        // -- Add references to entity&#x27;s components here.
+        this.ic = entity.get(chongdashu.InputComponent.TYPE);
+        this.sc = entity.get(chongdashu.SpriteComponent.TYPE);
+        this.pc = entity.get(chongdashu.PanelComponent.TYPE);
     };
 
 // Link
 // ----
-chongdashu.AudioComponent = createjs.promote(AudioComponent, &quot;Component&quot;);
+chongdashu.PanelNode = createjs.promote(PanelNode, &quot;Node&quot;);
 
 }());
     </pre>
