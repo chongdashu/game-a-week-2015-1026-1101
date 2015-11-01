@@ -50,8 +50,18 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
         var sc = node.sc; // SpriteComponent
         var ic = node.ic; // InputComponent
 
+
+        if (ic.input.pointerDown()) {
+            this.scaleDown(sc, 0.9, true);
+        }
+        else {
+            sc.sprite.scale.set(1.0);
+        }
+
         if (ic.input.pointerOver()) {
-            sc.sprite.scale.set(1.1);
+            if (!ic.input.pointerDown()) {
+                sc.sprite.scale.set(1.1);
+            }
         }
         else {
             sc.sprite.scale.set(1.0);
@@ -77,6 +87,21 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
         yPosition += row*((32) + (128) + (8));
 
         return new Phaser.Point(xPosition, yPosition);
+    };
+
+    p.scaleDown = function (sc, scale, lerp)  {
+         if (typeof lerp == "undefined" || lerp === null || !lerp) {
+            lerp = false;
+        }
+
+        if (lerp) {
+            sc.sprite.scale.x += (scale - sc.sprite.scale.x) / 4;
+            sc.sprite.scale.y += (scale - sc.sprite.scale.y) / 4;
+        }
+        else {
+            sc.sprite.scale.x = scale;
+            sc.sprite.scale.y = scale;
+        }
     };
 
     p.moveToPosition = function(pc, sc, lerp) {
