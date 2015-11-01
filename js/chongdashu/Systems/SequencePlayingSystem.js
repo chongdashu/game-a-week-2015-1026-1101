@@ -71,7 +71,7 @@ var p = createjs.extend(SequencePlayingSystem, chongdashu.System);
             this.panelSystem = this.engine.getSystem(chongdashu.PanelSystem);
         }
 
-        this.panelSystem.playPanel(spc.sequencePointer, function() {
+        this.panelSystem.playPanel(spc.sequence[spc.sequencePointer], function() {
             
             // tween completed
             this.onPlayPanelComplete(spc);

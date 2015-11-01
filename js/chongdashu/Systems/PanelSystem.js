@@ -24,7 +24,6 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
     p.panelToPlay = -1;
     p.tweens = null;
 
-    p.tween = null;
     p.onCompleteCallback = null;
     p.callbackContext = null;
 
@@ -64,13 +63,20 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
         if (this.panelToPlay === panelIndex) {
             this.panelToPlay = -1;
 
-            this.tween = this.tweens.create(sc.sprite.scale).to({
+            var shrinkTween = this.tweens.create(sc.sprite.scale).to({
                 x : 0.8,
                 y : 0.8
             }, 500, Phaser.Easing.Exponential.Out);
-            this.tween.onComplete.add(this.onTweenComplete, this, 0, sc);
-            this.tween.start();
+            
+            var growTween = this.tweens.create(sc.sprite.scale).to({
+                x : 1.0,
+                y : 1.0,
+            }, 250, Phaser.Easing.Exponential.Out);
 
+            shrinkTween.chain(growTween);
+            shrinkTween.start();
+
+            growTween.onComplete.add(this.onTweenComplete, this, 0, sc);
         }
 
         // --
@@ -99,9 +105,17 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
 
     p.onTweenComplete = function(def, sc) {
         this.panelToPlay = -1;
-        this.onCompleteCallback.call(this.callbackContext);
+
+        var callback = this.onCompleteCallback;
+        var context = this.callbackContext;
+
+        console.log(callback);
+        console.log(context);
+        
         this.onCompleteCallback = null;
         this.callbackContext = null;
+
+        callback.call(context);
     };
 
     p.getPanelIndex = function(pc) {
@@ -109,7 +123,6 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
     };
 
     p.playPanel = function(panelIndex, completeCallback, callbackContext) {
-        console.warn("ASDAS");
         this.panelToPlay = panelIndex;
         this.onCompleteCallback = completeCallback;
         this.callbackContext = callbackContext;

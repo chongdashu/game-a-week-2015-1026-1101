@@ -43,6 +43,9 @@ var p = createjs.extend(TurnTakingSystem, chongdashu.System);
         else {
             // prepare next sequence
             this.currentSequence.push(Math.floor(this.numberOfPanels * Math.random()));
+            this.currentSequence.push(Math.floor(this.numberOfPanels * Math.random()));
+            this.currentSequence.push(Math.floor(this.numberOfPanels * Math.random()));
+            this.currentSequence.push(Math.floor(this.numberOfPanels * Math.random()));
             this.state.createPlaySequence(this.currentSequence);
         }
     };
