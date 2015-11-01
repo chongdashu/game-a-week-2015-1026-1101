@@ -14,15 +14,21 @@ this.chongdashu = this.chongdashu||{};
  * @class Game.System.PanelSystem
  * @extends Game.System.System
  **/
-var PanelSystem = function(numberOfRows, panelsPerRow) {
-    this.init(numberOfRows, panelsPerRow);
+var PanelSystem = function(numberOfRows, panelsPerRow, tweens) {
+    this.init(numberOfRows, panelsPerRow, tweens);
 };
 var p = createjs.extend(PanelSystem, chongdashu.System);
 
     p.numberOfRows = null;
     p.panelsPerRow = null;
+    p.panelToPlay = -1;
+    p.tweens = null;
 
-    p.init = function(numberOfRows, panelsPerRow)
+    p.tween = null;
+    p.onCompleteCallback = null;
+    p.callbackContext = null;
+
+    p.init = function(numberOfRows, panelsPerRow, tweens)
     {
         console.log("[PanelSystem], init()");
         this.System_init(chongdashu.PanelNode);
@@ -34,11 +40,13 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
         }
 
         if (typeof panelsPerRow == "undefined" || panelsPerRow === null || panelsPerRow <= 0) {
-            panelsPerRow = 4;
+            panelsPerRow = 2;
         }
 
         this.numberOfRows = numberOfRows;
         this.panelsPerRow = panelsPerRow;
+        this.panelToPlay = -1;
+        this.tweens = tweens;
     };
 
     p.updateNode = function(node) {
@@ -50,6 +58,28 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
         var sc = node.sc; // SpriteComponent
         var ic = node.ic; // InputComponent
 
+        // --
+
+        var panelIndex = this.getPanelIndex(pc);
+        if (this.panelToPlay === panelIndex) {
+            this.panelToPlay = -1;
+
+            this.tween = this.tweens.create(sc.sprite.scale).to({
+                x : 0.8,
+                y : 0.8
+            }, 500, Phaser.Easing.Exponential.Out);
+            this.tween.onComplete.add(this.onTweenComplete, this, 0, sc);
+            this.tween.start();
+
+        }
+
+        // --
+
+        if (pc.color && sc.sprite.tint !== pc.color) {
+            sc.sprite.tint = pc.color;
+        }
+
+        // --
 
         if (ic.input.pointerDown(game.input.activePointer.id)) {
            this.scaleTo(sc, 0.8, true);
@@ -59,7 +89,7 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
         }
 
         if (!this.isInPosition(pc, sc)) {
-            this.moveToPosition(pc, sc, true);
+            this.moveToPosition(pc, sc);
         }
         else {
             this.moveToPosition(pc, sc);
@@ -67,14 +97,32 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
 
     };
 
+    p.onTweenComplete = function(def, sc) {
+        this.panelToPlay = -1;
+        this.onCompleteCallback.call(this.callbackContext);
+        this.onCompleteCallback = null;
+        this.callbackContext = null;
+    };
+
+    p.getPanelIndex = function(pc) {
+        return pc.row * this.panelsPerRow + pc.col;
+    };
+
+    p.playPanel = function(panelIndex, completeCallback, callbackContext) {
+        console.warn("ASDAS");
+        this.panelToPlay = panelIndex;
+        this.onCompleteCallback = completeCallback;
+        this.callbackContext = callbackContext;
+    };
+
     p.getPanelPosition = function(row, col) {
         var xPosition = 0;
         var yPosition = 0;
 
-        xPosition = -game.world.width/2 + 128/2 + 8;
-        yPosition = -game.world.height/2 + 256/2 + 16;
+        xPosition = -game.world.width/2 + 48 + 128;
+        yPosition = -game.world.height/2 + 256/2 + 32;
 
-        xPosition += col*((32) + (128) + (4));
+        xPosition += col*((32) + (128) + (128));
         yPosition += row*((32) + (128) + (8));
 
         return new Phaser.Point(xPosition, yPosition);

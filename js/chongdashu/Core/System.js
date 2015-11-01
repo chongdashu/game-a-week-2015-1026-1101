@@ -59,6 +59,8 @@ System.prototype.constructor = System;
     */
     p.nodeType = null;
 
+    p.engine = null;
+
 
     /**
     * The initialization method is called when the object is constructor.
@@ -69,7 +71,7 @@ System.prototype.constructor = System;
     p.init = function(nodeType)
     {
         // console.log("[System], init()");
-        
+
         this.priority = 0;
         this.enabled = true;
 
@@ -108,6 +110,7 @@ System.prototype.constructor = System;
     * @param {Core.Engine} engine reference to the {{#crossLink "Core.Engine"}}{{/crossLink}} object.
     */
     p.onEngineAdd = function(engine) {
+        this.engine = engine;
         this.nodes = engine.getNodes(this.nodeType);
     };
 
@@ -118,7 +121,12 @@ System.prototype.constructor = System;
     * @param {Core.Engine} engine reference to the {{#crossLink "Core.Engine"}}{{/crossLink}} object.
     */
     p.onEngineRemove = function(engine) {
+        this.engine = null;
         this.nodes = null;
+    };
+
+    p.getType = function() {
+        return this.constructor.name;
     };
     
 

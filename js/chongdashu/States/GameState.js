@@ -42,10 +42,14 @@ var p = GameState.prototype;
         }
 
         if (typeof panelsPerRow == "undefined" || panelsPerRow === null) {
-            panelsPerRow = 4;
+            panelsPerRow = 2;
         }
 
         this.panels = [];
+
+        var panelColors = [
+            0xaa0000, 0x00aa00, 0x0000aa, 0xaaaa00, 0xaa00aa, 0x00aaaa
+        ];
 
         for (var i=0; i < numberOfRows; i++) {
             for (var j=0; j < panelsPerRow; j++) {
@@ -53,15 +57,30 @@ var p = GameState.prototype;
                 this.engine.addEntity(new chongdashu.Entity()
                     .add(new chongdashu.SpriteComponent(sprite))
                     .add(new chongdashu.InputComponent(sprite))
-                    .add(new chongdashu.PanelComponent(i, j)));
+                    .add(new chongdashu.PanelComponent(i, j, panelColors[i*panelsPerRow + j])));
             }
         }
+    };
+
+    p.createPlaySequence = function(sequence) {
+        this.engine.addEntity(new chongdashu.Entity()
+            .add(new chongdashu.SequenceComponent(sequence))
+            .add(new chongdashu.SequencePlayComponent(sequence)));
+    };
+
+    p.createSequenceChecker = function(sequence) {
+        this.engine.addEntity(new chongdashu.Entity()
+            .add(new chongdashu.SequenceComponent(sequence))
+            .add(new chongdashu.SequenceCheckComponent(sequence)));
     };
 
     p.createSystems = function() {
         this.engine.addSystem(this.playerControlSystem = new chongdashu.PlayerControlSystem(), 0);
         this.engine.addSystem(this.enemyControlSystem = new chongdashu.EnemyControlSystem(), 0);
-        this.engine.addSystem(this.panelSystem = new chongdashu.PanelSystem(2, 4));
+        this.engine.addSystem(this.panelSystem = new chongdashu.PanelSystem(null, null, this.game.tweens));
+        this.engine.addSystem(this.sequencePlayingSystem = new chongdashu.SequencePlayingSystem());
+        this.engine.addSystem(this.sequenceCheckingSystem = new chongdashu.SequenceCheckingSystem());
+        this.engine.addSystem(this.turnTakingSystem = new chongdashu.TurnTakingSystem(this));
     };
 
     p.createPlayer = function() {

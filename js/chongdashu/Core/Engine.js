@@ -115,6 +115,11 @@ Engine.prototype.constructor = Engine;
      */
     p.getNodes = function(nodeClass) {
         // console.log("nodeClass=%o", nodeClass);
+    
+        if (typeof nodeClass == "undefined" || nodeClass === null) {
+            return [];
+        }
+
         var nodeType = nodeClass.TYPE;
 
         if (nodeType in this.families) {
@@ -160,9 +165,9 @@ Engine.prototype.constructor = Engine;
         system.onEngineRemove(this);
     };
 
-    p.getSystem = function(systemType) {
+    p.getSystem = function(systemClass) {
         for (var i=0; i < this.systems.length; i++) {
-            if (this.systems[i].getType() == systemType) {
+            if (this.systems[i] instanceof systemClass) {
                 return this.systems[i];
             }
         }

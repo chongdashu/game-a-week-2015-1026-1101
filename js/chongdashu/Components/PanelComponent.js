@@ -14,9 +14,9 @@ this.chongdashu = this.chongdashu||{};
  * @extends Core.Component
  * @constructor
  **/
-var PanelComponent = function(row, col) {
+var PanelComponent = function(row, col, color) {
     // @param {Phaser.Keyboard} entity
-    this.init(row, col);
+    this.init(row, col, color);
 };
 var p = createjs.extend(PanelComponent, chongdashu.Component);
     
@@ -32,14 +32,16 @@ var p = createjs.extend(PanelComponent, chongdashu.Component);
 
     p.row = -1;
     p.col = -1;
+    p.color = null;
 
-    p.init = function(row, col)
+    p.init = function(row, col, color)
     {
         console.log("[PanelComponent], init(), row=%s, col=%s", row, col);
         this.Component_init(PanelComponent.TYPE);
 
         this.row = row;
         this.col = col;
+        this.color = color;
     };
 
 // Link
