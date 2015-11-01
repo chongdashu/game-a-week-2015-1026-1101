@@ -35,12 +35,11 @@ var p = createjs.extend(PanelComponent, chongdashu.Component);
 
     p.init = function(row, col)
     {
-        console.log("[PanelComponent], init()");
+        console.log("[PanelComponent], init(), row=%s, col=%s", row, col);
         this.Component_init(PanelComponent.TYPE);
 
         this.row = row;
         this.col = col;
-        
     };
 
 // Link

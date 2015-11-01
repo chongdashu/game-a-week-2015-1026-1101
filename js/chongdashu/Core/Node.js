@@ -32,7 +32,8 @@ Node.prototype.constructor = Node;
 
     p.init = function(nodeType, entity)
     {
-        console.log("[Node], init()");
+        // console.log("[Node], init()");
+        
         this.nodeType = nodeType;
         this.entity = entity;
     };

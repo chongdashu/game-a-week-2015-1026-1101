@@ -19,8 +19,6 @@ var PlayerControlSystem = function(state) {
 };
 var p = createjs.extend(PlayerControlSystem, chongdashu.KeyboardControlSystem);
 
-    p.keyStates = {};
-
     p.init = function(state)
     {
         console.log("[PlayerControlSystem], init()");

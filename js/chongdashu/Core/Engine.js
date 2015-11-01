@@ -114,7 +114,7 @@ Engine.prototype.constructor = Engine;
      * 
      */
     p.getNodes = function(nodeClass) {
-        console.log("nodeClass=%o", nodeClass);
+        // console.log("nodeClass=%o", nodeClass);
         var nodeType = nodeClass.TYPE;
 
         if (nodeType in this.families) {
@@ -130,7 +130,9 @@ Engine.prototype.constructor = Engine;
 
         // add existing entities to family
         for (var i=0; i < this.entities.length; i++) {
-            family.addEntity(entities[i]);
+            // BUG:
+            // Find out why if this is not present, still works sometimes.
+            family.addEntity(this.entities[i]);
         }
 
         // return node group

@@ -68,7 +68,8 @@ System.prototype.constructor = System;
     */
     p.init = function(nodeType)
     {
-        console.log("[System], init()");
+        // console.log("[System], init()");
+        
         this.priority = 0;
         this.enabled = true;
 

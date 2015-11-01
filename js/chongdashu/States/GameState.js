@@ -28,10 +28,11 @@ var p = GameState.prototype;
 
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        this.createSystems();
+        this.createPanels();
         this.createPlayer();
         this.createEnemy();
-        this.createPanels();
+        this.createSystems();
+       
     };
 
     p.createPanels = function(numberOfRows, panelsPerRow) {
@@ -47,18 +48,10 @@ var p = GameState.prototype;
 
         for (var i=0; i < numberOfRows; i++) {
             for (var j=0; j < panelsPerRow; j++) {
-
-                var xPosition = 0;
-                var yPosition = 0;
-
-                xPosition = -this.world.width/2 + 128/2 + 8;
-                yPosition = -this.world.height/2 + 256/2 + 16;
-
-                xPosition += j*((32) + (128) + (4));
-                yPosition += i*((32) + (128) + (8));
-
-                this.panels.push(new chongdashu.Entity()
-                    .add(new chongdashu.SpriteComponent(this.game.add.sprite(xPosition, yPosition, "panel"))));
+                this.engine.addEntity(new chongdashu.Entity()
+                    .add(new chongdashu.SpriteComponent(this.game.add.sprite(0, 0, "panel")))
+                    .add(new chongdashu.MouseComponent(this.game.input.mouse))
+                    .add(new chongdashu.PanelComponent(i, j)));
             }
         }
     };
@@ -66,6 +59,7 @@ var p = GameState.prototype;
     p.createSystems = function() {
         this.engine.addSystem(this.playerControlSystem = new chongdashu.PlayerControlSystem(), 0);
         this.engine.addSystem(this.enemyControlSystem = new chongdashu.EnemyControlSystem(), 0);
+        this.engine.addSystem(this.panelSystem = new chongdashu.PanelSystem(2, 4));
     };
 
     p.createPlayer = function() {
