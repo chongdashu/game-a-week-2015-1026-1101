@@ -88,11 +88,11 @@ System.prototype.constructor = System;
     *
     * @method update
     */
-    p.update = function() {
+    p.update = function(elapsed) {
         var nodes = this.engine.getNodes(this.nodeType);
         if (nodes) {
             for (var i=0; i < nodes.length; i++) {
-                this.updateNode(nodes[i]);
+                this.updateNode(nodes[i], elapsed);
             }
         }
     };

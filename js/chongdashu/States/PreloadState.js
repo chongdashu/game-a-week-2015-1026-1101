@@ -44,6 +44,10 @@ var p = PreloadState.prototype;
         // --------------------
         this.load.image("player", "res/player.png");
         this.load.image("panel", "res/panel.png");
+        this.load.audio("click_0", "res/click_0.wav");
+        this.load.audio("click_1", "res/click_1.wav");
+        this.load.audio("click_2", "res/click_2.wav");
+        this.load.audio("click_3", "res/click_3.wav");
        
     };
 

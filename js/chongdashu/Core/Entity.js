@@ -120,17 +120,32 @@ Entity.prototype.constructor = Entity;
     };
 
     p.removeOnComponentAddCallback = function(callback) {
-        if (!(callback in this.onComponentAddCallbacks)) {
-            console.warn("Callback %s not part of entity %s callbacks", callback, this._name);
+        var found = true;
+        for (var i=0; i < this.onComponentAddCallbacks.length; i++) {
+            if (this.onComponentAddCallbacks[i] == callback) {
+                this.onComponentAddCallbacks.splice(this.onComponentAddCallbacks.indexOf(callback));
+                found = true;
+            }
         }
-        this.onComponentAddCallbacks.splice(this.onComponentAddCallbacks.indexOf(callback));
+        if (!found) {
+            console.warn("Callback %s not part of entity %s callbacks", callback, this._name);
+            return;
+        }
+        
     };
 
     p.removeOnComponentRemoveCallback = function(callback) {
-        if (!(callback in this.onComponentRemoveCallbacks)) {
-            console.warn("Callback %s not part of entity %s callbacks", callback, this._name);
+        var found = true;
+        for (var i=0; i < this.onComponentRemoveCallbacks.length; i++) {
+            if (this.onComponentRemoveCallbacks[i] == callback) {
+                this.onComponentRemoveCallbacks.splice(this.onComponentRemoveCallbacks.indexOf(callback));
+                found = true;
+            }
         }
-        this.onComponentRemoveCallbacks.splice(this.onComponentRemoveCallbacks.indexOf(callback));
+        if (!found) {
+            console.warn("Callback %s not part of entity %s callbacks", callback, this._name);
+            return;
+        }
     };
 
 // Link

@@ -26,15 +26,15 @@ var p = createjs.extend(AudioNode, chongdashu.Node);
         chongdashu.AudioComponent.TYPE
     ];
 
-    p.audioComponent = null; // AudioComponent 
+    p.ac = null; // AudioComponent 
 
-    p.init = function()
+    p.init = function(entity)
     {
         console.log("[AudioNode], init()");
         this.Node_init(AudioNode.TYPE, entity);
 
         // -- Add references to entity's components here.
-        p.audioComponent = entity.get(AudioComponent.TYPE);
+        this.ac = entity.get(chongdashu.AudioComponent.TYPE);
     };
 
 // Link

@@ -26,13 +26,15 @@ var p = createjs.extend(TurnTakingSystem, chongdashu.System);
 
     p.init = function(state)
     {
-        console.log("[TurnTakingSystem], init()");
+        console.log("[TurnTakingSystem], init(), this.panelSystem=%s", this.panelSystem);
         this.System_init();
 
         this.state = state;
         this.isPlayerTurn = false;
         this.numberOfPanels = 0;
         this.currentSequence = [];
+
+        this.panelSystem = null;
     };
 
     p.createNextTurn = function() {
@@ -40,11 +42,13 @@ var p = createjs.extend(TurnTakingSystem, chongdashu.System);
             // prepare an entity to check player
             this.state.removePlaySequence();
             this.state.createSequenceChecker(this.currentSequence);
+            this.panelSystem.isInputEnabled = true;
         }
         else {
             // prepare next sequence
             this.currentSequence.push(Math.floor(this.numberOfPanels * Math.random()));
             this.state.createPlaySequence(this.currentSequence);
+            this.panelSystem.isInputEnabled = false;
         }
     };
 

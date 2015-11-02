@@ -60,6 +60,7 @@ var p = GameState.prototype;
                 this.engine.addEntity(new chongdashu.Entity()
                     .add(new chongdashu.SpriteComponent(sprite))
                     .add(new chongdashu.InputComponent(sprite))
+                    .add(new chongdashu.AudioComponent(this.game.add.audio("click_"+(i*panelsPerRow + j))))
                     .add(new chongdashu.PanelComponent(i, j, panelColors[i*panelsPerRow + j])));
             }
         }
@@ -101,6 +102,7 @@ var p = GameState.prototype;
         this.engine.addSystem(this.sequencePlayingSystem = new chongdashu.SequencePlayingSystem());
         this.engine.addSystem(this.sequenceCheckingSystem = new chongdashu.SequenceCheckingSystem());
         this.engine.addSystem(this.turnTakingSystem = new chongdashu.TurnTakingSystem(this));
+        this.engine.addSystem(this.audioSystem = new chongdashu.AudioSystem());
     };
 
     p.createPlayer = function() {
@@ -121,7 +123,7 @@ var p = GameState.prototype;
 
     // @phaser
     p.update = function() {
-       this.engine.update();
+       this.engine.update(this.game.time.elapsed);
     };
 
     

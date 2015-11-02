@@ -21,32 +21,35 @@ var SequencePlayingSystem = function() {
 var p = createjs.extend(SequencePlayingSystem, chongdashu.System);
     
     p.isCompleted = false;
+    p.startCountdown = 0;
     
     p.init = function(tweens)
     {
         console.log("[SequencePlayingSystem], init()");
         this.System_init(chongdashu.SequencePlayingNode);
+        this.startCountdown = 1000; // 1 sec before the first panel is played
     };
 
-    p.update = function() {
-        this.System_update();
-    };
-
-    p.updateNode = function(node) {
+    p.updateNode = function(node, elapsed) {
 
         // -- perform superclass update first
         this.System_updateNode(node);
 
-        console.warn("[SequencePlayingSystem], updateNode, node.entity=%s", node.entity._name);
-        
         var sc = node.sc;
         var spc = node.spc;
 
         if (!this.isCompleted) {
             if (spc.sequencePointer < 0) {
                 // first start to play the sequence
-                spc.sequencePointer++;
-                this.play(spc);
+                if (this.startCountdown < 0) {
+                    spc.sequencePointer++;
+                    this.play(spc);
+                    this.startCountdown = 1000;
+                }
+                else {
+                    this.startCountdown -= elapsed;
+                }
+                
             }
             else if (spc.sequencePointer >= spc.sequence.length) {
                 // sequence finished

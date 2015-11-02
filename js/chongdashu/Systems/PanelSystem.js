@@ -30,6 +30,8 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
     p.onPanelPressCallbacks = [];
     p.onPanelPressCallbackContexts = [];
 
+    p.isInputEnabled = false;
+
     p.init = function(numberOfRows, panelsPerRow, tweens)
     {
         console.log("[PanelSystem], init()");
@@ -50,6 +52,8 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
         this.panelToPlay = -1;
         this.tweens = tweens;
         this.onPanelPressCallbacks = [];
+        this.onPanelPressCallbackContexts = [];
+        this.isInputEnabled = false;
     };
 
     p.updateNode = function(node) {
@@ -60,6 +64,11 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
         var pc = node.pc; // PanelComponent
         var sc = node.sc; // SpriteComponent
         var ic = node.ic; // InputComponent
+
+        var ac = node.entity.get(chongdashu.AudioComponent.TYPE);
+
+        // --
+        ic.input.userHandCursor = true;
 
         // --
 
@@ -80,6 +89,11 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
             shrinkTween.chain(growTween);
             shrinkTween.start();
 
+            if (ac) {
+                ac.playOneShot = true;
+            }
+
+
             growTween.onComplete.add(this.onTweenComplete, this, 0, sc);
         }
 
@@ -90,21 +104,24 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
         }
 
         // --
+        if (this.isInputEnabled) {
+            if (ic.input.pointerDown(game.input.activePointer.id, 20)) {
+                this.scaleTo(sc, 0.8, true);
+            }
+            else {
+                sc.sprite.scale.set(1.0);
+            }
 
-        if (ic.input.pointerDown(game.input.activePointer.id, 20)) {
-           this.scaleTo(sc, 0.8, true);
-           
+            if (ic.input.justReleased(game.input.activePointer.id, 20)) {
+                this.onPanelPress(pc);
+                if (ac) {
+                    ac.playOneShot = true;
+                }
+            }
         }
-        else {
-            sc.sprite.scale.set(1.0);
-        }
-
-        if (ic.input.justReleased(game.input.activePointer.id, 20)) {
-            this.onPanelPress(pc);
-        }
-
+        
         if (!this.isInPosition(pc, sc)) {
-            this.moveToPosition(pc, sc);
+            this.moveToPosition(pc, sc, true);
         }
         else {
             this.moveToPosition(pc, sc);
@@ -123,6 +140,8 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
     };
 
     p.onPanelPress = function(pc) {
+        console.warn("[PanelSystem], onPanelPress, pc=%o", pc);
+        console.warn("[PanelSystem], this.onPanelPressCallbacks.length=%s", this.onPanelPressCallbacks.length);
         for (var i=0; i < this.onPanelPressCallbacks.length; i++) {
             var context = this.onPanelPressCallbackContexts[i];
             this.onPanelPressCallbacks[i].call(context, this.getPanelIndex(pc));
@@ -173,8 +192,8 @@ var p = createjs.extend(PanelSystem, chongdashu.System);
         }
 
         if (lerp) {
-            sc.sprite.scale.x += (scale - sc.sprite.scale.x) / 4;
-            sc.sprite.scale.y += (scale - sc.sprite.scale.y) / 4;
+            sc.sprite.scale.x += (scale - sc.sprite.scale.x) / 2;
+            sc.sprite.scale.y += (scale - sc.sprite.scale.y) / 2;
         }
         else {
             sc.sprite.scale.x = scale;

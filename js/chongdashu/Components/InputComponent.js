@@ -40,7 +40,7 @@ var p = createjs.extend(InputComponent, chongdashu.Component);
         // -- 
         sprite.inputEnabled = true;
         this.input = sprite.input;
-        this.input.useHandCursor = true;
+        this.input.useHandCursor = false;
     };
 
 // Link

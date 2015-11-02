@@ -182,11 +182,11 @@ Engine.prototype.constructor = Engine;
 
     };
 
-    p.update = function()  {
+    p.update = function(elapsed)  {
         this.isUpdating = true;
         var i=0;
         for (i=0; i < this.systems.length; i++) {
-            this.systems[i].update();
+            this.systems[i].update(elapsed);
         }
         this.isUpdating = false;
 

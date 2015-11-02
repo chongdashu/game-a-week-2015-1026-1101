@@ -33,6 +33,9 @@ var p = createjs.extend(SequenceCheckingSystem, chongdashu.System);
         // --
         this.panelSystem = null;
         this.panelIndex = -1;
+        this.isCompleted = false;
+        this.isFailed = false;
+        this.creationTime = game.time.now;
     };
 
     p.update = function() {
@@ -46,6 +49,7 @@ var p = createjs.extend(SequenceCheckingSystem, chongdashu.System);
     };
 
     p.onPanelPress = function(panelIndex) {
+        console.warn("[SequenceCheckingSystem], onPanelPress(), this.creationTime=%s, index=%s", this.creationTime, panelIndex);
         if (this.panelIndex < 0) {
             this.panelIndex = panelIndex;
         }
@@ -68,13 +72,17 @@ var p = createjs.extend(SequenceCheckingSystem, chongdashu.System);
             }
             else {
 
+                console.warn("this.creationTime=%s, this.panelIndex=%s", this.creationTime, this.panelIndex);
+
                 if (this.panelIndex >= 0) {
 
                     var expectedPanelIndex = scc.sequence[scc.sequencePointer];
                     if (this.panelIndex == expectedPanelIndex) {
+                        console.warn("[SequenceCheckingSystem], correct!");
                         scc.sequencePointer++;
                     }
                     else {
+                        console.warn("[SequenceCheckingSystem], wrong!");
                         this.isFailed = true;
                     }
 

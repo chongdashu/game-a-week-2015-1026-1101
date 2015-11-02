@@ -14,9 +14,9 @@ this.chongdashu = this.chongdashu||{};
  * @extends Core.Component
  * @constructor
  **/
-var AudioComponent = function() {
+var AudioComponent = function(audio) {
     // @param {Phaser.Keyboard} entity
-    this.init();
+    this.init(audio);
 };
 var p = createjs.extend(AudioComponent, chongdashu.Component);
     
@@ -30,14 +30,16 @@ var p = createjs.extend(AudioComponent, chongdashu.Component);
     */
     AudioComponent.TYPE = "component:AudioComponent";
 
-    p.audioCache = {};
+    p.audio = {};
+    p.playOneShot = false;
 
-    p.init = function()
+    p.init = function(audio)
     {
         console.log("[AudioComponent], init()");
         this.Component_init(AudioComponent.TYPE);
 
-        this.audioCache = {};
+        this.audio = audio;
+        this.playOneShot = false;
     };
 
 // Link
