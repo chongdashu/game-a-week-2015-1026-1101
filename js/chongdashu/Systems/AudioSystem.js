@@ -32,7 +32,6 @@ var p = createjs.extend(AudioSystem, chongdashu.KeyboardControlSystem);
         var ac = node.ac;
 
         if (ac.playOneShot) {
-            console.error("PLAY, ac.audio=%o", ac.audio);
             ac.audio.play();
             ac.audio.volume = 0.5;
             ac.playOneShot = false;
